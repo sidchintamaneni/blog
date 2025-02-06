@@ -1,0 +1,89 @@
+/* Global Styling */
+body {
+    font-family: 'Iowan BT', serif;
+    background-color: #fdfaf3;
+    color: #3a3a3a;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* Navigation Bar */
+header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    font-size: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: underline;
+    color: #5a5a5a;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Main Content */
+main {
+    max-width: 650px;
+    margin: 120px auto 50px;
+    padding: 0 20px;
+    text-align: left;
+}
+
+/* Article Title */
+h1 {
+    font-family: 'Iowan BT', serif;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-top: 60px;
+    color: #444;
+}
+
+/* Paragraphs */
+p {
+    font-size: 1.2rem;
+    color: #5a5a5a;
+}
+
+/* Links */
+a {
+    text-decoration: underline;
+    color: #a0673b;
+}
+
+a:hover {
+    color: #804d28;
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.semi-transparent-line {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+}
