@@ -6,7 +6,7 @@ export const blogs = [
           {
             id: 1,
             title: "A New Start",
-            date: "8",
+            date: "8th",
             tags: ["blog"],
             file_name: "start",
           },
@@ -19,7 +19,7 @@ export const blogs = [
           {
             id: 1,
             title: "BPF Tailcalls",
-            date: "23",
+            date: "23rd",
             tags: ["BPF", "Linux", "Operating Systems", "Programming Languages"],
             file_name: "bpf_tailcalls.html",
           },

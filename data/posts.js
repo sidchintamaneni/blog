@@ -6,7 +6,7 @@ export const posts = [
           {
             id: 1,
             title: "In Works",
-            date: "8",
+            date: "8th",
             tags: ["Operating Systems", "Linux"]
           },
         ]
