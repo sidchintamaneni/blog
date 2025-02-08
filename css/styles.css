@@ -1,6 +1,6 @@
 /* Global Styling */
 body {
-    font-family: 'Iowan BT', serif;
+    font-family: "Iowan Old Style","Iowan","Iowan BT","Palatino Linotype", "URW Palladio L", "serif";
     background-color: #fdfaf3;
     color: #3a3a3a;
     margin: 0;
@@ -214,3 +214,53 @@ footer {
     margin-top: 2px;
     display: block;
 }
+
+/* Blog List */
+.blog-list-heading, .post-list-heading h2 {
+    text-align: center;
+}
+
+#blog-list, #post-list {
+    max-width: 600px;
+    margin: 0 auto;
+}
+  
+/* Year and Month Header */
+.blog-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #444;
+}
+
+/* Blog Item with Dot Leaders */
+.blog-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* Title, dots, and date */
+    align-items: center;
+    padding: 10px 0; 
+  }
+  
+  .blog-item a {
+    text-decoration: none;
+    font-size: 1.2rem; 
+    display: contents; 
+  }
+  
+  .blog-item a:hover {
+    text-decoration: none;
+  }
+  
+  .blog-item .dots {
+    border-bottom: 2px dotted;
+    margin: 0 10px;
+    flex-grow: 1;
+    height: 1px;
+  }
+  
+  .blog-item .date {
+    font-size: 1.2rem; /* Match the title size */
+    text-align: right;
+  }

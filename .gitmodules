@@ -1,0 +1,3 @@
+[submodule "marked"]
+	path = marked
+	url = git@github.com:markedjs/marked.git
