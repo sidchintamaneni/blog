@@ -3,14 +3,14 @@
 *This is an old blog that I wrote when I was in grad school. I moved it from old website to here.
 Some of the details mentioned in this blog post might be outdated.*
 
-* This blog expects you to have basic understanding BPF programs and verifier.
+* This blog expects you to have basic understanding of BPF programs and the verifier.
 
 ## If you want to understand...
 
 *   Tail calls? 
 *   BPF-to-BPF calls?
 *   Why each BPF program is restricted to 256 bytes by the verifier when both
-BPF to BPF and Tail calls are used together, why the number of tailcalls is
+BPF-to-BPF and Tail calls are used together, why the number of tailcalls is
 restricted to 33, and how runtime restrictions are enforced?
 *   How to write BPF programs with Tail calls?
 
@@ -18,7 +18,7 @@ restricted to 33, and how runtime restrictions are enforced?
 
 In a BPF program, Tail calls are used to call another BPF program during
 runtime without returning to the previous program. Similar to tailcall recursion/
-optimization/elimination, a BPF tailcall program uses the same stack frame as the
+optimization/ elimination, a BPF tailcall program uses the same stack frame as the
 caller program.
 
 If you are not familiar with tailcall optimization, check out
@@ -87,12 +87,12 @@ int trace_enter_execve(void *ctx){
 bpftool prog loadAll tailcall_kern.o /sys/fs/bpf/test autoattach
 ```
 
-To trigger the BPF program, write a userspace program based on
-attached hook. With the provided example code a simple `ls` will trigger
-the program.
+To trigger the BPF program, you'll need to write a userspace program based on
+the attached hook. With the example code provided, a simple ls command will
+trigger the program.
 
 For print output
-```
+```bash
 cat /sys/kernel/debug/tracing/trace_pipe
 
 or
@@ -102,14 +102,18 @@ bpftool prog tracelog
 
 ## Calling Tail calls within BPF-to-BPF calls
 
-*[Kernel code](https://github.com/sidchintamaneni/blog/tree/main/pages/blogs/code/bpf_tailcall/tailcall_prog2.kern.c)*
+*[Kernel code](https://github.com/sidchintamaneni/blog/blob/main/pages/blogs/code/bpf_tailcall/tailcalls_prog2.kern.c)*
 
 - Attaching and triggering mechanism is similar to the above program, so I am
-not including the Userspace and triggering Code.
+not including the Userspace and trigger Code.
 
 ## Program with multiple Tail calls
 
 *[Kernel code](https://github.com/sidchintamaneni/blog/tree/main/pages/blogs/code/bpf_tailcall/tailcall_max_prog.kern.c)*
+
+## Now let's see how jited code enforces Tail call limit
+
+Below are asm snapshots of jited BPF code during runtime.
 
 ```asm
      1	   0xffffffffa00020a8:	endbr64
@@ -169,5 +173,5 @@ tail call count value stored inside reaches 32, the BPF program will be
 terminated.
 
 ## References
-[Cloud Fare Blog by Jakub Sitnicki](https://blog.cloudflare.com/assembly-within-bpf-tail-calls-on-x86-and-arm/#:~:text=Tail%20calls%20can%20be%20seen,reusing%20the%20same%20stack%20frame)
-[Cilium Docs](https://docs.cilium.io/en/stable/bpf/architecture/#tail-calls)
+* [Cloud Fare Blog by Jakub Sitnicki](https://blog.cloudflare.com/assembly-within-bpf-tail-calls-on-x86-and-arm/#:~:text=Tail%20calls%20can%20be%20seen,reusing%20the%20same%20stack%20frame)
+* [Cilium Docs](https://docs.cilium.io/en/stable/bpf/architecture/#tail-calls)
