@@ -16,6 +16,10 @@ export function populateContent(containerId, blogs, filePath, blog_type) {
         `;
         container.appendChild(header);
   
+      blog.blog_meta_data.sort((a, b) => {
+          return b.id - a.id;
+      });
+      
       // Add each blog item
         blog.blog_meta_data.forEach((meta) => {
         const blogItem = document.createElement("div");

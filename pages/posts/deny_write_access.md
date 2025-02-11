@@ -1,1 +1,0 @@
-# Tales of deny_write_access().

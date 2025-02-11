@@ -9,6 +9,13 @@ export const blogs = [
             date: "11th",
             tags: ["blog"],
             file_name: "start",
+          }, 
+          {
+            id: 2,
+            title: "Tales of ETXBSY error in exec",
+            date: "11th",
+            tags: ["Operating Systems", "Linux"],
+            file_name: "deny_write_access"
           },
         ]
     },

@@ -5,10 +5,10 @@ export const posts = [
         blog_meta_data: [
           {
             id: 1,
-            title: "Tales of deny_write_access()",
-            date: "11th",
-            tags: ["Operating Systems", "Linux"],
-            file_name: "deny_write_access"
+            title: "WIP",
+            date: "Indefinite",
+            tags: [],
+            file_name: ""
           },
         ]
     }
