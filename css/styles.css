@@ -264,3 +264,12 @@ footer {
     font-size: 1.2rem; /* Match the title size */
     text-align: right;
   }
+
+/* code block styling */
+code {
+    background-color: #f5f5f5; /* Light gray background */
+    padding: 0.2em 0.4em; /* Add some padding */
+    border-radius: 4px; /* Rounded corners */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font */
+    font-size: 0.95em; /* Slightly smaller font size */
+}

@@ -1,14 +1,1 @@
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque non varius nisl. Vivamus sagittis eu ex quis efficitur. Ut eleifend nibh eros, vitae semper libero vulputate eget. Pellentesque suscipit posuere interdum. Ut ac leo vulputate diam euismod rutrum ac non sapien. Cras ac odio tristique, maximus metus non, consectetur libero. Sed imperdiet eros pretium nisl tincidunt, eget pellentesque ipsum porttitor. In vitae euismod felis, non gravida metus. Aliquam aliquet felis at diam venenatis fermentum. Phasellus erat metus, efficitur sed eros quis, rutrum tempor lorem. Maecenas eget nibh non ipsum pulvinar fermentum id ut elit. Cras rutrum, libero elementum fringilla ornare, lacus turpis eleifend orci, sed dapibus lorem risus ac ante. Quisque vitae pellentesque nunc, id faucibus mi. Nam faucibus fringilla eros.
-
-Praesent efficitur tempor sem, ut facilisis lectus ultricies eget. Sed bibendum libero sit amet rutrum venenatis. Donec faucibus diam sed magna feugiat sagittis. Nunc ultrices rutrum mi. Duis vitae dui sed urna dapibus eleifend ut vel tellus. Nulla in scelerisque diam. Integer efficitur lacus ultricies massa fermentum, et hendrerit turpis lobortis. Morbi viverra feugiat odio vel semper. Nulla hendrerit ultrices suscipit. Suspendisse et euismod enim, sit amet pretium ex. Curabitur eros dolor, pretium sit amet turpis vel, lacinia pretium enim. In condimentum condimentum dui vitae feugiat. In nec luctus dui. Vestibulum ultricies molestie efficitur.
-
-Nunc nunc lacus, interdum nec pulvinar eget, varius blandit arcu. Morbi id dui eu tortor euismod lacinia. Integer id augue sem. Fusce pharetra volutpat tortor vel cursus. In magna est, auctor id rutrum nec, viverra vel massa. Nullam sit amet aliquet dolor. Quisque nulla odio, iaculis et suscipit quis, rutrum eu ex. Etiam at feugiat elit. Vivamus nec lorem finibus, sollicitudin ipsum eget, placerat lorem. In risus lectus, consectetur sed aliquet mollis, posuere eget velit. Integer dapibus non leo eu consectetur. Phasellus tincidunt purus vel venenatis sagittis. Quisque sed lacus sagittis, aliquet urna eget, facilisis magna.
-
-Praesent nec fringilla massa. Aliquam convallis commodo leo, et condimentum enim. Mauris ornare libero non pulvinar egestas. In eget sollicitudin eros. Vivamus lobortis aliquet turpis sit amet eleifend. Aliquam erat volutpat. Aenean fringilla est et nibh finibus, quis gravida ligula aliquam. In ligula est, porttitor vitae libero at, dapibus lacinia mauris. Suspendisse auctor, sem quis fringilla eleifend, velit velit egestas nulla, eget ultrices urna dolor gravida arcu. Quisque eu dictum massa, eget tristique neque. Nulla eleifend purus id ex vestibulum consequat. 
-
-```
-int add(int a, int b)
-{
-    return a + b;
-}
-```
+ # A New Start.

@@ -1,4 +1,4 @@
-export function populateContent(containerId, blogs, filePath) {
+export function populateContent(containerId, blogs, filePath, blog_type) {
     const container = document.getElementById(containerId);
   
     if (!container) {
@@ -21,7 +21,7 @@ export function populateContent(containerId, blogs, filePath) {
         const blogItem = document.createElement("div");
         blogItem.classList.add("blog-item");
         blogItem.innerHTML = `
-            <a href="${filePath}${meta.file_name}.html">
+            <a href="${filePath}?id=${meta.file_name}&type=${blog_type}">
             <span>${meta.title}</span>
             <div class="dots"></div>
             <span class="date">${meta.date}</span>

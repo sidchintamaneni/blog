@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Viewer</title>
+    <link rel="stylesheet" href="/css/styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism.min.css">
+<body>
+    <div id="header-placeholder"></div>
+    <script src="/scripts/header.js"></script>
+
+    <main>
+        <article>
+            <div id="blog-title">
+                <!-- Title of the blog will appear here -->
+            </div>
+            <div id="blog-content">
+                <!-- Rendered Markdown content will be inserted here -->
+            </div>
+        </article>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="/scripts/footer.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min.js"></script>
+    <script type="module">
+        import { renderMarkdownBlog } from "/scripts/renderMarkdown.js"; 
+        // Run the render function on page load
+        // renderMarkdownBlog();
+        (async () => {
+            await renderMarkdownBlog();
+            Prism.highlightAll();
+        })();
+    </script>
+</body>
+</html>
