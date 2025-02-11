@@ -1,7 +1,10 @@
 # BPF Tailcalls
 
-*This is an old blog that I wrote when I was in grad school. I moved it from old website to here.
-Some of the details mentioned in this blog post might be outdated.*
+This is an old blog that I wrote when I was in grad school. I moved it from
+*[old
+website](https://raw.githubusercontent.com/sidchintamaneni/archived_blog/refs/heads/main/content/posts/tailcalls.md)*
+to here.
+Some of the details mentioned in this blog post might be outdated.
 
 * This blog expects you to have basic understanding of BPF programs and the verifier.
 

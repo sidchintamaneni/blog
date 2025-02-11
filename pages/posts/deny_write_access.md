@@ -1,1 +1,1 @@
-# Tales of deny_write_access()
+# Tales of deny_write_access().
