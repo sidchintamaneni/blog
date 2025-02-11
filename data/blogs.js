@@ -5,7 +5,7 @@ export const blogs = [
         blog_meta_data: [
           {
             id: 1,
-            title: "A New Start",
+            title: "Why Blog?",
             date: "11th",
             tags: ["blog"],
             file_name: "start",
