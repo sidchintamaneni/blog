@@ -35,7 +35,7 @@ If you're not familiar, there is this famous quote by Linus Torvalds:
 
 So the patches were withdrawn.
 
-## Why is this an interesting to analyze?
+## Why is this interesting to analyze?
 
 Because of an interface provided by the kernel, userspace programs are facing some weird problems; in this scenario, exec is returning `ETXBSY` error. To work around this problem, people are coming up with weird hacks, and good programmers never like weird hacks. An attempt to fix the problem is breaking Linux's longstanding policy of `Never break userspace`.
 
