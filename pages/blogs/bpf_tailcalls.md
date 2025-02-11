@@ -6,16 +6,19 @@ website](https://raw.githubusercontent.com/sidchintamaneni/archived_blog/refs/he
 to here.
 Some of the details mentioned in this blog post might be outdated.
 
-* This blog expects you to have basic understanding of BPF programs and the verifier.
+This blog expects you to have basic understanding of BPF programs and the verifier.
 
 ## If you want to understand...
 
-*   Tail calls? 
-*   BPF-to-BPF calls?
-*   Why each BPF program is restricted to 256 bytes by the verifier when both
+-   Tail calls? 
+
+-   BPF-to-BPF calls?
+
+-   Why each BPF program is restricted to 256 bytes by the verifier when both
 BPF-to-BPF and Tail calls are used together, why the number of tailcalls is
 restricted to 33, and how runtime restrictions are enforced?
-*   How to write BPF programs with Tail calls?
+
+-   How to write BPF programs with Tail calls?
 
 ## Tail calls in BPF
 
