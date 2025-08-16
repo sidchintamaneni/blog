@@ -1,4 +1,4 @@
-# Start to the series on locking in Linux kernel
+# Start of the series on locking in Linux kernel
 
 ## Why This Series?
 
@@ -31,4 +31,5 @@ existing locking mechanisms for bugs.
 
 *This list may change*
 
-If you are interested contributing to this journey, feel free to reach out to me we can co-ordinate and work together.
+If you are interested contributing to this journey, feel free to reach out to me
+we can co-ordinate and work together.
