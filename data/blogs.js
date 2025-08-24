@@ -17,13 +17,6 @@ export const blogs = [
             tags: ["Operating Systems", "Linux"],
             file_name: "deny_write_access"
           },
-          {
-            id: 3,
-            title: "Start of the series on locking in the Linux kernel",
-            date: "16th",
-            tags: ["Operating Systems", "Linux", "Concurrency", "Synchronization"],
-            file_name: "locking_in_linux"
-          },
         ]
     },
     {
