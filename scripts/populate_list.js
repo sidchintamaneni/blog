@@ -6,15 +6,23 @@ export function populateContent(containerId, blogs, filePath, blog_type) {
       return;
     }
   
+    let lastYear = null;
+  
     blogs.forEach((blog) => {
-      // Add year and month header
-        const header = document.createElement("div");
-        header.classList.add("blog-header");
-        header.innerHTML = `
-        <span class="year">${blog.year}</span>
-        <span class="month">${blog.month}</span>
-        `;
-        container.appendChild(header);
+      // Add year header only when it changes
+      if (lastYear !== blog.year) {
+        const yearHeader = document.createElement("div");
+        yearHeader.classList.add("year-header");
+        yearHeader.innerHTML = `<span class="year">${blog.year}</span>`;
+        container.appendChild(yearHeader);
+        lastYear = blog.year;
+      }
+  
+      // Add month header
+      const monthHeader = document.createElement("div");
+      monthHeader.classList.add("blog-header");
+      monthHeader.innerHTML = `<span class="month">${blog.month}</span>`;
+      container.appendChild(monthHeader);
   
       blog.blog_meta_data.sort((a, b) => {
           return b.id - a.id;
