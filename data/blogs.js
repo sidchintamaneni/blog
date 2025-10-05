@@ -8,7 +8,7 @@ export const blogs = [
             title: "Start of the series on locking in the Linux kernel",
             date: "16th",
             tags: ["Linux", "Operating Systems"],
-            file_name: "locking_series",
+            file_name: "locking_in_linux",
           },
         ]
     },
