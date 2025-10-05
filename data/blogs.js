@@ -33,6 +33,19 @@ export const blogs = [
         ]
     },
     {
+        year: 2025,
+        month: "August",
+        blog_meta_data: [
+          {
+            id: 1,
+            title: "Start of the series on locking in the Linux kernel",
+            date: "16th",
+            tags: ["Operating Systems", "Linux", "Concurrency", "Synchronization"],
+            file_name: "locking_in_linux"
+          },
+        ]
+    },
+    {
         year: 2023,
         month: "August",
         blog_meta_data: [
