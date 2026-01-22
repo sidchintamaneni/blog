@@ -59,6 +59,17 @@ The idea is to collect profiling data from a program during runtime and feed it
 the compiler to make more optimizations (inlining, code layout optimizatioms,
 etc).
 
+There are currently two ways todo FDO one is iFDO and other is AutoFDO[9].
+Both of them differ by how they profile/ sample the data. iFDO instruments the
+code to collect the data which is the reason why it is not used in production
+and the data is collected over the simulated test workload. While AutoFDO
+utilizes intel LBR (last branch records) which has less overhead because cpu's
+log data directly to model-specific registers (MSR) (only have read overhead,
+checkout the reference [6] for more details) and used in production.
+
+The idea of this blog is not to provide a lot of details of each of these
+techniques but form an abstract mental model and experiment with them.
+
 # References
 [1] https://github.com/sched-ext/scx/tree/main
 [2] https://cachyos.org/blog/2025-christmas-new-year/
@@ -69,6 +80,7 @@ etc).
 [6] https://lwn.net/Articles/680985/
 [7] https://blog.llvm.org/2016/06/thinlto-scalable-and-incremental-lto.html
 [8] https://github.com/rosalab/callgraph_generatorV2
+[9] https://github.com/google/autofdo
 
 ## Experimental Setup
 ```
