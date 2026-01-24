@@ -103,7 +103,9 @@ folder since they are a bit easier to comprehend.
 
 link to raw data: <hyperlink to experiment 1 rawdata table>
 
+![Performance comparison of O0, O1, O3, LTO, and ThinLTO optimization levels](./data/pgo-lto-plto/exp1.png)
 
+Compile time is ~0.
 
 
 # References
