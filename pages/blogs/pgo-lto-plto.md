@@ -90,9 +90,11 @@ optimizations and LTO.
 
 Reference command to run llvm-test-suite to run with different compiler flags
 ```
-cmake -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
--DCMAKE_C_FLAGS="-O0" -DCMAKE_CXX_FLAGS="-O0" -DCMAKE_BUILD_TYPE=Release
--DTEST_SUITE_SUBDIRS="SingleSource" -DTEST_SUITE_RUN_BENCHMARKS=ON
+mkdir {somewhere}
+cmake -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
+-DCMAKE_C_FLAGS="-O0" -DCMAKE_CXX_FLAGS="-O0" -DCMAKE_BUILD_TYPE=Release \
+-DTEST_SUITE_SUBDIRS="SingleSource" -DTEST_SUITE_RUN_BENCHMARKS=ON \
+-DTEST_SUITE_BENCHMARKING_ONLY=ON $SUITE_DIR
 
 ninja -j `nproc`
 
@@ -103,9 +105,14 @@ folder since they are a bit easier to comprehend.
 
 link to raw data: <hyperlink to experiment 1 rawdata table>
 
-![Performance comparison of O0, O1, O3, LTO, and ThinLTO optimization levels](./data/pgo-lto-plto/exp1.png)
+![Performance comparison of O0, O1, O2, O3, LTO, and ThinLTO optimization levels](./data/pgo-lto-plto/exp1.png)
 
-Compile time is ~0.
+Compile times are ~zero. Execution times shows minimal differences except for
+hash test. Link times are intersting since we can clearly see the time has
+increased by enabling LTO. In most tests ThinLTO shows more overhead than LTO.
+so it's not worth it to go fancy with basic tests.
+
+Rusults from running benchmarks under MultiSource not interesting.
 
 
 # References
