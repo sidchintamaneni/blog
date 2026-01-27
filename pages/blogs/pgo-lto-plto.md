@@ -61,7 +61,7 @@ have come up with ThinLTO.
 
 TODO: Write about ThinLTO
 
-<also a segway to PGO>
+<!--also a segway to PGO-->
 
 ## Profile Guided Optimization/ Feedback Directed Optimization (PGO/ FDO)
 
@@ -81,6 +81,8 @@ Let's talk about PLTO, BOLT and Propeller a little later in the blog. For now
 let's experiment with LTO and PGO.
 
 # Experimenting with LTO & PGO
+
+<!-- Stale
 
 For this blog, I am chosing the exisiting benchmarks from llvm-test-suite[10],
 especially the tests under SingleSource/ & MultiSource/.
@@ -113,20 +115,23 @@ increased by enabling LTO. In most tests ThinLTO shows more overhead than LTO.
 so it's not worth it to go fancy with basic tests.
 
 Rusults from running benchmarks under MultiSource not interesting.
+-->
+
+
 
 
 # References
-[1] https://github.com/sched-ext/scx/tree/main
-[2] https://cachyos.org/blog/2025-christmas-new-year/
-[3] https://lore.kernel.org/all/20241102175115.1769468-1-xur@google.com/
-[4] https://discourse.llvm.org/t/optimizing-the-linux-kernel-with-autofdo-including-thinlto-and-propeller/79108
-[5] https://lpc.events/event/18/contributions/1922/attachments/1450/3084/AutoFDO%20&%20Propeller%20in%20LPC%202024.pdf
-<!--Reference to LBR (last branch records) -->
-[6] https://lwn.net/Articles/680985/
-[7] https://blog.llvm.org/2016/06/thinlto-scalable-and-incremental-lto.html
-[8] https://github.com/rosalab/callgraph_generatorV2
-[9] https://github.com/google/autofdo
-[10] https://github.com/llvm/llvm-test-suite/tree/main
+[1] https://github.com/sched-ext/scx/tree/main  
+[2] https://cachyos.org/blog/2025-christmas-new-year/  
+[3] https://lore.kernel.org/all/20241102175115.1769468-1-xur@google.com/  
+[4] https://discourse.llvm.org/t/optimizing-the-linux-kernel-with-autofdo-including-thinlto-and-propeller/79108  
+[5] https://lpc.events/event/18/contributions/1922/attachments/1450/3084/AutoFDO%20&%20Propeller%20in%20LPC%202024.pdf  
+<!--Reference to LBR (last branch records) -->  
+[6] https://lwn.net/Articles/680985/  
+[7] https://blog.llvm.org/2016/06/thinlto-scalable-and-incremental-lto.html  
+[8] https://github.com/rosalab/callgraph_generatorV2  
+[9] https://github.com/google/autofdo  
+[10] https://github.com/llvm/llvm-test-suite/tree/main  
 
 ## Experimental Setup
 ```
