@@ -1,5 +1,7 @@
 # Start of the series on locking in Linux kernel
 
+> **Note:** I no longer have interest in continuing this work.
+
 ## Why This Series?
 
 Synchronization is something that I'm always interested in, maybe because it
