@@ -1,4 +1,4 @@
-# Exploring & Experimenting with PGO-LTO-PLTO
+# Exploring & experimenting with PGO-LTO-PLTO
 
 The idea of this blog is not to provide a lot of details of each of these
 techniques but form an abstract mental model and experiment with them. If you
@@ -9,22 +9,22 @@ The details regarding the experimental setup are towards the end of the blog.
 
 ## How it all started
 
-It all started when I am downloading CachyOS to run some sched_ext[1]
+It all started when I am downloading CachyOS to run some `sched_ext`[1]
 experiments. While the OS was downloading, I looked into one of their published
 blogs - "CachyOS Recap 2026 and Merry Christmas"[2]. One thing that caught my
 eye was the feature that they've recently introduced
 
 ```
 Optimization: The default kernel (linux-cachyos) is now optimized using
-Propeller in conjunction with AutoFDO. This combination results in approximately
+Propeller in conjunction with AutoFDO. This combination results is approximately
 a 10% throughput improvement and reduced latency, depending on the workload.
 ```
 
 The performance improvements looks insane. So now the question becomes what are
-AutoFDO, Propeller and when did linux kernel started to support it? Which
-workloads did they optimize? To answer the second question, I got to know with
-a quick search that it was added to linux kernel build system in 6.13[3] and
-currently only supported by clang/llvm compiler[4].
+AutoFDO and Propeller, when did linux kernel started to support it? Which
+workloads did CachyOS ppl optimize? To answer the second question, I got to
+know with a quick search that it was added to linux kernel build system in
+6.13[3] and currently only supported by clang/llvm compiler[4].
 
 Now coming back to our first question what are AutoFDO & Propeller, I found a
 self-explanatory presentation about Optimizing the Linux Kernel using AutoFDO &
@@ -34,19 +34,22 @@ optimization/ Profile Guided optimization). We will explore what each of these
 terms means and experiment with them.
 
 I am expecting this blog to be a two part series. In the first part we will run
-and experiment with these optimizations with a simple binary, later we will
-discuss these in the context of Linux kernel. I didn't forget about our third
-question & probably try to answer them in third blog.
+and experiment with these optimizations with a simple binary (TODO: might have
+to change it), later we will discuss these in the context of Linux kernel. I
+didn't forget about our third question & probably try to answer them in third
+blog.
 
 ## Short Intro to Compiler, Linker & their Optimizations
 
 For ppl, who are not familiar with how modern compilers like llvm work. This is
 how I formed a mental model about them. There are three layers frontend,
-intermediate representation and backend. Frontend parses the source code (things
-like lexer, parser, AST generation, Semantic analysis etc comes in this stage)
-and generates an intermediate represenation. IR stage is the place where all
-the compiler optimizations are applied, when you supply flags -O2/ -O3. Backend
-generates the object files based on architecture.
+intermediate representation and backend. Frontend parses the source code
+(things like lexer, parser, AST generation, Semantic analysis etc comes in this
+stage) and generates an intermediate represenation. IR stage is the place where
+all the compiler optimizations are applied, when you supply flags -O2/ -O3.
+Backend generates the object files based on architecture. (note: probably gcc
+might have similar layers of abstractions but I always thought all these layers
+are tangled together in gcc).
 
 After compiler generates the object files, linker is responsible for generating
 the binary. llvm linker (lld) offers LTO (link time optimization & Thin LTO)
@@ -54,10 +57,10 @@ the binary. llvm linker (lld) offers LTO (link time optimization & Thin LTO)
 all the IR files (bitcode files) and generates one monolithic file and then
 perform the optimizations, later invokes backend and linker subsequently.  One
 can imagine that this is a memory intensive process. Fun fact I've done this in
-the past to generate a callgraph for subset of kernel functions[8] and never
+the past to generate a callgraph for subset of kernel functions[8] and we never
 saw our lab servers using that much memory(It exhausted 256 GB and little bit
-of swap that we had on those servers). To avoid this memory intensive ppl
-have come up with ThinLTO. 
+of swap that we had on those servers). To avoid this memory intensie approach
+ppl have come up with ThinLTO. 
 
 TODO: Write about ThinLTO
 
