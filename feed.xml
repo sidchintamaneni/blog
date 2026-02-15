@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Siddharth Chintamaneni</title>
+    <link>https://sidchintamaneni.com</link>
+    <description>Blogs and Posts by Siddharth Chintamaneni</description>
+    <atom:link href="https://sidchintamaneni.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Project Pile: Spending Time with 100 Virtual Characters</title>
+      <link>https://sidchintamaneni.com/pages/blog.html?id=100characters&amp;type=posts</link>
+      <pubDate>Sat, 14 Feb 2026 08:00:00 GMT</pubDate>
+      <category>projects</category>
+      <category>AI</category>
+      <category>project_pile</category>
+      <description>Today morning, my friends were telling me how building personal projects has never been this fun using coding agents. In the evening, another friend is telling me how the Moltbook founder has been burning $20,000 every month to keep the agents running (unverified) and how it is such a troll and funny thing to do. If you are not following tech news, Moltbook is a social media platform for AI agents. I mean, I would&apos;ve totally done it if I had that much cash to burn.</description>
+      <guid>https://sidchintamaneni.com/pages/blog.html?id=100characters&amp;type=posts</guid>
+    </item>
+    <item>
+      <title>howcooked.me</title>
+      <link>https://sidchintamaneni.com/pages/blog.html?id=howcooked&amp;type=posts</link>
+      <pubDate>Sun, 08 Feb 2026 08:00:00 GMT</pubDate>
+      <category>projects</category>
+      <category>vibe coding</category>
+      <description>I recently vibe coded a project and published it at howcooked.me.</description>
+      <guid>https://sidchintamaneni.com/pages/blog.html?id=howcooked&amp;type=posts</guid>
+    </item>
+    <item>
+      <title>[Stale] Start of the series on locking in the Linux kernel</title>
+      <link>https://sidchintamaneni.com/pages/blog.html?id=locking_in_linux&amp;type=blogs</link>
+      <pubDate>Sat, 16 Aug 2025 07:00:00 GMT</pubDate>
+      <category>Linux</category>
+      <category>Operating Systems</category>
+      <description>Synchronization is something that I&apos;m always interested in, maybe because it belongs to this weird list of algorithms where there is no one right answer and you can always say &quot;it depends.&quot; There are lots of cool things that you can reason about when implementing a new locking mechanism, such as performance and fairness—similar to congestion control and scheduling algorithms.</description>
+      <guid>https://sidchintamaneni.com/pages/blog.html?id=locking_in_linux&amp;type=blogs</guid>
+    </item>
+    <item>
+      <title>Tales of ETXBSY error in exec</title>
+      <link>https://sidchintamaneni.com/pages/blog.html?id=deny_write_access&amp;type=blogs</link>
+      <pubDate>Tue, 11 Feb 2025 08:00:00 GMT</pubDate>
+      <category>Operating Systems</category>
+      <category>Linux</category>
+      <description>I started exploring and understanding the problems caused by deny_write_access() in the exec syscall by following the issue thread in the mold linker raised by my labmate and friend Jinghao Jia.</description>
+      <guid>https://sidchintamaneni.com/pages/blog.html?id=deny_write_access&amp;type=blogs</guid>
+    </item>
+    <item>
+      <title>Why Blog?</title>
+      <link>https://sidchintamaneni.com/pages/blog.html?id=start&amp;type=blogs</link>
+      <pubDate>Tue, 11 Feb 2025 08:00:00 GMT</pubDate>
+      <category>blog</category>
+      <description>For fun.</description>
+      <guid>https://sidchintamaneni.com/pages/blog.html?id=start&amp;type=blogs</guid>
+    </item>
+    <item>
+      <title>BPF Tailcalls</title>
+      <link>https://sidchintamaneni.com/pages/blog.html?id=bpf_tailcalls&amp;type=blogs</link>
+      <pubDate>Wed, 23 Aug 2023 07:00:00 GMT</pubDate>
+      <category>BPF</category>
+      <category>Linux</category>
+      <category>Operating Systems</category>
+      <category>Programming Languages</category>
+      <description>This is an old blog post that I wrote when I was in grad school. I moved it from my old website to here. Some of the details mentioned in this blog post might be outdated.</description>
+      <guid>https://sidchintamaneni.com/pages/blog.html?id=bpf_tailcalls&amp;type=blogs</guid>
+    </item>
+  </channel>
+</rss>
