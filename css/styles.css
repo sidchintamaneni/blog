@@ -43,7 +43,7 @@ nav ul li a {
 
 /* Main Content */
 main {
-    max-width: 650px;
+    max-width: 750px;
     margin: 120px auto 50px;
     padding: 0 20px;
     text-align: left;
@@ -222,7 +222,7 @@ footer {
 }
 
 #blog-list, #post-list {
-    max-width: 600px;
+    max-width: 750px;
     margin: 0 auto;
 }
   

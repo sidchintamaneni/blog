@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Timeline</title>
+    <style>
+        body {
+            font-family: "Iowan Old Style", "Iowan", "Iowan BT", "Palatino Linotype", "URW Palladio L", serif;
+            background-color: transparent;
+            color: #3a3a3a;
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+        }
+
+        .timeline-container {
+            display: flex;
+            gap: 30px;
+            margin: 20px 0 0 0;
+        }
+
+        .year-column {
+            min-width: 70px;
+            text-align: left;
+        }
+
+        .year-label {
+            font-size: 1.8em;
+            font-weight: normal;
+            color: #5a5a5a;
+        }
+
+        .month-label {
+            color: #999;
+            font-size: 0.85em;
+            margin-top: 3px;
+            font-weight: normal;
+        }
+
+        .entries-column {
+            flex: 1;
+        }
+
+        .entry-card {
+            border-left: 2px solid #d4c5b0;
+            padding: 0 0 30px 20px;
+            margin-bottom: 10px;
+        }
+
+        .entry-card:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .entry-date {
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 6px;
+        }
+
+        .entry-headline {
+            margin: 0 0 8px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #3a3a3a;
+            line-height: 1.4;
+        }
+
+        .entry-source {
+            color: #888;
+            font-size: 0.85em;
+            margin-bottom: 12px;
+        }
+
+        .entry-quote {
+            padding-left: 0;
+            margin: 12px 0;
+            color: #5a5a5a;
+            font-style: italic;
+        }
+
+        .entry-attribution {
+            color: #999;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div id="timeline"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script>
+        async function loadTimeline() {
+            try {
+                const response = await fetch('/pages/posts/data/ai_timeline.yaml');
+                const yamlText = await response.text();
+                const data = jsyaml.load(yamlText);
+                renderTimeline(data.timeline);
+
+                // Send height to parent after rendering, with multiple attempts
+                const sendHeight = () => {
+                    const height = document.documentElement.scrollHeight;
+                    window.parent.postMessage({ type: 'resize', height: height }, '*');
+                };
+
+                setTimeout(sendHeight, 50);
+                setTimeout(sendHeight, 200);
+                setTimeout(sendHeight, 500);
+            } catch (error) {
+                console.error('Error loading timeline:', error);
+                document.getElementById('timeline').innerHTML = '<p>Error loading timeline data.</p>';
+            }
+        }
+
+        function renderTimeline(timelineData) {
+            const container = document.getElementById('timeline');
+
+            timelineData.forEach(yearGroup => {
+                const timelineDiv = document.createElement('div');
+                timelineDiv.className = 'timeline-container';
+
+                const yearColumn = document.createElement('div');
+                yearColumn.className = 'year-column';
+                yearColumn.innerHTML = `
+                    <div class="year-label">${yearGroup.year}</div>
+                    <div class="month-label">${yearGroup.month}</div>
+                `;
+
+                const entriesColumn = document.createElement('div');
+                entriesColumn.className = 'entries-column';
+
+                yearGroup.entries.forEach(entry => {
+                    const card = document.createElement('div');
+                    card.className = 'entry-card';
+                    if (entry.color) {
+                        card.style.borderLeftColor = entry.color;
+                    }
+                    card.innerHTML = `
+                        <div class="entry-date">${entry.date}</div>
+                        <div class="entry-headline">${entry.headline}</div>
+                        <div class="entry-source">${entry.source}</div>
+                        <div class="entry-quote">"${entry.quote}"</div>
+                        <div class="entry-attribution">- ${entry.attribution}</div>
+                    `;
+                    entriesColumn.appendChild(card);
+                });
+
+                timelineDiv.appendChild(yearColumn);
+                timelineDiv.appendChild(entriesColumn);
+                container.appendChild(timelineDiv);
+            });
+        }
+
+        loadTimeline();
+
+        window.addEventListener('resize', () => {
+            const height = document.documentElement.scrollHeight;
+            window.parent.postMessage({ type: 'resize', height: height }, '*');
+        });
+    </script>
+</body>
+</html>

@@ -25,13 +25,58 @@
     <script src="/scripts/footer.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min.js"></script>
     <script type="module">
-        import { renderMarkdownBlog } from "/scripts/renderMarkdown.js"; 
+        import { renderMarkdownBlog } from "/scripts/renderMarkdown.js";
         // Run the render function on page load
-        // renderMarkdownBlog();
         (async () => {
             await renderMarkdownBlog();
             Prism.highlightAll();
+
+            // Setup iframe auto-resizing after content loads
+            setTimeout(setupIframeResize, 100);
         })();
+
+        function setupIframeResize() {
+            // Dynamic iframe resizing
+            function resizeIframe() {
+                const iframe = document.getElementById('ai-timeline-iframe');
+                if (iframe && iframe.contentWindow) {
+                    try {
+                        const height = iframe.contentWindow.document.documentElement.scrollHeight;
+                        if (height > 0) {
+                            iframe.style.height = height + 'px';
+                        }
+                    } catch (e) {
+                        // Cross-origin, fallback to message listener
+                    }
+                }
+            }
+
+            // Listen for resize messages from iframe
+            window.addEventListener('message', function(e) {
+                if (e.data.type === 'resize') {
+                    const iframe = document.getElementById('ai-timeline-iframe');
+                    if (iframe) {
+                        iframe.style.height = e.data.height + 'px';
+                    }
+                }
+            });
+
+            // Try to resize when iframe loads
+            const iframe = document.getElementById('ai-timeline-iframe');
+            if (iframe) {
+                iframe.addEventListener('load', function() {
+                    resizeIframe();
+                    setTimeout(resizeIframe, 100);
+                    setTimeout(resizeIframe, 300);
+                    setTimeout(resizeIframe, 600);
+                });
+
+                // If already loaded, resize now
+                if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+                    resizeIframe();
+                }
+            }
+        }
     </script>
 </body>
 </html>

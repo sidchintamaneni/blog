@@ -20,8 +20,12 @@ export const renderMarkdownBlog = async () => {
         if (!response.ok) throw new Error(`Unable to fetch file: ${file}`);
         const markdown = await response.text();
 
-        // Convert Markdown to HTML using Marked
-        const html = marked(markdown);
+        // Convert Markdown to HTML using Marked (marked allows HTML by default)
+        const html = marked.parse(markdown, {
+            mangle: false,
+            headerIds: false,
+            gfm: true
+        });
 
         // Insert the converted content into the page
         document.getElementById('blog-content').innerHTML = html;

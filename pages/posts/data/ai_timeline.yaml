@@ -1,0 +1,10 @@
+timeline:
+  - year: 2017
+    month: JUN
+    entries:
+      - date: June 12, 2017
+        headline: "Attention Is All You Need"
+        source: NIPS'17
+        quote: "We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely."
+        attribution: Vaswani et al., Google Brain & Google Research
+        color: "#d4c5b0"
