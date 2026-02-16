@@ -17,13 +17,13 @@ export const posts = [
             tags: ["projects", "AI", "project_pile"],
             file_name: "100characters"
           },
-          {
-            id: 3,
-            title: "Timeline: AI, AI and AI",
-            date: "16th",
-            tags: ["projects", "AI", "tracking"],
-            file_name: "aiaiandai"
-          },
+          // {
+          //   id: 3,
+          //   title: "Timeline: AI, AI and AI",
+          //   date: "16th",
+          //   tags: ["projects", "AI", "tracking"],
+          //   file_name: "aiaiandai"
+          // },
         ]
     }
   ];
