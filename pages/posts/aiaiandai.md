@@ -11,7 +11,7 @@ groundbreaking models/research/products and the broader industry landscape
 which could've made them say such statements. Starting the timeline from 2017,
 when the Transformers paper was published, since it marked the start of
 foundational models. If you find any facts wrong or missing, feel free to
-[raise a PR](/pages/posts/data/ai_timeline.yaml). You can also use this page for
+*[raise a PR](https://github.com/sidchintamaneni/blog/blob/main/pages/posts/data/aiaiandai/ai_timeline.yaml)*. You can also use this page for
 research by just sharing the link with your GPT. <span style="font-size: 0.85em;
 color: #999;">(Or as we say in our friend group, "askyourgpt". Not endorsing
 any company.)</span>
@@ -26,6 +26,11 @@ any company.)</span>
 
 - **February 16, 2026**: init
 
-Inspired by *[bitcoindeaths.com](https://bitcoindeaths.com)*.
+<span style="font-size: 0.85em;">Inspired by *[bitcoindeaths.com](https://bitcoindeaths.com)*.</span>
+
+<span style="font-size: 0.85em;">The initial timeline was generated using
+ChatGPT's deep research (took 33 minutes, lol). You can find the raw report
+*[here](https://github.com/sidchintamaneni/blog/blob/main/pages/posts/data/aiaiandai/deep-research-report.md)*.
+Also used Claude Code and a bit of my brain.</span>
 
 </div>

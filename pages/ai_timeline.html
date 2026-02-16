@@ -67,6 +67,16 @@
             line-height: 1.4;
         }
 
+        .entry-headline-link {
+            color: #3a3a3a;
+            text-decoration: none;
+        }
+
+        .entry-headline-link:hover {
+            color: #7a3b00;
+            text-decoration: underline;
+        }
+
         .entry-source {
             color: #888;
             font-size: 0.85em;
@@ -93,7 +103,7 @@
     <script>
         async function loadTimeline() {
             try {
-                const response = await fetch('/pages/posts/data/ai_timeline.yaml');
+                const response = await fetch('/pages/posts/data/aiaiandai/ai_timeline.yaml');
                 const yamlText = await response.text();
                 const data = jsyaml.load(yamlText);
                 renderTimeline(data.timeline);
@@ -116,7 +126,10 @@
         function renderTimeline(timelineData) {
             const container = document.getElementById('timeline');
 
-            timelineData.forEach(yearGroup => {
+            // Reverse to show most recent first (2026 -> 2017)
+            const reversedData = [...timelineData].reverse();
+
+            reversedData.forEach(yearGroup => {
                 const timelineDiv = document.createElement('div');
                 timelineDiv.className = 'timeline-container';
 
@@ -136,12 +149,21 @@
                     if (entry.color) {
                         card.style.borderLeftColor = entry.color;
                     }
+
+                    const headlineHTML = entry.url
+                        ? `<a href="${entry.url}" target="_blank" rel="noopener noreferrer" class="entry-headline-link">${entry.headline}</a>`
+                        : entry.headline;
+
+                    const attributionHTML = entry.attribution
+                        ? `<div class="entry-attribution">- ${entry.attribution}</div>`
+                        : '';
+
                     card.innerHTML = `
                         <div class="entry-date">${entry.date}</div>
-                        <div class="entry-headline">${entry.headline}</div>
+                        <div class="entry-headline">${headlineHTML}</div>
                         <div class="entry-source">${entry.source}</div>
                         <div class="entry-quote">"${entry.quote}"</div>
-                        <div class="entry-attribution">- ${entry.attribution}</div>
+                        ${attributionHTML}
                     `;
                     entriesColumn.appendChild(card);
                 });

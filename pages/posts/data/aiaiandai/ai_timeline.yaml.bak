@@ -1,0 +1,523 @@
+timeline:
+  - year: 2017
+    month: JUN
+    entries:
+      - date: June 12, 2017
+        headline: "Transformer architecture introduced (\"Attention Is All You Need\")"
+        source: "Google Research"
+        quote: "Paper introduces the Transformer \"based solely on attention mechanisms,\" removing recurrence and convolution from the core architecture."
+        attribution: "Ashish Vaswani et al.; Google Research"
+        color: "#1f77b4"
+
+  - year: 2017
+    month: JUL
+    entries:
+      - date: July 17, 2017
+        headline: "\"AI poses 'existential risk'\" in governor briefing"
+        source: "National Governors Association meeting"
+        quote: "Quoted framing: AI poses \"existential risk\" / \"fundamental risk\" and merits proactive regulation (exact phrasing varies by report; prefer the directly quoted lines in the cited coverage)."
+        attribution: "Elon Musk (Tesla/SpaceX); remarks at National Governors Association meeting (Rhode Island mentioned in coverage)."
+        color: "#d62728"
+
+  - year: 2018
+    month: OCT
+    entries:
+      - date: October 11, 2018
+        headline: "BERT pretraining popularizes bidirectional Transformer encoders"
+        source: "Google"
+        quote: "BERT paper: \"Bidirectional Encoder Representations from Transformers,\" designed for deep bidirectional pretraining and fine-tuning for downstream NLP tasks."
+        attribution: "Jacob Devlin et al.; Google"
+        color: "#1f77b4"
+
+  - year: 2018
+    month: DEC
+    entries:
+      - date: December 26, 2018
+        headline: "Skeptical AGI timeline framing"
+        source: "The Jordan Harbinger Show"
+        quote: "\"No one can possibly know… there are still probably 10 to 20 breakthroughs needed\" and \"anyone who tells you and gives you a timeline\" is likely overconfident or selling something (short excerpt)."
+        attribution: "Kai-Fu Lee; interview on The Jordan Harbinger Show"
+        color: "#d62728"
+
+  - year: 2019
+    month: JAN
+    entries:
+      - date: January 9, 2019
+        headline: "Jobs displacement prediction televised"
+        source: "CBS \"60 Minutes\""
+        quote: "\"AI will displace 40 percent of world's jobs in as soon as 15 years\" (headline claim for the segment; full interview extends beyond the clip)."
+        attribution: "Kai-Fu Lee; CBS \"60 Minutes\" segment"
+        color: "#d62728"
+
+  - year: 2019
+    month: FEB
+    entries:
+      - date: February 14, 2019
+        headline: "GPT-2 introduced; staged release due to misuse concerns"
+        source: "OpenAI"
+        quote: "OpenAI introduces GPT-2; states it is **not releasing the full trained model initially** \"due to… concerns about malicious applications.\""
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+      - date: February 14, 2019
+        headline: "Misuse prediction framing for large language models"
+        source: "OpenAI"
+        quote: "The GPT-2 post anticipates misuse such as \"Generate misleading news articles,\" \"Impersonate others online,\" and \"Automate… spam/phishing content\" (examples listed)."
+        attribution: "OpenAI"
+        color: "#d62728"
+
+  - year: 2020
+    month: MAY
+    entries:
+      - date: May 28, 2020
+        headline: "GPT-3 paper released"
+        source: "OpenAI"
+        quote: "\"Language Models are Few-Shot Learners\" introduces GPT-3 (175B parameters) and discusses capability and societal impacts (including difficulty distinguishing generated news from human-written in evaluations)."
+        attribution: "Tom B. Brown et al.; OpenAI"
+        color: "#1f77b4"
+
+  - year: 2020
+    month: JUN
+    entries:
+      - date: June 11, 2020
+        headline: "OpenAI API private beta (commercial deployment pivot)"
+        source: "OpenAI"
+        quote: "OpenAI launches a general \"text in, text out\" API in private beta and emphasizes controlling harmful uses and learning from real-world deployment."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+      - date: June 11, 2020
+        headline: "\"We can't anticipate all consequences\" deployment caution"
+        source: "OpenAI"
+        quote: "The API post warns it cannot anticipate all consequences, will terminate access for harmful uses, and is launching in private beta partly for safety learning."
+        attribution: "OpenAI"
+        color: "#d62728"
+
+  - year: 2020
+    month: NOV
+    entries:
+      - date: November 30, 2020
+        headline: "AlphaFold CASP14 results announced"
+        source: "Google DeepMind"
+        quote: "DeepMind reports AlphaFold as \"a solution to a 50-year-old grand challenge\" and describes CASP14 performance, positioning AI as a major scientific accelerator."
+        attribution: "Google DeepMind"
+        color: "#2ca02c"
+
+  - year: 2021
+    month: MAR
+    entries:
+      - date: March 25, 2021
+        headline: "GPT-3 API ecosystem expansion"
+        source: "OpenAI"
+        quote: "OpenAI reports \"Over 300 applications\" using GPT-3 via API (early evidence of downstream productization)."
+        attribution: "OpenAI"
+        color: "#ff7f0e"
+
+  - year: 2021
+    month: JUN
+    entries:
+      - date: June 29, 2021
+        headline: "GitHub Copilot technical preview"
+        source: "GitHub"
+        quote: "GitHub launches Copilot preview: \"your AI pair programmer\" (early mass-market code-generation tooling)."
+        attribution: "GitHub"
+        color: "#2ca02c"
+
+  - year: 2021
+    month: AUG
+    entries:
+      - date: August 10, 2021
+        headline: "OpenAI Codex (natural language to code) via API private beta"
+        source: "OpenAI"
+        quote: "OpenAI releases Codex via API private beta; post states it translates natural language to code and references Copilot as a powered product."
+        attribution: "OpenAI (authors listed on post)"
+        color: "#2ca02c"
+
+  - year: 2022
+    month: JAN
+    entries:
+      - date: January 28, 2022
+        headline: "Chain-of-thought prompting paper"
+        source: "Google"
+        quote: "Paper finds \"chain-of-thought prompting\" can improve reasoning performance of sufficiently large LMs (notably on math/logic style tasks)."
+        attribution: "Jason Wei et al.; Google"
+        color: "#1f77b4"
+
+  - year: 2022
+    month: MAR
+    entries:
+      - date: March 4, 2022
+        headline: "InstructGPT / RLHF paper"
+        source: "OpenAI"
+        quote: "OpenAI shows instruction-following improvements via RLHF, noting user-preference wins vs a much larger baseline in evaluations."
+        attribution: "Long Ouyang et al.; OpenAI"
+        color: "#1f77b4"
+
+  - year: 2022
+    month: APR
+    entries:
+      - date: April 6, 2022
+        headline: "DALL·E 2 research launch (text-to-image step change)"
+        source: "Sam Altman (OpenAI)"
+        quote: "Research launch announcement: DALL·E 2 creates/edits images from natural language; described as a major capability leap in generative media."
+        attribution: "Sam Altman (OpenAI)"
+        color: "#2ca02c"
+
+  - year: 2022
+    month: JUN
+    entries:
+      - date: June 11, 2022
+        headline: "LaMDA \"sentience\" claim goes public"
+        source: "Google (Responsible AI)"
+        quote: "A Google engineer claims LaMDA has \"come to life\" / is sentient (exact transcripts are contested; the claim itself is the salient prediction about AI personhood)."
+        attribution: "Blake Lemoine (Google; Responsible AI at the time)"
+        color: "#d62728"
+
+  - year: 2022
+    month: AUG
+    entries:
+      - date: August 22, 2022
+        headline: "Stable Diffusion public release"
+        source: "Stability AI"
+        quote: "Stability AI announces public release of Stable Diffusion and DreamStudio Lite; emphasizes \"safe and ethical release.\""
+        attribution: "Stability AI"
+        color: "#2ca02c"
+
+  - year: 2022
+    month: NOV
+    entries:
+      - date: November 30, 2022
+        headline: "ChatGPT research preview released"
+        source: "OpenAI"
+        quote: "OpenAI launches ChatGPT, describing conversational interaction and RLHF-based training; becomes key inflection point for public adoption."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+  - year: 2022
+    month: DEC
+    entries:
+      - date: December 15, 2022
+        headline: "Constitutional AI paper"
+        source: "Anthropic"
+        quote: "Anthropic proposes \"Constitutional AI: Harmlessness from AI Feedback\" (self-critique and rule-based alignment approach)."
+        attribution: "Anthropic research team (paper authors)"
+        color: "#1f77b4"
+
+  - year: 2023
+    month: FEB
+    entries:
+      - date: February 27, 2023
+        headline: "LLaMA paper released (open-ish weights era)"
+        source: "Meta AI"
+        quote: "LLaMA paper describes foundation models (7B–65B) trained on public datasets; positioned as efficient and competitive."
+        attribution: "Hugo Touvron et al.; Meta AI"
+        color: "#1f77b4"
+
+  - year: 2023
+    month: MAR
+    entries:
+      - date: March 2023
+        headline: "\"Pause giant AI experiments\" letter"
+        source: "Future of Life Institute"
+        quote: "Open letter calls for a **pause** (commonly described as \"at least 6 months\") on training frontier systems beyond then-current capability thresholds; details and signatories on source page."
+        attribution: "Future of Life Institute (open letter)"
+        color: "#d62728"
+
+      - date: March 14, 2023
+        headline: "GPT-4 publicly released by OpenAI"
+        source: "OpenAI"
+        quote: "OpenAI describes GPT-4 as \"large multimodal,\" citing benchmark performance like top-10% simulated bar exam (per their release post)."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+      - date: March 15, 2023
+        headline: "GPT-4 technical report appears on arXiv"
+        source: "OpenAI"
+        quote: "arXiv submission history shows v1 posted March 15, 2023; report withholds some technical details while describing evaluation and safety approach."
+        attribution: "OpenAI (paper)"
+        color: "#1f77b4"
+
+      - date: March 29, 2023
+        headline: "\"Shut it all down\" escalation"
+        source: "TIME"
+        quote: "Essay argues pausing is insufficient and advocates a far more forceful shutdown of frontier training (\"We Need to Shut it All Down\")."
+        attribution: "Eliezer Yudkowsky"
+        color: "#d62728"
+
+  - year: 2023
+    month: MAY
+    entries:
+      - date: May 16, 2023
+        headline: "Senate hearing: \"significant harm\" downside case"
+        source: "U.S. Senate Judiciary subcommittee"
+        quote: "In the Senate hearing transcript, Altman states: \"My worst fears are that … [the field] cause significant harm to the world… if this technology goes wrong, it can go quite wrong.\""
+        attribution: "Sam Altman; testimony to U.S. Senate Judiciary subcommittee (transcript outlet)"
+        color: "#d62728"
+
+      - date: May 2023
+        headline: "\"Risk of extinction\" consensus statement"
+        source: "Center for AI Safety"
+        quote: "Statement: \"Mitigating the risk of extinction from AI should be a global priority…\" (short excerpt)."
+        attribution: "Center for AI Safety"
+        color: "#d62728"
+
+  - year: 2023
+    month: OCT
+    entries:
+      - date: October 30, 2023
+        headline: "U.S. executive order on AI"
+        source: "The White House"
+        quote: "Executive Order: \"Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence.\""
+        attribution: "The White House"
+        color: "#9467bd"
+
+  - year: 2023
+    month: NOV
+    entries:
+      - date: November 2023
+        headline: "Bletchley Declaration"
+        source: "UK Government / AI Safety Summit"
+        quote: "UK-hosted AI Safety Summit outputs the \"Bletchley Declaration\" (baseline international framing around frontier AI risk and cooperation)."
+        attribution: "UK Government / summit participants"
+        color: "#9467bd"
+
+  - year: 2023
+    month: DEC
+    entries:
+      - date: December 6, 2023
+        headline: "Gemini announced"
+        source: "Google"
+        quote: "Google announces Gemini as a \"multimodal\" model family (Ultra/Pro/Nano)."
+        attribution: "Google"
+        color: "#2ca02c"
+
+  - year: 2024
+    month: FEB
+    entries:
+      - date: February 15, 2024
+        headline: "Gemini 1.5 announced"
+        source: "Google"
+        quote: "Google announces Gemini 1.5, highlighting long-context capabilities and a new MoE architecture (per post)."
+        attribution: "Sundar Pichai and Demis Hassabis; Google"
+        color: "#2ca02c"
+
+      - date: February 15, 2024
+        headline: "Sora introduced"
+        source: "OpenAI"
+        quote: "OpenAI introduces Sora text-to-video (official announcement page)."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+  - year: 2024
+    month: APR
+    entries:
+      - date: April 18, 2024
+        headline: "Meta Llama 3 released"
+        source: "Meta"
+        quote: "Meta releases Llama 3 models (8B and 70B) as \"openly available\" family, with responsible-use framing."
+        attribution: "Meta"
+        color: "#2ca02c"
+
+  - year: 2024
+    month: MAY
+    entries:
+      - date: May 13, 2024
+        headline: "GPT-4o (\"Omni\") announced"
+        source: "OpenAI"
+        quote: "OpenAI announces GPT-4o as real-time multimodal (audio/vision/text) flagship model."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+      - date: May 21, 2024
+        headline: "EU AI Act formally adopted (Council)"
+        source: "Council of the European Union"
+        quote: "Council of the EU states the AI Act was formally adopted May 21, 2024 and entered into force August 1, 2024."
+        attribution: "Council of the European Union"
+        color: "#9467bd"
+
+  - year: 2024
+    month: SEP
+    entries:
+      - date: September 12, 2024
+        headline: "OpenAI o1-preview (reasoning emphasis)"
+        source: "OpenAI"
+        quote: "OpenAI introduces \"o1-preview\" models designed to \"spend more time thinking before they respond.\""
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+      - date: September 23, 2024
+        headline: "\"Superintelligence in a few thousand days\""
+        source: "Sam Altman"
+        quote: "Altman writes: \"It is possible that we will have superintelligence in a few thousand days (!); it may take longer, but I'm confident we'll get there.\""
+        attribution: "Sam Altman"
+        color: "#d62728"
+
+  - year: 2025
+    month: JAN
+    entries:
+      - date: January 5, 2025
+        headline: "\"We know how to build AGI\"; agents join workforce"
+        source: "Sam Altman"
+        quote: "Altman writes: \"We are now confident we know how to build AGI…\" and predicts that \"in 2025\" AI agents may \"join the workforce\" and materially change output."
+        attribution: "Sam Altman"
+        color: "#d62728"
+
+      - date: January 23, 2025
+        headline: "Operator introduced (browser-using agent)"
+        source: "OpenAI"
+        quote: "OpenAI introduces Operator; later updates note integration into ChatGPT agent."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+      - date: January 23, 2025
+        headline: "Computer-Using Agent (CUA) research release"
+        source: "OpenAI"
+        quote: "OpenAI describes a \"universal interface\" (Computer-Using Agent) powering Operator."
+        attribution: "OpenAI"
+        color: "#1f77b4"
+
+      - date: January 23, 2025
+        headline: "Regulatory reversal: EO \"removing barriers\""
+        source: "The White House"
+        quote: "White House page describes an order \"to uphold America's global AI dominance\" and explicitly mentions revoking EO 14110 (Biden-era AI EO)."
+        attribution: "The White House"
+        color: "#9467bd"
+
+      - date: January 31, 2025
+        headline: "o3-mini released"
+        source: "OpenAI"
+        quote: "OpenAI releases o3-mini as cost-efficient reasoning model available in ChatGPT and API."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+  - year: 2025
+    month: FEB
+    entries:
+      - date: February 2, 2025
+        headline: "Deep research introduced"
+        source: "OpenAI"
+        quote: "OpenAI introduces deep research: multi-step web research producing sourced reports; updates note later integration with agent mode."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+  - year: 2025
+    month: APR
+    entries:
+      - date: April 14, 2025
+        headline: "GPT-4.1 in the API"
+        source: "OpenAI"
+        quote: "OpenAI launches GPT-4.1 family in API, emphasizing coding/long-context improvements (up to 1M tokens) and refreshed cutoff notes."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+      - date: April 16, 2025
+        headline: "o3 and o4-mini released"
+        source: "OpenAI"
+        quote: "OpenAI releases o3 and o4-mini reasoning models; later update notes o3-pro availability."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+  - year: 2025
+    month: MAY
+    entries:
+      - date: May 28, 2025
+        headline: "White-collar unemployment warning"
+        source: "Axios interview"
+        quote: "Axios reports Amodei warning: AI could \"wipe out half of all entry-level white-collar jobs\" and push unemployment to \"10–20%\" in \"1 to 5 years\" (reported summary of interview)."
+        attribution: "Dario Amodei; Anthropic (Axios interview)"
+        color: "#d62728"
+
+  - year: 2025
+    month: JUN
+    entries:
+      - date: June 4, 2025
+        headline: "AGI probability framing"
+        source: "Wired"
+        quote: "Wired quotes Hassabis: \"In the next five to 10 years, there's maybe a 50 percent chance that we'll have what we define as AGI.\""
+        attribution: "Demis Hassabis; Google DeepMind"
+        color: "#d62728"
+
+  - year: 2025
+    month: JUL
+    entries:
+      - date: July 17, 2025
+        headline: "ChatGPT agent integrates Operator + deep research"
+        source: "OpenAI"
+        quote: "OpenAI announces ChatGPT agent and notes Operator integration; release notes frame an \"agent mode\" toolbox."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+  - year: 2025
+    month: AUG
+    entries:
+      - date: August 7, 2025
+        headline: "GPT-5 introduced"
+        source: "OpenAI"
+        quote: "OpenAI introduces GPT-5 as a \"unified system\" with routing between fast and \"thinking\" variants."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+      - date: August 27, 2025
+        headline: "Cross-lab evaluation: OpenAI–Anthropic joint safety evaluation"
+        source: "OpenAI & Anthropic"
+        quote: "OpenAI and Anthropic publish findings from a joint safety/misalignment evaluation where each ran internal tests on the other's released models."
+        attribution: "OpenAI & Anthropic"
+        color: "#ff7f0e"
+
+  - year: 2025
+    month: DEC
+    entries:
+      - date: December 11, 2025
+        headline: "GPT-5.2 introduced (work + agents positioning)"
+        source: "OpenAI"
+        quote: "OpenAI introduces GPT-5.2 emphasizing professional knowledge work and long-running agents; accompanying system card update notes continuity of mitigation approach."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+      - date: December 18, 2025
+        headline: "GPT-5.2-Codex introduced"
+        source: "OpenAI"
+        quote: "OpenAI introduces GPT-5.2-Codex as \"agentic coding\" model; positions it for professional software engineering."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+  - year: 2026
+    month: JAN
+    entries:
+      - date: January 2026
+        headline: "\"Powerful AI\" is near; civilizational \"rite of passage\""
+        source: "Dario Amodei (personal essay)"
+        quote: "Amodei's essay frames a near-term transition: warns of \"powerful AI\" within \"one to two years\" (wording varies by section; cite and quote locally when adding excerpts)."
+        attribution: "Dario Amodei; Anthropic CEO (personal essay site)"
+        color: "#d62728"
+
+      - date: January 29, 2026
+        headline: "Retiring GPT-4o and older ChatGPT models"
+        source: "OpenAI"
+        quote: "OpenAI announces: \"On February 13, 2026… we will retire GPT‑4o, GPT‑4.1, GPT‑4.1 mini, and OpenAI o4-mini from ChatGPT.\""
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+  - year: 2026
+    month: FEB
+    entries:
+      - date: February 2, 2026
+        headline: "Codex app for macOS introduced"
+        source: "OpenAI"
+        quote: "OpenAI introduces Codex app as multi-agent workflow \"command center\" for coding, running tasks in parallel."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+      - date: February 5, 2026
+        headline: "GPT-5.3-Codex introduced"
+        source: "OpenAI"
+        quote: "OpenAI introduces GPT‑5.3‑Codex as more capable agentic coding model, combining GPT-5.2-Codex frontier coding with GPT-5.2 reasoning/knowledge."
+        attribution: "OpenAI"
+        color: "#2ca02c"
+
+      - date: February 13, 2026
+        headline: "GPT-4o deprecation in ChatGPT completes"
+        source: "OpenAI Help Center"
+        quote: "Help Center notes: GPT-4o \"deprecated in ChatGPT on February 13, 2026\" (API availability unchanged per notice)."
+        attribution: "OpenAI Help Center"
+        color: "#ff7f0e"
