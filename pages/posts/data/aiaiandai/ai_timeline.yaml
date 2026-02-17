@@ -453,6 +453,14 @@ timeline:
   - year: 2026
     month: FEB
     entries:
+      - date: February 16, 2026
+        headline: "RAMpocalypse: DDR5 RAM prices surge 5x"
+        source: "PC Part Picker"
+        quote: "DDR5 6000MHz memory prices increased approximately 5x since September 2024. RIP to the ppl who wants to build their own PC"
+        attribution: "Siddharth Chintamaneni"
+        color: "#d4c5b0"
+        url: "https://pcpartpicker.com/trends/price/memory/#ram.ddr5.6000.2x32768"
+
       - date: February 5, 2026
         headline: "GPT-5.3-Codex introduced"
         source: "OpenAI"
