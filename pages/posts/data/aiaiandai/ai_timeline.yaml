@@ -318,7 +318,6 @@ timeline:
         headline: "\"We know how to build AGI\"; agents join workforce"
         source: "Sam Altman"
         quote: "Altman writes: \"We are now confident we know how to build AGI…\" and predicts that \"in 2025\" AI agents may \"join the workforce\" and materially change output."
-        attribution: "Sam Altman"
         color: "#d62728"
         url: "https://blog.samaltman.com/reflections"
 
