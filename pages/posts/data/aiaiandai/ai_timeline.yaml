@@ -452,17 +452,6 @@ timeline:
         url: "https://openai.com/index/introducing-gpt-5-2-codex/"
 
   - year: 2026
-    month: JAN
-    entries:
-      - date: January 2026
-        headline: "\"Powerful AI\" is near; civilizational \"rite of passage\""
-        source: "Dario Amodei (personal essay)"
-        quote: "Amodei's essay frames a near-term transition: warns of \"powerful AI\" within \"one to two years\" (wording varies by section; cite and quote locally when adding excerpts)."
-        attribution: "Dario Amodei; Anthropic CEO (personal essay site)"
-        color: "#d62728"
-        url: "https://www.darioamodei.com/essay/the-adolescence-of-technology"
-
-  - year: 2026
     month: FEB
     entries:
       - date: February 5, 2026
