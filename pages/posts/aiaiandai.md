@@ -24,7 +24,7 @@ any company.)</span>
 
 ### Changelog
 
-- **February 16, 2026**: init
+- **February 16, 2026**: init 
 
 <span style="font-size: 0.85em;">Inspired by *[bitcoindeaths.com](https://bitcoindeaths.com)*.</span>
 

@@ -222,7 +222,7 @@ timeline:
     entries:
       - date: October 30, 2023
         headline: "U.S. executive order on AI"
-        source: "The White House"
+        source: "Federal Register"
         quote: "Executive Order: \"Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence.\""
         color: "#d4c5b0"
         url: "https://www.federalregister.gov/documents/2023/11/01/2023-24283/safe-secure-and-trustworthy-development-and-use-of-artificial-intelligence"
@@ -236,7 +236,7 @@ timeline:
         quote: "UK-hosted AI Safety Summit outputs the \"Bletchley Declaration\" (baseline international framing around frontier AI risk and cooperation)."
         attribution: "UK Government / summit participants"
         color: "#d4c5b0"
-        url: "https://www.gov.uk/government/publications/bletchley-declaration-by-countries-attending-the-ai-safety-summit-1-2-november-2023/the-bletchley-declaration-by-countries-attending-the-ai-safety-summit-1-2-november-2023"
+        url: "https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration/the-bletchley-declaration-by-countries-attending-the-ai-safety-summit-1-2-november-2023"
 
   - year: 2023
     month: DEC
@@ -325,6 +325,7 @@ timeline:
       - date: January 20, 2025
         headline: "US has a new president"
         source: "The White House"
+        quote: "Donald Trump inaugurated as 47th US President."
         color: "#d4c5b0"
         url: "https://www.whitehouse.gov/"
 
