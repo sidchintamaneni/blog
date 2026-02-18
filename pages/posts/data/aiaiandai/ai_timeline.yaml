@@ -54,6 +54,23 @@ timeline:
         url: "https://openai.com/index/better-language-models/"
 
   - year: 2020
+    month: MAR
+    entries:
+      - date: March 11, 2020
+        headline: "WHO declares COVID-19 a pandemic"
+        source: "World Health Organization"
+        quote: "WHO declares COVID-19 outbreak a global pandemic, marking the first pandemic caused by a coronavirus."
+        color: "#d4c5b0"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7569573/#:~:text=The%20World%20Health%20Organization%20(WHO,WHO%20Director%2DGeneral%2C%20Dr."
+
+      - date: March 27, 2020
+        headline: "CARES Act: $2.2 trillion COVID relief package"
+        source: "U.S. Congress"
+        quote: "President signs the Coronavirus Aid, Relief, and Economic Security (CARES) Act, providing $2.2 trillion in economic stimulus and relief measures."
+        color: "#d4c5b0"
+        url: "https://www.congress.gov/bill/116th-congress/house-bill/748"
+
+  - year: 2020
     month: MAY
     entries:
       - date: May 28, 2020
