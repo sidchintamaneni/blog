@@ -264,13 +264,27 @@ timeline:
   - year: 2023
     month: NOV
     entries:
-      - date: November 2023
+      - date: November 1-2, 2023
         headline: "Bletchley Declaration"
         source: "UK Government / AI Safety Summit"
         quote: "UK-hosted AI Safety Summit outputs the \"Bletchley Declaration\" (baseline international framing around frontier AI risk and cooperation)."
         attribution: "UK Government / summit participants"
         color: "#d4c5b0"
         url: "https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration/the-bletchley-declaration-by-countries-attending-the-ai-safety-summit-1-2-november-2023"
+
+      - date: November 17, 2023
+        headline: "Sam Altman fired as OpenAI CEO"
+        source: "OpenAI"
+        quote: "OpenAI board abruptly removed CEO Sam Altman, citing loss of confidence in his leadership. The decision shocked the tech industry and sparked immediate backlash from employees and investors."
+        color: "#d62728"
+        url: "https://openai.com/blog/openai-announces-leadership-transition"
+
+      - date: November 22, 2023
+        headline: "Sam Altman reinstated as OpenAI CEO"
+        source: "OpenAI"
+        quote: "After days of turmoil, employee revolt, and pressure from investors including Microsoft (which offered Altman a job leading AI research), OpenAI's board reinstated Sam Altman as CEO with a new board structure."
+        color: "#d4c5b0"
+        url: "https://openai.com/blog/sam-altman-returns-as-ceo-openai-has-a-new-initial-board"
 
   - year: 2023
     month: DEC
