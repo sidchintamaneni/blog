@@ -216,6 +216,13 @@ timeline:
         color: "#d4c5b0"
         url: "https://openai.com/index/gpt-4-research/"
 
+      - date: March 14, 2023
+        headline: "Claude 1 introduced"
+        source: "Anthropic"
+        quote: "First public model by Anthropic - a next-generation AI assistant based on research into training helpful, honest, and harmless AI systems."
+        color: "#d4c5b0"
+        url: "https://www.anthropic.com/news/introducing-claude"
+
   - year: 2023
     month: MAY
     entries:
@@ -233,6 +240,16 @@ timeline:
         quote: "Statement: \"Mitigating the risk of extinction from AI should be a global priority…\" (short excerpt)."
         color: "#d62728"
         url: "https://www.safe.ai/statement-on-ai-risk"
+
+  - year: 2023
+    month: JUL
+    entries:
+      - date: July 11, 2023
+        headline: "Claude 2 introduced"
+        source: "Anthropic"
+        quote: "Improved performance with longer responses (100K tokens), accessible via API and claude.ai. Scored 76.5% on Bar exam and 71.2% on Codex HumanEval."
+        color: "#d4c5b0"
+        url: "https://www.anthropic.com/news/claude-2"
 
   - year: 2023
     month: OCT
@@ -284,6 +301,16 @@ timeline:
         url: "https://openai.com/index/sora/"
 
   - year: 2024
+    month: MAR
+    entries:
+      - date: March 4, 2024
+        headline: "Claude 3 family introduced"
+        source: "Anthropic"
+        quote: "Three state-of-the-art models—Claude 3 Opus, Sonnet, and Haiku—set new industry benchmarks across reasoning, math, coding, multilingual understanding, and vision."
+        color: "#d4c5b0"
+        url: "https://www.anthropic.com/news/claude-3-family"
+
+  - year: 2024
     month: APR
     entries:
       - date: April 18, 2024
@@ -309,6 +336,16 @@ timeline:
         quote: "AI Act was formally adopted May 21, 2024 and entered into force August 1, 2024."
         color: "#d4c5b0"
         url: "https://www.consilium.europa.eu/en/policies/artificial-intelligence/"
+
+  - year: 2024
+    month: JUN
+    entries:
+      - date: June 21, 2024
+        headline: "Claude 3.5 Sonnet introduced"
+        source: "Anthropic"
+        quote: "Enhanced speed and accuracy, outperforming competitor models with the speed and cost of Claude 3 Sonnet. Sets new benchmarks for graduate-level reasoning, coding proficiency."
+        color: "#d4c5b0"
+        url: "https://www.anthropic.com/news/claude-3-5-sonnet"
 
   - year: 2024
     month: SEP
@@ -382,6 +419,13 @@ timeline:
         color: "#d4c5b0"
         url: "https://openai.com/index/introducing-deep-research/"
 
+      - date: February 24, 2025
+        headline: "Claude 3.7 Sonnet, Claude Code, and Cowork introduced"
+        source: "Anthropic"
+        quote: "Claude 3.7 as first hybrid reasoning model, Claude Code as agentic coding tool that can search/read code, edit files, write/run tests, and Cowork bringing agentic capabilities to desktop for knowledge work."
+        color: "#d4c5b0"
+        url: "https://www.anthropic.com/news/claude-3-7-sonnet"
+
   - year: 2025
     month: APR
     entries:
@@ -402,6 +446,13 @@ timeline:
         attribution: "Satya Nadella; Microsoft"
         color: "#d62728"
         url: "https://www.youtube.com/watch?v=WaJOONFllLc"
+
+      - date: May 22, 2025
+        headline: "Claude 4 family introduced"
+        source: "Anthropic"
+        quote: "Claude Opus 4 and Claude Sonnet 4 set new standards for coding, advanced reasoning, and AI agents. Both models can use tools during extended thinking and in parallel."
+        color: "#d4c5b0"
+        url: "https://www.anthropic.com/news/claude-4"
 
       - date: May 28, 2025
         headline: "White-collar unemployment warning"
@@ -450,6 +501,26 @@ timeline:
         url: "https://openai.com/index/openai-anthropic-safety-evaluation/"
 
   - year: 2025
+    month: SEP
+    entries:
+      - date: September 30, 2025
+        headline: "Claude Sonnet 4.5 introduced"
+        source: "Anthropic"
+        quote: "Best coding model in the world, strongest model for building complex agents, best model at using computers, with substantial gains in reasoning and math."
+        color: "#d4c5b0"
+        url: "https://www.anthropic.com/news/claude-sonnet-4-5"
+
+  - year: 2025
+    month: NOV
+    entries:
+      - date: November 24, 2025
+        headline: "Claude Opus 4.5 introduced"
+        source: "Anthropic"
+        quote: "Most intelligent model combining maximum capability with practical performance. Handles long-horizon coding tasks more efficiently, using up to 65% fewer tokens."
+        color: "#d4c5b0"
+        url: "https://www.anthropic.com/news/claude-opus-4-5"
+
+  - year: 2025
     month: DEC
     entries:
       - date: December 11, 2025
@@ -467,6 +538,16 @@ timeline:
         url: "https://openai.com/index/introducing-gpt-5-2-codex/"
 
   - year: 2026
+    month: JAN
+    entries:
+      - date: January 12, 2026
+        headline: "Cowork introduced"
+        source: "Anthropic"
+        quote: "When we released Claude Code, we expected developers to use it for coding. They did—and then quickly began using it for almost everything else. This prompted us to build Cowork: a simpler way for anyone—not just developers—to work with Claude in the very same way."
+        color: "#d4c5b0"
+        url: "https://claude.com/blog/cowork-research-preview"
+
+  - year: 2026
     month: FEB
     entries:
       - date: February 5, 2026
@@ -476,6 +557,13 @@ timeline:
         color: "#d4c5b0"
         url: "https://openai.com/index/introducing-gpt-5-3-codex/"
 
+      - date: February 5, 2026
+        headline: "Claude Opus 4.6 introduced"
+        source: "Anthropic"
+        quote: "Improves on predecessor's coding skills, planning more carefully, sustaining agentic tasks for longer, operating more reliably in larger codebases. Features 1M token context window in beta."
+        color: "#d4c5b0"
+        url: "https://www.anthropic.com/news/claude-opus-4-6"
+
       - date: February 16, 2026
         headline: "RAMpocalypse: DDR5 RAM prices surge 5x"
         source: "PC Part Picker"
@@ -483,6 +571,13 @@ timeline:
         attribution: "Siddharth Chintamaneni"
         color: "#d4c5b0"
         url: "https://pcpartpicker.com/trends/price/memory/#ram.ddr5.6000.2x32768"
+
+      - date: February 17, 2026
+        headline: "Claude Sonnet 4.6 introduced"
+        source: "Anthropic"
+        quote: "Latest balanced model combining speed and intelligence. Much-improved coding skills, with performance that would have previously required an Opus-class model."
+        color: "#d4c5b0"
+        url: "https://www.anthropic.com/news/claude-sonnet-4-6"
 
       - date: February 19, 2026
         headline: "Coding is largely solved by AI"
