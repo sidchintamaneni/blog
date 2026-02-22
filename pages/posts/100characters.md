@@ -21,8 +21,7 @@ This idea is not original, I would assume it is one of the most popular ones
 that people might've tried already. I recently bought a video game on a friend's
 recommendation (*[Milo Craun](https://milocraun.com/)*), *[UnReal
 World](https://www.unrealworld.fi/)* (the developers have been providing updates
-since 1992, I might write another post on them but support them in the meanwhile
-if you care). Curious me started reading about the developers behind this game
+since 1992. I might write another post on them, but if you're interested, they're worth supporting). Curious me started reading about the developers behind this game
 and found the
 *[blog posts](https://www.enormouselk.com/?q=erkkasblog/design-coding&page=0#)* by the
 developer (I would highly recommend reading the rest of his posts as well) and
@@ -32,5 +31,5 @@ comes from reading the paper
 
 ---
 
-*Last updated: February 16, 2026*
+*Last updated: February 22, 2026*
 

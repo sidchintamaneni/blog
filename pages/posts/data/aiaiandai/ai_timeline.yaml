@@ -402,6 +402,13 @@ timeline:
         color: "#d4c5b0"
         url: "https://arxiv.org/abs/2501.12948"
 
+      - date: January 21, 2025
+        headline: "$500B Stargate AI infrastructure project announced"
+        source: "OpenAI / White House"
+        quote: "President Trump announced the Stargate Project, a joint venture between OpenAI, SoftBank, Oracle, and MGX to invest up to $500 billion in AI infrastructure in the US by 2029. The initiative will deploy $100 billion immediately and create 100,000 jobs."
+        color: "#d4c5b0"
+        url: "https://openai.com/index/announcing-the-stargate-project/"
+
       - date: January 23, 2025
         headline: "Computer-Using Agent (CUA) research release"
         source: "OpenAI"
@@ -449,6 +456,13 @@ timeline:
         quote: "o3 and o4-mini reasoning models; later update notes o3-pro availability."
         color: "#d4c5b0"
         url: "https://openai.com/index/introducing-o3-and-o4-mini/"
+
+      - date: April 2025
+        headline: "Microsoft and AWS pause datacenter expansion"
+        source: "Microsoft / AWS"
+        quote: "Microsoft froze 1.5GW of self-build datacenter projects and walked away from 2GW+ of non-binding contracts, completely freezing new leasing activity. AWS paused discussions on colocated datacenters, particularly abroad. Both cited strategic reallocation amid fast-moving AI advancements rather than reduced demand."
+        color: "#d62728"
+        url: "https://www.cnbc.com/2025/04/27/ai-data-center-boom-isnt-going-bust-but-the-pause-is-trending.html"
 
   - year: 2025
     month: MAY
