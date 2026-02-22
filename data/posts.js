@@ -24,6 +24,13 @@ export const posts = [
             tags: ["projects", "AI", "tracking"],
             file_name: "aiaiandai"
           },
+          {
+            id: 4,
+            title: "Insights from AI timeline",
+            date: "WIP",
+            tags: ["AI", "analysis"],
+            file_name: "ai_timeline_insights"
+          },
         ]
     }
   ];
