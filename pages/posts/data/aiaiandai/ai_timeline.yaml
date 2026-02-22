@@ -470,6 +470,13 @@ timeline:
   - year: 2026
     month: FEB
     entries:
+      - date: February 5, 2026
+        headline: "GPT-5.3-Codex introduced"
+        source: "OpenAI"
+        quote: "OpenAI introduces GPT‑5.3‑Codex as more capable agentic coding model, combining GPT-5.2-Codex frontier coding with GPT-5.2 reasoning/knowledge."
+        color: "#d4c5b0"
+        url: "https://openai.com/index/introducing-gpt-5-3-codex/"
+
       - date: February 16, 2026
         headline: "RAMpocalypse: DDR5 RAM prices surge 5x"
         source: "PC Part Picker"
@@ -478,10 +485,11 @@ timeline:
         color: "#d4c5b0"
         url: "https://pcpartpicker.com/trends/price/memory/#ram.ddr5.6000.2x32768"
 
-      - date: February 5, 2026
-        headline: "GPT-5.3-Codex introduced"
-        source: "OpenAI"
-        quote: "OpenAI introduces GPT‑5.3‑Codex as more capable agentic coding model, combining GPT-5.2-Codex frontier coding with GPT-5.2 reasoning/knowledge."
-        color: "#d4c5b0"
-        url: "https://openai.com/index/introducing-gpt-5-3-codex/"
+      - date: February 19, 2026
+        headline: "\"Coding is largely solved by AI\""
+        source: "Lenny's Podcast"
+        quote: "Boris Cherny, Head of Claude Code, states that \"coding is largely solved by AI.\""
+        attribution: "Boris Cherny; Head of Claude Code, Anthropic"
+        color: "#d62728"
+        url: "https://youtu.be/We7BZVKbCVw"
 
