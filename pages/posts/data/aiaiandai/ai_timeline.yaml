@@ -378,6 +378,16 @@ timeline:
         color: "#d62728"
         url: "https://ia.samaltman.com/"
 
+  - year: 2024
+    month: OCT
+    entries:
+      - date: October 8, 2024
+        headline: "Nobel Prize in Physics awarded to John J. Hopfield and Geoffrey Hinton for AI foundations"
+        source: "The Nobel Prize"
+        quote: "John J. Hopfield and Geoffrey Hinton awarded the Nobel Prize in Physics \"for foundational discoveries and inventions that enable machine learning with artificial neural networks.\""
+        color: "#d4c5b0"
+        url: "https://www.nobelprize.org/prizes/physics/2024/press-release/"
+
   - year: 2025
     month: JAN
     entries:
