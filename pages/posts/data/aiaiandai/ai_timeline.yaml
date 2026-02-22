@@ -14,7 +14,7 @@ timeline:
     month: JUL
     entries:
       - date: July 17, 2017
-        headline: "\"AI poses existential risk\" in governor briefing"
+        headline: '"AI poses existential risk" in governor briefing'
         source: "National Governors Association meeting"
         quote: "AI poses \"existential risk\" / \"fundamental risk\" and merits proactive regulation."
         attribution: "Elon Musk; remarks at National Governors Association meeting (Rhode Island mentioned in coverage)."
@@ -159,7 +159,7 @@ timeline:
     month: JUN
     entries:
       - date: June 11, 2022
-        headline: "LaMDA \"sentience\" claim goes public"
+        headline: 'LaMDA "sentience" claim goes public'
         source: "Google (Responsible AI)"
         quote: "A Google engineer claims LaMDA has \"come to life\" / is sentient (exact transcripts are contested; the claim itself is the salient prediction about AI personhood)."
         attribution: "Blake Lemoine (Google; Responsible AI at the time)"
@@ -201,7 +201,7 @@ timeline:
     month: MAR
     entries:
       - date: March 2023
-        headline: "\"Pause giant AI experiments\" letter"
+        headline: '"Pause giant AI experiments" letter'
         source: "Future of Life Institute"
         quote: "Open letter calls for a **pause** (commonly described as \"at least 6 months\") on training frontier systems beyond then-current capability thresholds; details and signatories on source page."
         attribution: "Future of Life Institute (open letter)"
@@ -220,7 +220,7 @@ timeline:
     month: MAY
     entries:
       - date: May 16, 2023
-        headline: "Senate hearing: \"significant harm\" downside case"
+        headline: 'Senate hearing: "significant harm" downside case'
         source: "U.S. Senate Judiciary subcommittee"
         quote: "\"My worst fears are that … [the field] cause significant harm to the world… if this technology goes wrong, it can go quite wrong.\""
         attribution: "Sam Altman; testimony to U.S. Senate Judiciary subcommittee (transcript outlet)"
@@ -228,7 +228,7 @@ timeline:
         url: "https://techpolicy.press/transcript-senate-judiciary-subcommittee-hearing-on-oversight-of-ai/"
 
       - date: May 2023
-        headline: "\"Risk of extinction\" consensus statement"
+        headline: '"Risk of extinction" consensus statement'
         source: "Center for AI Safety"
         quote: "Statement: \"Mitigating the risk of extinction from AI should be a global priority…\" (short excerpt)."
         color: "#d62728"
@@ -321,7 +321,7 @@ timeline:
         url: "https://openai.com/index/introducing-openai-o1-preview/"
 
       - date: September 23, 2024
-        headline: "\"Superintelligence in a few thousand days\""
+        headline: "Superintelligence in a few thousand days"
         source: "Sam Altman"
         quote: "\"It is possible that we will have superintelligence in a few thousand days (!); it may take longer, but I'm confident we'll get there.\""
         color: "#d62728"
@@ -331,7 +331,7 @@ timeline:
     month: JAN
     entries:
       - date: January 5, 2025
-        headline: "\"We know how to build AGI\"; agents join workforce"
+        headline: "We know how to build AGI; agents join workforce"
         source: "Sam Altman"
         quote: "\"We are now confident we know how to build AGI…\" and predicts that \"in 2025\" AI agents may \"join the workforce\" and materially change output."
         color: "#d62728"
@@ -359,7 +359,7 @@ timeline:
         url: "https://openai.com/index/computer-using-agent/"
 
       - date: January 23, 2025
-        headline: "Regulatory reversal: EO \"removing barriers\""
+        headline: 'Regulatory reversal: EO "removing barriers"'
         source: "The White House"
         quote: "Executive order \"to uphold America's global AI dominance\" and explicitly revokes EO 14110 (Biden-era AI EO)."
         color: "#d4c5b0"
@@ -485,7 +485,7 @@ timeline:
         url: "https://pcpartpicker.com/trends/price/memory/#ram.ddr5.6000.2x32768"
 
       - date: February 19, 2026
-        headline: "\"Coding is largely solved by AI\""
+        headline: "Coding is largely solved by AI"
         source: "Lenny's Podcast"
         quote: "Coding is largely solved by AI and everyone will become product managers by the end of this year."
         attribution: "Boris Cherny; Head of Claude Code, Anthropic"

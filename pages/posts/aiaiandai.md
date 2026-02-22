@@ -24,6 +24,7 @@ any company.)</span>
 
 ### Changelog
 
+- **February 22, 2026**: Added Boris Cherny's statement and fixes to the existing timeline
 - **February 18, 2026**: Added COVID-19 pandemic declaration and CARES Act
 - **February 16, 2026**: init 
 
