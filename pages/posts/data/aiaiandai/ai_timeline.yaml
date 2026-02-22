@@ -441,9 +441,9 @@ timeline:
         url: "https://openai.com/index/introducing-deep-research/"
 
       - date: February 24, 2025
-        headline: "Claude 3.7 Sonnet, Claude Code, and Cowork introduced"
+        headline: "Claude 3.7 Sonnet and Claude Code introduced"
         source: "Anthropic"
-        quote: "Claude 3.7 as first hybrid reasoning model, Claude Code as agentic coding tool that can search/read code, edit files, write/run tests, and Cowork bringing agentic capabilities to desktop for knowledge work."
+        quote: "Claude 3.7 as first hybrid reasoning model, Claude Code as agentic coding tool that can search/read code, edit files, write/run tests."
         color: "#d4c5b0"
         url: "https://www.anthropic.com/news/claude-3-7-sonnet"
 
