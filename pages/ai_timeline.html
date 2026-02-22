@@ -143,7 +143,10 @@
                 const entriesColumn = document.createElement('div');
                 entriesColumn.className = 'entries-column';
 
-                yearGroup.entries.forEach(entry => {
+                // Reverse entries to show most recent first within each month
+                const reversedEntries = [...yearGroup.entries].reverse();
+
+                reversedEntries.forEach(entry => {
                     const card = document.createElement('div');
                     card.className = 'entry-card';
                     if (entry.color) {
