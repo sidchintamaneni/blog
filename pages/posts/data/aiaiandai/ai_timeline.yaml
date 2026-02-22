@@ -49,7 +49,7 @@ timeline:
       - date: February 14, 2019
         headline: "GPT-2 introduced; staged release due to misuse concerns"
         source: "OpenAI"
-        quote: "OpenAI introduces GPT-2; states it is **not releasing the full trained model initially** \"due to… concerns about malicious applications.\""
+        quote: "GPT-2 is **not being released fully initially** \"due to… concerns about malicious applications.\""
         color: "#d4c5b0"
         url: "https://openai.com/index/better-language-models/"
 
@@ -172,7 +172,7 @@ timeline:
       - date: August 22, 2022
         headline: "Stable Diffusion public release"
         source: "Stability AI"
-        quote: "Stability AI announces public release of Stable Diffusion and DreamStudio Lite; emphasizes \"safe and ethical release.\""
+        quote: "Public release of Stable Diffusion and DreamStudio Lite; emphasizes \"safe and ethical release.\""
         color: "#d4c5b0"
         url: "https://stability.ai/news/stable-diffusion-public-release"
 
@@ -222,7 +222,7 @@ timeline:
       - date: May 16, 2023
         headline: "Senate hearing: \"significant harm\" downside case"
         source: "U.S. Senate Judiciary subcommittee"
-        quote: "In the Senate hearing transcript, Altman states: \"My worst fears are that … [the field] cause significant harm to the world… if this technology goes wrong, it can go quite wrong.\""
+        quote: "\"My worst fears are that … [the field] cause significant harm to the world… if this technology goes wrong, it can go quite wrong.\""
         attribution: "Sam Altman; testimony to U.S. Senate Judiciary subcommittee (transcript outlet)"
         color: "#d62728"
         url: "https://techpolicy.press/transcript-senate-judiciary-subcommittee-hearing-on-oversight-of-ai/"
@@ -261,7 +261,7 @@ timeline:
       - date: December 6, 2023
         headline: "Gemini announced"
         source: "Google"
-        quote: "Google announces Gemini as a \"multimodal\" model family (Ultra/Pro/Nano)."
+        quote: "Gemini is a \"multimodal\" model family (Ultra/Pro/Nano)."
         color: "#d4c5b0"
         url: "https://blog.google/innovation-and-ai/technology/ai/google-gemini-ai/"
 
@@ -271,7 +271,7 @@ timeline:
       - date: February 15, 2024
         headline: "Gemini 1.5 announced"
         source: "Google"
-        quote: "Google announces Gemini 1.5, highlighting long-context capabilities and a new MoE architecture (per post)."
+        quote: "Gemini 1.5 with long-context capabilities and a new MoE architecture."
         attribution: "Sundar Pichai and Demis Hassabis; Google"
         color: "#d4c5b0"
         url: "https://blog.google/innovation-and-ai/products/google-gemini-next-generation-model-february-2024/"
@@ -279,7 +279,7 @@ timeline:
       - date: February 15, 2024
         headline: "Sora introduced"
         source: "OpenAI"
-        quote: "OpenAI introduces Sora text-to-video (official announcement page)."
+        quote: "Sora text-to-video model."
         color: "#d4c5b0"
         url: "https://openai.com/index/sora/"
 
@@ -299,14 +299,14 @@ timeline:
       - date: May 13, 2024
         headline: "GPT-4o (\"Omni\") announced"
         source: "OpenAI"
-        quote: "OpenAI announces GPT-4o as real-time multimodal (audio/vision/text) flagship model."
+        quote: "GPT-4o as real-time multimodal (audio/vision/text) flagship model."
         color: "#d4c5b0"
         url: "https://openai.com/index/hello-gpt-4o/"
 
       - date: May 21, 2024
         headline: "EU AI Act formally adopted (Council)"
         source: "Council of the European Union"
-        quote: "Council of the EU states the AI Act was formally adopted May 21, 2024 and entered into force August 1, 2024."
+        quote: "AI Act was formally adopted May 21, 2024 and entered into force August 1, 2024."
         color: "#d4c5b0"
         url: "https://www.consilium.europa.eu/en/policies/artificial-intelligence/"
 
@@ -316,15 +316,14 @@ timeline:
       - date: September 12, 2024
         headline: "OpenAI o1-preview (reasoning emphasis)"
         source: "OpenAI"
-        quote: "OpenAI introduces \"o1-preview\" models designed to \"spend more time thinking before they respond.\""
+        quote: "\"o1-preview\" models designed to \"spend more time thinking before they respond.\""
         color: "#d4c5b0"
         url: "https://openai.com/index/introducing-openai-o1-preview/"
 
       - date: September 23, 2024
         headline: "\"Superintelligence in a few thousand days\""
         source: "Sam Altman"
-        quote: "Altman writes: \"It is possible that we will have superintelligence in a few thousand days (!); it may take longer, but I'm confident we'll get there.\""
-        attribution: "Sam Altman"
+        quote: "\"It is possible that we will have superintelligence in a few thousand days (!); it may take longer, but I'm confident we'll get there.\""
         color: "#d62728"
         url: "https://ia.samaltman.com/"
 
@@ -334,7 +333,7 @@ timeline:
       - date: January 5, 2025
         headline: "\"We know how to build AGI\"; agents join workforce"
         source: "Sam Altman"
-        quote: "Altman writes: \"We are now confident we know how to build AGI…\" and predicts that \"in 2025\" AI agents may \"join the workforce\" and materially change output."
+        quote: "\"We are now confident we know how to build AGI…\" and predicts that \"in 2025\" AI agents may \"join the workforce\" and materially change output."
         color: "#d62728"
         url: "https://blog.samaltman.com/reflections"
 
@@ -348,28 +347,28 @@ timeline:
       - date: January 20, 2025
         headline: "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning"
         source: "DeepSeek"
-        quote: "DeepSeek introduces R1 reasoning model, claiming training costs of approximately $5-6 million - significantly disrupting cost expectations for frontier AI models."
+        quote: "R1 reasoning model with training costs of approximately $5-6 million - significantly disrupting cost expectations for frontier AI models."
         color: "#d4c5b0"
         url: "https://arxiv.org/abs/2501.12948"
 
       - date: January 23, 2025
         headline: "Computer-Using Agent (CUA) research release"
         source: "OpenAI"
-        quote: "OpenAI describes a \"universal interface\" (Computer-Using Agent) powering Operator."
+        quote: "\"Universal interface\" (Computer-Using Agent) powering Operator."
         color: "#d4c5b0"
         url: "https://openai.com/index/computer-using-agent/"
 
       - date: January 23, 2025
         headline: "Regulatory reversal: EO \"removing barriers\""
         source: "The White House"
-        quote: "White House page describes an order \"to uphold America's global AI dominance\" and explicitly mentions revoking EO 14110 (Biden-era AI EO)."
+        quote: "Executive order \"to uphold America's global AI dominance\" and explicitly revokes EO 14110 (Biden-era AI EO)."
         color: "#d4c5b0"
         url: "https://www.whitehouse.gov/presidential-actions/2025/01/removing-barriers-to-american-leadership-in-artificial-intelligence/"
 
       - date: January 31, 2025
         headline: "o3-mini released"
         source: "OpenAI"
-        quote: "OpenAI releases o3-mini as cost-efficient reasoning model available in ChatGPT and API."
+        quote: "o3-mini as cost-efficient reasoning model available in ChatGPT and API."
         color: "#d4c5b0"
         url: "https://openai.com/index/openai-o3-mini/"
 
@@ -379,7 +378,7 @@ timeline:
       - date: February 2, 2025
         headline: "Deep research introduced"
         source: "OpenAI"
-        quote: "OpenAI introduces deep research: multi-step web research producing sourced reports; updates note later integration with agent mode."
+        quote: "Deep research: multi-step web research producing sourced reports; later integrated with agent mode."
         color: "#d4c5b0"
         url: "https://openai.com/index/introducing-deep-research/"
 
@@ -389,7 +388,7 @@ timeline:
       - date: April 16, 2025
         headline: "o3 and o4-mini released"
         source: "OpenAI"
-        quote: "OpenAI releases o3 and o4-mini reasoning models; later update notes o3-pro availability."
+        quote: "o3 and o4-mini reasoning models; later update notes o3-pro availability."
         color: "#d4c5b0"
         url: "https://openai.com/index/introducing-o3-and-o4-mini/"
 
@@ -399,7 +398,7 @@ timeline:
       - date: May 7, 2025
         headline: "Microsoft reports 20-30% of code AI-generated"
         source: "LlamaCon 2025"
-        quote: "Satya Nadella reports that 20 to 30% of code in Microsoft repositories is now written by AI."
+        quote: "20 to 30% of code in Microsoft repositories is now written by AI."
         attribution: "Satya Nadella; Microsoft"
         color: "#d62728"
         url: "https://www.youtube.com/watch?v=WaJOONFllLc"
@@ -429,7 +428,7 @@ timeline:
       - date: July 17, 2025
         headline: "ChatGPT agent integrates Operator + deep research"
         source: "OpenAI"
-        quote: "OpenAI announces ChatGPT agent and notes Operator integration; release notes frame an \"agent mode\" toolbox."
+        quote: "ChatGPT agent with Operator integration; release notes frame an \"agent mode\" toolbox."
         color: "#d4c5b0"
         url: "https://openai.com/index/introducing-chatgpt-agent/"
 
@@ -439,7 +438,7 @@ timeline:
       - date: August 7, 2025
         headline: "GPT-5 introduced"
         source: "OpenAI"
-        quote: "OpenAI introduces GPT-5 as a \"unified system\" with routing between fast and \"thinking\" variants."
+        quote: "GPT-5 as a \"unified system\" with routing between fast and \"thinking\" variants."
         color: "#d4c5b0"
         url: "https://openai.com/index/introducing-gpt-5/"
 
@@ -456,14 +455,14 @@ timeline:
       - date: December 11, 2025
         headline: "GPT-5.2 introduced (work + agents positioning)"
         source: "OpenAI"
-        quote: "OpenAI introduces GPT-5.2 emphasizing professional knowledge work and long-running agents; accompanying system card update notes continuity of mitigation approach."
+        quote: "GPT-5.2 emphasizing professional knowledge work and long-running agents; accompanying system card update notes continuity of mitigation approach."
         color: "#d4c5b0"
         url: "https://openai.com/index/introducing-gpt-5-2/"
 
       - date: December 18, 2025
         headline: "GPT-5.2-Codex introduced"
         source: "OpenAI"
-        quote: "OpenAI introduces GPT-5.2-Codex as \"agentic coding\" model; positions it for professional software engineering."
+        quote: "GPT-5.2-Codex as \"agentic coding\" model; positioned for professional software engineering."
         color: "#d4c5b0"
         url: "https://openai.com/index/introducing-gpt-5-2-codex/"
 
@@ -473,7 +472,7 @@ timeline:
       - date: February 5, 2026
         headline: "GPT-5.3-Codex introduced"
         source: "OpenAI"
-        quote: "OpenAI introduces GPT‑5.3‑Codex as more capable agentic coding model, combining GPT-5.2-Codex frontier coding with GPT-5.2 reasoning/knowledge."
+        quote: "GPT‑5.3‑Codex as more capable agentic coding model, combining GPT-5.2-Codex frontier coding with GPT-5.2 reasoning/knowledge."
         color: "#d4c5b0"
         url: "https://openai.com/index/introducing-gpt-5-3-codex/"
 
@@ -488,7 +487,7 @@ timeline:
       - date: February 19, 2026
         headline: "\"Coding is largely solved by AI\""
         source: "Lenny's Podcast"
-        quote: "Boris Cherny, Head of Claude Code, states that \"coding is largely solved by AI.\""
+        quote: "Coding is largely solved by AI and everyone will become product managers by the end of this year."
         attribution: "Boris Cherny; Head of Claude Code, Anthropic"
         color: "#d62728"
         url: "https://youtu.be/We7BZVKbCVw"
