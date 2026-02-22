@@ -276,7 +276,7 @@ timeline:
         headline: "Sam Altman fired as OpenAI CEO"
         source: "OpenAI"
         quote: "OpenAI board abruptly removed CEO Sam Altman, citing loss of confidence in his leadership. The decision shocked the tech industry and sparked immediate backlash from employees and investors."
-        color: "#d62728"
+        color: "#d4c5b0"
         url: "https://openai.com/blog/openai-announces-leadership-transition"
 
       - date: November 22, 2023
