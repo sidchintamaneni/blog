@@ -822,7 +822,7 @@ timeline:
         headline: "Anthropic accuses DeepSeek, Moonshot AI, and MiniMax of industrial-scale distillation attacks"
         source: "Anthropic"
         quote: "Anthropic revealed that three Chinese AI labs created ~24,000 fraudulent accounts and generated over 16 million exchanges with Claude to extract capabilities for training their own models — the most detailed account of AI IP theft in the industry's history."
-        color: "#d62728"
+        color: "#d4c5b0"
         url: "https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks"
 
       - date: February 26, 2026
@@ -836,5 +836,5 @@ timeline:
         headline: "OpenAI strikes deal with Pentagon for classified AI deployment"
         source: "Sam Altman"
         quote: "Tonight, we reached an agreement with the Department of War to deploy our models in their classified network. Two of our most important safety principles are prohibitions on domestic mass surveillance and human responsibility for the use of force, including for autonomous weapon systems."
-        color: "#d62728"
+        color: "#d4c5b0"
         url: "https://x.com/sama/status/2027578652477821175"
