@@ -91,6 +91,13 @@ timeline:
         color: "#d62728"
         url: "https://openai.com/index/openai-api/"
 
+      - date: June 17, 2020
+        headline: "OpenAI introduces Image GPT"
+        source: "OpenAI"
+        quote: "Demonstrated that a transformer model could generate coherent image completions, foreshadowing the DALL·E line and proving transformers could work beyond text."
+        color: "#d4c5b0"
+        url: "https://openai.com/index/image-gpt/"
+
   - year: 2020
     month: NOV
     entries:
@@ -100,6 +107,35 @@ timeline:
         quote: "DeepMind reports AlphaFold as \"a solution to a 50-year-old grand challenge\" and describes CASP14 performance, positioning AI as a major scientific accelerator."
         color: "#d4c5b0"
         url: "https://deepmind.google/blog/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology/"
+
+  - year: 2021
+    month: JAN
+    entries:
+      - date: January 5, 2021
+        headline: "DALL·E introduced"
+        source: "OpenAI"
+        quote: "A 12-billion-parameter transformer model that generates images from text descriptions, marking the first major demonstration of text-to-image generation at scale."
+        color: "#d4c5b0"
+        url: "https://openai.com/blog/dall-e/"
+
+      - date: January 5, 2021
+        headline: "CLIP introduced"
+        source: "OpenAI"
+        quote: "Contrastive Language–Image Pre-training (CLIP) learns visual concepts from natural language supervision, connecting text and images in a way that became foundational for later multimodal models."
+        attribution: "Alec Radford et al.; OpenAI"
+        color: "#d4c5b0"
+        url: "https://openai.com/blog/clip/"
+
+  - year: 2021
+    month: MAY
+    entries:
+      - date: May 2021
+        headline: "Anthropic founded by former OpenAI researchers"
+        source: "Anthropic"
+        quote: "Seven former OpenAI employees, including Dario and Daniela Amodei, founded Anthropic as an AI safety company focused on building reliable and interpretable AI systems."
+        attribution: "Dario Amodei, Daniela Amodei, and others; Anthropic"
+        color: "#d4c5b0"
+        url: "https://techcrunch.com/2021/05/28/anthropic-is-the-new-ai-research-outfit-from-openais-dario-amodei-and-it-has-124m-to-burn"
 
   - year: 2021
     month: JUN
@@ -251,9 +287,39 @@ timeline:
         color: "#d4c5b0"
         url: "https://www.anthropic.com/news/claude-2"
 
+      - date: July 12, 2023
+        headline: "xAI founded by Elon Musk"
+        source: "xAI"
+        quote: "Musk launched xAI as a competitor to OpenAI and Google, focused on building AI that seeks \"truth\" — later producing the Grok chatbot series."
+        attribution: "Elon Musk; xAI"
+        color: "#d4c5b0"
+        url: "https://www.reuters.com/technology/elon-musks-ai-firm-xai-launches-website-2023-07-12/"
+
+      - date: July 18, 2023
+        headline: "Llama 2 released as open source"
+        source: "Meta AI"
+        quote: "Meta released Llama 2 (7B–70B parameters) freely for commercial use, marking a major shift in open-source AI and enabling widespread community-driven development."
+        color: "#d4c5b0"
+        url: "https://about.fb.com/news/2023/07/llama-2/"
+
+      - date: July 2023
+        headline: "DeepSeek founded"
+        source: "DeepSeek / High-Flyer"
+        quote: "Chinese hedge fund High-Flyer's AI subsidiary was founded, later producing models that would shake the global AI industry with frontier performance at dramatically lower training costs."
+        attribution: "Liang Wenfeng; DeepSeek / High-Flyer"
+        color: "#d4c5b0"
+        url: "https://en.wikipedia.org/wiki/Liang_Wenfeng"
+
   - year: 2023
     month: OCT
     entries:
+      - date: October 19, 2023
+        headline: "DALL·E 3 integrated into ChatGPT"
+        source: "OpenAI"
+        quote: "The third generation of DALL·E launched natively within ChatGPT, significantly improving prompt fidelity and making AI image generation conversational."
+        color: "#d4c5b0"
+        url: "https://openai.com/blog/dall-e-3-is-now-available-in-chatgpt-plus-and-enterprise"
+
       - date: October 30, 2023
         headline: "U.S. executive order on AI"
         source: "Federal Register"
@@ -271,6 +337,13 @@ timeline:
         attribution: "UK Government / summit participants"
         color: "#d4c5b0"
         url: "https://www.gov.uk/government/publications/ai-safety-summit-2023-the-bletchley-declaration/the-bletchley-declaration-by-countries-attending-the-ai-safety-summit-1-2-november-2023"
+
+      - date: November 3, 2023
+        headline: "Grok launched on X"
+        source: "xAI"
+        quote: "xAI's chatbot debuted exclusively on X (formerly Twitter), distinguished by real-time access to the platform's data and a witty, irreverent conversational style."
+        color: "#d4c5b0"
+        url: "https://x.ai/news/grok"
 
       - date: November 17, 2023
         headline: "Sam Altman fired as OpenAI CEO"
@@ -299,6 +372,13 @@ timeline:
   - year: 2024
     month: FEB
     entries:
+      - date: February 8, 2024
+        headline: "Google Bard rebranded to Gemini; Gemini Advanced launched"
+        source: "Google"
+        quote: "Google unified Bard and Duet AI under the Gemini brand, launching a premium tier powered by Gemini Ultra 1.0."
+        color: "#d4c5b0"
+        url: "https://blog.google/technology/ai/google-gemini-update-sundar-pichai-2024"
+
       - date: February 15, 2024
         headline: "Gemini 1.5 announced"
         source: "Google"
@@ -313,6 +393,13 @@ timeline:
         quote: "Sora text-to-video model."
         color: "#d4c5b0"
         url: "https://openai.com/index/sora/"
+
+      - date: February 26, 2024
+        headline: "Mistral Large released"
+        source: "Mistral AI"
+        quote: "French AI startup Mistral AI released its flagship model, competing with GPT-4 and demonstrating that European labs could produce frontier-class LLMs."
+        color: "#d4c5b0"
+        url: "https://mistral.ai/en/news/mistral-large/"
 
   - year: 2024
     month: MAR
@@ -362,6 +449,16 @@ timeline:
         url: "https://www.anthropic.com/news/claude-3-5-sonnet"
 
   - year: 2024
+    month: JUL
+    entries:
+      - date: July 23, 2024
+        headline: "Llama 3.1 released (405B)"
+        source: "Meta AI"
+        quote: "Meta released the first open-source model at the 405B parameter scale, directly challenging closed-source frontier models and claiming competitive performance with GPT-4o."
+        color: "#d4c5b0"
+        url: "https://ai.meta.com/blog/meta-llama-3-1/"
+
+  - year: 2024
     month: SEP
     entries:
       - date: September 12, 2024
@@ -381,12 +478,43 @@ timeline:
   - year: 2024
     month: OCT
     entries:
+      - date: October 2, 2024
+        headline: "OpenAI restructures, raises $6.6B at $157B valuation"
+        source: "OpenAI"
+        quote: "The largest private funding round in AI history, with investments from Microsoft, NVIDIA, and SoftBank, as OpenAI planned transition from nonprofit to for-profit structure."
+        color: "#d4c5b0"
+        url: "https://www.reuters.com/technology/artificial-intelligence/openai-closes-66-billion-funding-haul-valuation-157-billion-with-investment-2024-10-02"
+
       - date: October 8, 2024
         headline: "Nobel Prize in Physics awarded to John J. Hopfield and Geoffrey Hinton for AI foundations"
         source: "The Nobel Prize"
         quote: "John J. Hopfield and Geoffrey Hinton awarded the Nobel Prize in Physics \"for foundational discoveries and inventions that enable machine learning with artificial neural networks.\""
         color: "#d4c5b0"
         url: "https://www.nobelprize.org/prizes/physics/2024/press-release/"
+
+      - date: October 22, 2024
+        headline: "Claude 3.5 Sonnet (new) and computer use introduced"
+        source: "Anthropic"
+        quote: "Anthropic released an updated Claude 3.5 Sonnet with significantly improved coding and a groundbreaking computer use capability, allowing Claude to interact with desktop applications."
+        color: "#d4c5b0"
+        url: "https://www.anthropic.com/news/3-5-models-and-computer-use"
+
+  - year: 2024
+    month: DEC
+    entries:
+      - date: December 11, 2024
+        headline: "Gemini 2.0 Flash announced"
+        source: "Google DeepMind"
+        quote: "Google introduced Gemini 2.0 Flash as the start of the \"agentic era,\" featuring native multimodal outputs, Deep Research, and a new AI coding agent called Jules."
+        color: "#d4c5b0"
+        url: "https://blog.google/products/gemini/google-gemini-ai-collection-2024"
+
+      - date: December 26, 2024
+        headline: "DeepSeek-V3 released"
+        source: "DeepSeek"
+        quote: "A 671B-parameter MoE model trained for approximately $5.6 million — a fraction of typical frontier costs — matching GPT-4o and Claude 3.5 Sonnet on benchmarks while fully open-source under MIT license."
+        color: "#d4c5b0"
+        url: "https://github.com/deepseek-ai/DeepSeek-V3"
 
   - year: 2025
     month: JAN
@@ -450,12 +578,36 @@ timeline:
         color: "#d4c5b0"
         url: "https://openai.com/index/introducing-deep-research/"
 
+      - date: February 17, 2025
+        headline: "Grok 3 released by xAI"
+        source: "xAI"
+        quote: "Trained with 10x the compute of Grok 2, featuring \"Think\" and \"Big Brain\" reasoning modes and DeepSearch for autonomous web research."
+        color: "#d4c5b0"
+        url: "https://x.ai/news/grok-3"
+
       - date: February 24, 2025
         headline: "Claude 3.7 Sonnet and Claude Code introduced"
         source: "Anthropic"
         quote: "Claude 3.7 as first hybrid reasoning model, Claude Code as agentic coding tool that can search/read code, edit files, write/run tests."
         color: "#d4c5b0"
         url: "https://www.anthropic.com/news/claude-3-7-sonnet"
+
+  - year: 2025
+    month: MAR
+    entries:
+      - date: March 25, 2025
+        headline: "Gemini 2.5 Pro Experimental released"
+        source: "Google DeepMind"
+        quote: "Google's first explicit \"thinking model\" with advanced chain-of-thought reasoning, 1M token context window, and top-tier coding/math benchmarks."
+        color: "#d4c5b0"
+        url: "https://blog.google/technology/google-deepmind/gemini-model-thinking-updates-march-2025"
+
+      - date: March 31, 2025
+        headline: "OpenAI raises $40B at $300B valuation (Series F)"
+        source: "OpenAI"
+        quote: "The largest private funding round in tech history, led by SoftBank, cementing OpenAI's position as the most valuable startup in the world."
+        color: "#d4c5b0"
+        url: "https://openai.com/index/march-funding-updates/"
 
   - year: 2025
     month: APR
@@ -466,6 +618,13 @@ timeline:
         quote: "o3 and o4-mini reasoning models; later update notes o3-pro availability."
         color: "#d4c5b0"
         url: "https://openai.com/index/introducing-o3-and-o4-mini/"
+
+      - date: April 28, 2025
+        headline: "Alibaba releases Qwen3 open-source model family"
+        source: "Alibaba"
+        quote: "Eight models (0.6B to 235B parameters) with hybrid reasoning — seamlessly switching between thinking and non-thinking modes — trained on 36 trillion tokens across 119 languages under Apache 2.0 license."
+        color: "#d4c5b0"
+        url: "https://www.alizila.com/alibaba-introduces-qwen3-setting-new-benchmark-in-open-source-ai-with-hybrid-reasoning/"
 
       - date: April 2025
         headline: "Microsoft and AWS pause datacenter expansion"
@@ -514,6 +673,13 @@ timeline:
   - year: 2025
     month: JUL
     entries:
+      - date: July 9, 2025
+        headline: "Grok 4 and Grok 4 Heavy released"
+        source: "xAI"
+        quote: "xAI's multi-agent Grok 4 Heavy outperformed Claude, Gemini, and GPT-4 on multiple benchmarks, establishing xAI as a serious frontier competitor."
+        color: "#d4c5b0"
+        url: "https://x.ai/news/grok-4"
+
       - date: July 17, 2025
         headline: "ChatGPT agent integrates Operator + deep research"
         source: "OpenAI"
@@ -551,6 +717,13 @@ timeline:
   - year: 2025
     month: NOV
     entries:
+      - date: November 18, 2025
+        headline: "Gemini 3 Pro and 3 Deep Think released"
+        source: "Google DeepMind"
+        quote: "Google's most powerful models surpassed GPT-5 in 19 of 20 benchmarks and topped the LMArena leaderboard, with an ARC score of 41% vs OpenAI's 31.6% on Humanity's Last Exam."
+        color: "#d4c5b0"
+        url: "https://blog.google/products/gemini/gemini-3-deep-think/"
+
       - date: November 24, 2025
         headline: "Claude Opus 4.5 introduced"
         source: "Anthropic"
@@ -561,6 +734,13 @@ timeline:
   - year: 2025
     month: DEC
     entries:
+      - date: December 1, 2025
+        headline: "DeepSeek-V3.2 released"
+        source: "DeepSeek"
+        quote: "Successor to V3 with Sparse Attention for efficient long-context inference, integrated thinking-in-tool-use, and a Speciale variant achieving gold-medal performance at the 2025 International Mathematical Olympiad."
+        color: "#d4c5b0"
+        url: "https://api-docs.deepseek.com/news/news251201"
+
       - date: December 11, 2025
         headline: "GPT-5.2 introduced (work + agents positioning)"
         source: "OpenAI"
@@ -602,11 +782,17 @@ timeline:
         color: "#d4c5b0"
         url: "https://www.anthropic.com/news/claude-opus-4-6"
 
+      - date: February 12, 2026
+        headline: "Anthropic raises $30B at $380B valuation (Series G)"
+        source: "Anthropic"
+        quote: "The second-largest private AI funding round in history, led by GIC and Coatue, as Anthropic reported $14 billion annualized run-rate revenue — growing over 10x annually for three consecutive years."
+        color: "#d4c5b0"
+        url: "https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation"
+
       - date: February 16, 2026
         headline: "RAMpocalypse: DDR5 RAM prices surge 5x"
         source: "PC Part Picker"
         quote: "DDR5 6000MHz memory prices increased approximately 5x since September 2024. RIP to the ppl who wants to build their own PC"
-        attribution: "Siddharth Chintamaneni"
         color: "#d4c5b0"
         url: "https://pcpartpicker.com/trends/price/memory/#ram.ddr5.6000.2x32768"
 
@@ -617,6 +803,13 @@ timeline:
         color: "#d4c5b0"
         url: "https://www.anthropic.com/news/claude-sonnet-4-6"
 
+      - date: February 18, 2026
+        headline: "Lyria 3 music generation model launched in Gemini"
+        source: "Google DeepMind"
+        quote: "Google's most advanced music generation model enables users to create 30-second tracks from text or image prompts, with auto-generated lyrics and SynthID watermarking."
+        color: "#d4c5b0"
+        url: "https://blog.google/innovation-and-ai/products/gemini-app/lyria-3/"
+
       - date: February 19, 2026
         headline: "Coding is largely solved by AI"
         source: "Lenny's Podcast"
@@ -625,3 +818,23 @@ timeline:
         color: "#d62728"
         url: "https://youtu.be/We7BZVKbCVw"
 
+      - date: February 23, 2026
+        headline: "Anthropic accuses DeepSeek, Moonshot AI, and MiniMax of industrial-scale distillation attacks"
+        source: "Anthropic"
+        quote: "Anthropic revealed that three Chinese AI labs created ~24,000 fraudulent accounts and generated over 16 million exchanges with Claude to extract capabilities for training their own models — the most detailed account of AI IP theft in the industry's history."
+        color: "#d62728"
+        url: "https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks"
+
+      - date: February 26, 2026
+        headline: "Nano Banana 2 image model launched across Gemini ecosystem"
+        source: "Google DeepMind"
+        quote: "Google's latest image generation model combines Pro-level quality with Flash speed, generating 4K images in 4-6 seconds, deployed free across Gemini, Search, and developer APIs."
+        color: "#d4c5b0"
+        url: "https://blog.google/innovation-and-ai/technology/ai/nano-banana-2/"
+
+      - date: February 27, 2026
+        headline: "OpenAI strikes deal with Pentagon for classified AI deployment"
+        source: "Sam Altman"
+        quote: "Tonight, we reached an agreement with the Department of War to deploy our models in their classified network. Two of our most important safety principles are prohibitions on domestic mass surveillance and human responsibility for the use of force, including for autonomous weapon systems."
+        color: "#d62728"
+        url: "https://x.com/sama/status/2027578652477821175"

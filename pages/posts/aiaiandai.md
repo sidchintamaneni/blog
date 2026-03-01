@@ -24,6 +24,7 @@ any company.)</span>
 
 ### Changelog
 
+- **March 1, 2026**: Added 27 new events (2020-2026). Thanks to Premith Chilukri.
 - **February 22, 2026**: Added Sam Altman firing/rehiring, Stargate project, Microsoft/AWS datacenter slowdown, Cowork, Claude models, and other fixes to the timeline
 - **February 18, 2026**: Added COVID-19 pandemic declaration and CARES Act
 - **February 16, 2026**: init 
