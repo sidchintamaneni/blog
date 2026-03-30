@@ -39,6 +39,28 @@
 | .text (hot) | 15,404,322 | 14,323,701 |
 | .bolt.org.text (cold) | 69,345,502 | 105,372,911 |
 
+### Propeller on AutoFDO
+
+| Metric | O3-ThinLTO-AutoFDO + Propeller |
+|--------|-------------------------------|
+| 9a: O3+ThinLTO+AutoFDO+labels build time | 20m 27s |
+| 9a: .llvm_bb_addr_map size | 27.6M |
+| 9b: Perf profile (100 cmds, sequential) | 135M perf.data, 173K samples |
+| 9c: create_llvm_prof time | 3.4s |
+| Hot functions profiled | 12,285 |
+| Hot basic blocks | 268,754 |
+| CFG nodes created | 1,154,578 |
+| Edges created | 369,255 |
+| Inter-function ext-tsp score | +201.8% |
+| Intra-function ext-tsp score | +37.0% |
+| cluster.txt lines | 24,433 |
+| symorder.txt lines | 23,425 |
+| 9d: Final build time | 18m 31s |
+| clang-22 binary size | 153M |
+| .text | 105,889,327 |
+| .rodata | 12,074,552 |
+| Function count (T+t) | 129,421 |
+
 ### iFDO Intermediate Stats
 
 | Step | Wall time | Details |
@@ -74,18 +96,19 @@
 | O3-ThinLTO-AutoFDO | 113 | 113 | 113 | 113 | 113 | 113.0s | **-8.4%** |
 | O3-ThinLTO-iFDO+BOLT | 95 | 95 | 95 | 95 | 95 | 95.0s | **-23.0%** |
 | O3-ThinLTO-AutoFDO+BOLT | 98 | 97 | 97 | 98 | 98 | 97.6s | **-20.9%** |
+| O3-ThinLTO-AutoFDO+Propeller | 97 | 98 | 97 | 98 | 97 | 97.4s | **-21.1%** |
 
 ### perf stat: Compile Clang at O2 (3 runs avg, -j192)
 
-| Metric | O2-clang | O3-clang | O3-LTO | O3-ThinLTO | O3-ThinLTO-iFDO | O3-ThinLTO-AutoFDO | O3-ThinLTO-iFDO+BOLT | O3-ThinLTO-AutoFDO+BOLT |
-|--------|----------|----------|--------|------------|-----------------|-------------------|-----------|--------------|
-| Instructions (T) | 43,826 | 43,386 | 40,208 | 40,450 | 32,540 | 37,068 | 32,497 | 36,825 |
-| Cycles (T) | 54,126 | 54,051 | 52,451 | 52,761 | 41,847 | 48,961 | 40,399 | 41,489 |
-| IPC | 0.81 | 0.80 | 0.77 | 0.77 | 0.78 | 0.76 | 0.80 | **0.89** |
-| L1-icache misses (T) | 2,849 | 2,857 | 2,746 | 2,759 | 1,632 | 2,276 | **1,513** | **1,625** |
-| iTLB misses (B) | 21.3 | 22.4 | 22.4 | 24.0 | 17.5 | 20.2 | **13.8** | **10.5** |
-| Wall time | 125.1s | 124.6s | 121.1s | 121.8s | 99.1s | 114.5s | **95.9s** | **98.5s** |
-| vs O2-clang | - | -0.4% | -3.2% | -2.6% | **-20.8%** | **-8.5%** | **-23.4%** | **-21.3%** |
+| Metric | O2-clang | O3-clang | O3-LTO | O3-ThinLTO | O3-ThinLTO-iFDO | O3-ThinLTO-AutoFDO | iFDO+BOLT | AutoFDO+BOLT | AutoFDO+Propeller |
+|--------|----------|----------|--------|------------|-----------------|-------------------|-----------|--------------|-------------------|
+| Instructions (T) | 43,826 | 43,386 | 40,208 | 40,450 | 32,540 | 37,068 | 32,497 | 36,825 | 37,007 |
+| Cycles (T) | 54,126 | 54,051 | 52,451 | 52,761 | 41,847 | 48,961 | 40,399 | 41,489 | 41,197 |
+| IPC | 0.81 | 0.80 | 0.77 | 0.77 | 0.78 | 0.76 | 0.80 | **0.89** | **0.90** |
+| L1-icache misses (T) | 2,849 | 2,857 | 2,746 | 2,759 | 1,632 | 2,276 | **1,513** | **1,625** | **1,580** |
+| iTLB misses (B) | 21.3 | 22.4 | 22.4 | 24.0 | 17.5 | 20.2 | **13.8** | **10.5** | **11.3** |
+| Wall time | 125.1s | 124.6s | 121.1s | 121.8s | 99.1s | 114.5s | **95.9s** | **98.5s** | **98.6s** |
+| vs O2-clang | - | -0.4% | -3.2% | -2.6% | **-20.8%** | **-8.5%** | **-23.4%** | **-21.3%** | **-21.2%** |
 
 ---
 
@@ -624,4 +647,128 @@ time ${BOLT} ${AUTOFDO_BIN} \
 # Replace and benchmark
 cp ${AUTOFDO_BIN} ${AUTOFDO_BIN}.orig
 cp ${LLVM_SRC}/builds/install-O3-ThinLTO-AutoFDO-bolt/bin/clang-22.bolted ${AUTOFDO_BIN}
+```
+
+---
+
+## Step 9: O3 + ThinLTO + AutoFDO + Propeller
+
+It requires `-fbasic-block-address-map` to emit BB metadata, and `create_llvm_prof --format=propeller`
+(from Google's [autofdo](https://github.com/google/autofdo) repo) to convert perf profiles into layout files.
+
+### Step 9a: Build Clang with BB address map (for Propeller profiling)
+
+```bash
+export LLVM_SRC=/home/azure/sid/experiments/os-dev-env/llvm-project
+cd ${LLVM_SRC}/builds
+mkdir -p build-O3-ThinLTO-AutoFDO-propeller-labels && cd build-O3-ThinLTO-AutoFDO-propeller-labels
+
+cmake -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+  -DCMAKE_C_FLAGS_RELEASE="-O3 -DNDEBUG -fprofile-sample-use=${LLVM_SRC}/builds/autofdo-profiles/autofdo.profdata -funique-internal-linkage-names -fbasic-block-address-map" \
+  -DCMAKE_CXX_FLAGS_RELEASE="-O3 -DNDEBUG -fprofile-sample-use=${LLVM_SRC}/builds/autofdo-profiles/autofdo.profdata -funique-internal-linkage-names -fbasic-block-address-map" \
+  -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld -Wl,--lto-basic-block-address-map" \
+  -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld -Wl,--lto-basic-block-address-map" \
+  -DCMAKE_MODULE_LINKER_FLAGS="-fuse-ld=lld -Wl,--lto-basic-block-address-map" \
+  -DCMAKE_C_COMPILER=${LLVM_SRC}/builds/install-O2-clang/bin/clang \
+  -DCMAKE_CXX_COMPILER=${LLVM_SRC}/builds/install-O2-clang/bin/clang++ \
+  -DLLVM_USE_LINKER=lld \
+  -DLLVM_ENABLE_LTO=Thin \
+  -DLLVM_ENABLE_PROJECTS="clang;lld" \
+  -DLLVM_TARGETS_TO_BUILD="X86" \
+  -DBUILD_SHARED_LIBS=OFF \
+  -DCMAKE_INSTALL_PREFIX=${LLVM_SRC}/builds/install-O3-ThinLTO-AutoFDO-propeller-labels \
+  $LLVM_SRC/llvm
+
+time ninja -j192
+ninja install
+
+# Verify .llvm_bb_addr_map section exists
+${LLVM_SRC}/builds/install-O2-clang/bin/llvm-readelf -S \
+  ${LLVM_SRC}/builds/install-O3-ThinLTO-AutoFDO-propeller-labels/bin/clang-22 \
+  | grep -i "bb_addr_map"
+```
+
+### Step 9b: Collect perf profile for Propeller
+
+Profile a sequential workload (100 compilations) with `cycles:u -j any,u` for LBR branch traces.
+Sequential execution gives better per-process sample density.
+
+```bash
+export LLVM_SRC=/home/azure/sid/experiments/os-dev-env/llvm-project
+LABEL_BIN=${LLVM_SRC}/builds/install-O3-ThinLTO-AutoFDO-propeller-labels/bin/clang
+LABEL_BINXX=${LLVM_SRC}/builds/install-O3-ThinLTO-AutoFDO-propeller-labels/bin/clang++
+mkdir -p ${LLVM_SRC}/builds/propeller-profiles
+
+# Configure workload
+cd ${LLVM_SRC}/builds/benchmarks/bench-build
+cmake -DCMAKE_C_COMPILER=${LABEL_BIN} \
+      -DCMAKE_CXX_COMPILER=${LABEL_BINXX} \
+      . > /dev/null 2>&1
+ninja clean > /dev/null 2>&1
+
+# Extract first 100 compilation commands as sequential workload
+ninja -t commands | head -100 > ./propeller_workload.sh
+chmod +x ./propeller_workload.sh
+
+# Record with cycles:u + LBR
+time perf record -e cycles:u -j any,u \
+  -o ${LLVM_SRC}/builds/propeller-profiles/perf.data \
+  -- ./propeller_workload.sh
+
+ls -lh ${LLVM_SRC}/builds/propeller-profiles/perf.data
+```
+
+### Step 9c: Convert perf profile to Propeller layout files
+
+Use `create_llvm_prof` from the [autofdo](https://github.com/google/autofdo) repo with `--format=propeller`.
+This outputs two files: `cluster.txt` (BB reordering within functions) and `symorder.txt` (function reordering).
+
+```bash
+export LLVM_SRC=/home/azure/sid/experiments/os-dev-env/llvm-project
+CREATE_LLVM_PROF=${LLVM_SRC}/builds/autofdo/build/create_llvm_prof
+
+time ${CREATE_LLVM_PROF} \
+  --format=propeller \
+  --binary=${LLVM_SRC}/builds/install-O3-ThinLTO-AutoFDO-propeller-labels/bin/clang-22 \
+  --profile=${LLVM_SRC}/builds/propeller-profiles/perf.data \
+  --out=${LLVM_SRC}/builds/propeller-profiles/cluster.txt \
+  --propeller_symorder=${LLVM_SRC}/builds/propeller-profiles/symorder.txt \
+  --profiled_binary_name=clang-22 \
+  --propeller_call_chain_clustering \
+  --propeller_chain_split
+
+# Check outputs
+wc -l ${LLVM_SRC}/builds/propeller-profiles/cluster.txt
+wc -l ${LLVM_SRC}/builds/propeller-profiles/symorder.txt
+```
+
+### Step 9d: Build optimized Clang with Propeller layout
+
+```bash
+export LLVM_SRC=/home/azure/sid/experiments/os-dev-env/llvm-project
+cd ${LLVM_SRC}/builds
+mkdir -p build-O3-ThinLTO-AutoFDO-propeller && cd build-O3-ThinLTO-AutoFDO-propeller
+
+cmake -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+  -DCMAKE_C_FLAGS_RELEASE="-O3 -DNDEBUG -fprofile-sample-use=${LLVM_SRC}/builds/autofdo-profiles/autofdo.profdata -funique-internal-linkage-names -fbasic-block-sections=list=${LLVM_SRC}/builds/propeller-profiles/cluster.txt" \
+  -DCMAKE_CXX_FLAGS_RELEASE="-O3 -DNDEBUG -fprofile-sample-use=${LLVM_SRC}/builds/autofdo-profiles/autofdo.profdata -funique-internal-linkage-names -fbasic-block-sections=list=${LLVM_SRC}/builds/propeller-profiles/cluster.txt" \
+  -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld -Wl,--lto-basic-block-sections=${LLVM_SRC}/builds/propeller-profiles/cluster.txt -Wl,--symbol-ordering-file=${LLVM_SRC}/builds/propeller-profiles/symorder.txt -Wl,--no-warn-symbol-ordering" \
+  -DCMAKE_SHARED_LINKER_FLAGS="-fuse-ld=lld -Wl,--lto-basic-block-sections=${LLVM_SRC}/builds/propeller-profiles/cluster.txt -Wl,--symbol-ordering-file=${LLVM_SRC}/builds/propeller-profiles/symorder.txt -Wl,--no-warn-symbol-ordering" \
+  -DCMAKE_MODULE_LINKER_FLAGS="-fuse-ld=lld -Wl,--lto-basic-block-sections=${LLVM_SRC}/builds/propeller-profiles/cluster.txt -Wl,--symbol-ordering-file=${LLVM_SRC}/builds/propeller-profiles/symorder.txt -Wl,--no-warn-symbol-ordering" \
+  -DCMAKE_C_COMPILER=${LLVM_SRC}/builds/install-O2-clang/bin/clang \
+  -DCMAKE_CXX_COMPILER=${LLVM_SRC}/builds/install-O2-clang/bin/clang++ \
+  -DLLVM_USE_LINKER=lld \
+  -DLLVM_ENABLE_LTO=Thin \
+  -DLLVM_ENABLE_PROJECTS="clang;lld" \
+  -DLLVM_TARGETS_TO_BUILD="X86" \
+  -DBUILD_SHARED_LIBS=OFF \
+  -DCMAKE_INSTALL_PREFIX=${LLVM_SRC}/builds/install-O3-ThinLTO-AutoFDO-propeller \
+  $LLVM_SRC/llvm
+
+time ninja -j192
+ninja install
 ```
