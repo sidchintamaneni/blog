@@ -24,7 +24,7 @@
 
 ### BOLT on iFDO and AutoFDO
 
-| Metric | iFDO + BOLT | AutoFDO + BOLT |
+| Metric | O3-ThinLTO-iFDO + BOLT | O3-ThinLTO-AutoFDO + BOLT |
 |--------|------------|----------------|
 | perf2bolt time | 4m 40s | 4m 41s |
 | perf2bolt: functions profiled | 20,388 / 159,749 (12.8%) | 18,782 / 122,046 (15.4%) |
@@ -72,12 +72,12 @@
 | O3-ThinLTO | 122 | 121 | 121 | 121 | 122 | 121.4s | -2.7% |
 | O3-ThinLTO-iFDO | 99 | 98 | 99 | 98 | 99 | 98.6s | **-21.0%** |
 | O3-ThinLTO-AutoFDO | 108 | 108 | 108 | 108 | 107 | 107.8s | **-13.6%** |
-| iFDO+BOLT | 97 | 94 | 97 | 96 | 96 | 96.0s | **-23.1%** |
-| AutoFDO+BOLT | 98 | 96 | 97 | 97 | 95 | 96.6s | **-22.6%** |
+| O3-ThinLTO-iFDO+BOLT | 97 | 94 | 97 | 96 | 96 | 96.0s | **-23.1%** |
+| O3-ThinLTO-AutoFDO+BOLT | 98 | 96 | 97 | 97 | 95 | 96.6s | **-22.6%** |
 
 ### perf stat: Compile Clang at O2 (3 runs avg, -j192)
 
-| Metric | O2-clang | O3-clang | O3-LTO | O3-ThinLTO | O3-ThinLTO-iFDO | O3-ThinLTO-AutoFDO | iFDO+BOLT | AutoFDO+BOLT |
+| Metric | O2-clang | O3-clang | O3-LTO | O3-ThinLTO | O3-ThinLTO-iFDO | O3-ThinLTO-AutoFDO | O3-ThinLTO-iFDO+BOLT | O3-ThinLTO-AutoFDO+BOLT |
 |--------|----------|----------|--------|------------|-----------------|-------------------|-----------|--------------|
 | Instructions (T) | 43,827 | 43,385 | 40,208 | 40,450 | 32,539 | 35,446 | 31,560 | 35,241 |
 | Cycles (T) | 54,185 | 54,103 | 52,482 | 52,735 | 41,853 | 42,229 | 35,891 | 36,649 |
@@ -90,6 +90,8 @@
 ---
 
 ---
+
+# Build Notes
 
 ## Checkout
 
