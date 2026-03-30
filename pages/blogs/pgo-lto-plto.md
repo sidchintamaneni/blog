@@ -1,9 +1,9 @@
 # Exploring & experimenting with PGO-LTO-PLTO
 
 The idea of this blog is not to go super deep into each compiler optimization
-technique, but to form an abstract mental model and experiment with them. If
-you feel like I am skipping detailed explanations, that is on purpose—please
-check out the references.
+technique, but to form an abstract mental model and experiment with them. If you
+feel like I am skipping detailed explanations, that is on purpose, so please
+check out the cited references.
 
 The details regarding the experimental setup are towards the end of the blog.
 
@@ -43,7 +43,7 @@ in the context of the Linux kernel.
 ## Short Intro to Compiler, Linker & their Optimizations
 
 For ppl who are not familiar with how modern compilers like LLVM work, this is
-the mental model I formed. There are three layers - frontend, intermediate
+how I think about it. There are three layers - frontend, intermediate
 representation, and backend. The frontend parses the source code (things like
 lexer, parser, AST generation, semantic analysis, etc.) and generates an
 intermediate representation. The IR stage is where a lot of compiler
@@ -56,10 +56,10 @@ the binary. llvm linker (lld) offers LTO (link time optimization & Thin LTO)
 all the IR files (bitcode files) and generates one monolithic file and then
 perform the optimizations, later invokes backend and linker subsequently.  As
 one can imagine this is a memory intensive process. Fun fact I've done this in
-the past to generate a callgraph for subset of kernel functions[8] and we never
-saw our lab servers using that much memory(It exhausted 256 GB and little bit of
-swap that we had on those servers). To avoid this memory intensie approach ppl
-have come up with ThinLTO.
+the past to generate a callgraph for subset of kernel functions[8] using `make allyesconfig` 
+and we never saw our lab servers using that much memory(It exhausted 256 GB and
+little bit of swap that we had on those servers). To avoid this memory intensive
+approach ppl have come up with ThinLTO.
 
 In ThinLTO[7], the compiler generates module summaries along with IR. The
 linker performs a fast "thin link" using these summaries to figure out what
@@ -68,8 +68,8 @@ and compiled in parallel, only pulling in the cross-module info it needs.
 When LTO/ThinLTO is used, backend object file generation and final binary
 linking happen after this optimization step.
 
-Now what if we could also optimize based on how the program actually runs?
-That's where PGO comes in.
+Now what if we could also optimize based on how the program binary actually
+runs? That's where PGO comes in.
 
 ## Profile Guided Optimization/ Feedback Directed Optimization (PGO/ FDO)
 
@@ -90,42 +90,18 @@ let's experiment with LTO and PGO.
 
 # Experimenting with LTO & PGO
 
-<!-- Stale
+*For raw data collected and commands used refer to
+[experiment_results](https://github.com/sidchintamaneni/blog/blob/blog/pgo-lto-plto/pages/blogs/data/pgo-lto-plto/pgo-lto-plto-experiments.md)
+file.*
 
-For this blog, I am chosing the exisiting benchmarks from llvm-test-suite[10],
-especially the tests under SingleSource/ & MultiSource/.
+First I'll explain the experiment step. On the server that I am working have
+gcc compiler version 13.2.0.
 
-First I am running tests under SingleSource/ with three levels of compiler
-optimizations and LTO.
-
-Reference command to run llvm-test-suite to run with different compiler flags
-```
-mkdir {somewhere}
-cmake -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ \
--DCMAKE_C_FLAGS="-O0" -DCMAKE_CXX_FLAGS="-O0" -DCMAKE_BUILD_TYPE=Release \
--DTEST_SUITE_SUBDIRS="SingleSource" -DTEST_SUITE_RUN_BENCHMARKS=ON \
--DTEST_SUITE_BENCHMARKING_ONLY=ON $SUITE_DIR
-
-ninja -j `nproc`
-
-lit -v -j1 -o {file_name} SingleSource/Benchmarks/Shootout
-```
-I am trying to understand the results from SingleSource/Benchmarks/Shootout
-folder since they are a bit easier to comprehend.
-
-link to raw data: <hyperlink to experiment 1 rawdata table>
-
-![Performance comparison of O0, O1, O2, O3, LTO, and ThinLTO optimization levels](./data/pgo-lto-plto/exp1.png)
-
-Compile times are ~zero. Execution times shows minimal differences except for
-hash test. Link times are intersting since we can clearly see the time has
-increased by enabling LTO. In most tests ThinLTO shows more overhead than LTO.
-so it's not worth it to go fancy with basic tests.
-
-Rusults from running benchmarks under MultiSource not interesting.
--->
-
-
+So to start with I've build clang compiler version (22.1.2) with GCC. I've
+tried building the compiler using all the available cpus but it continued to
+exceed 128GB of available space on the system. So for all the experiments I've
+reduced the cpu count to 192. For all the builds I've used O2 optimized clang
+compiler unless otherwise stated.
 
 
 # References
@@ -145,38 +121,47 @@ Rusults from running benchmarks under MultiSource not interesting.
 ## Experimental Setup
 ```
 > lscpu
+Architecture:                x86_64
+  CPU op-mode(s):            32-bit, 64-bit
+  Address sizes:             46 bits physical, 57 bits virtual
+  Byte Order:                Little Endian
+CPU(s):                      208
+  On-line CPU(s) list:       0-207
 Vendor ID:                   GenuineIntel
-  Model name:                Intel(R) Core(TM) i7-8700T CPU @ 2.40GHz
+  Model name:                Intel(R) Xeon(R) Platinum 8473C
     CPU family:              6
-    Model:                   158
-    Thread(s) per core:      1
-    Core(s) per socket:      6
-    Socket(s):               1
-    Stepping:                10
-    CPU(s) scaling MHz:      33%
-    CPU max MHz:             2400.0000
+    Model:                   143
+    Thread(s) per core:      2
+    Core(s) per socket:      52
+    Socket(s):               2
+    Stepping:                8
+    CPU(s) scaling MHz:      31%
+    CPU max MHz:             3800.0000
     CPU min MHz:             800.0000
-Caches (sum of all):
-  L1d:                       192 KiB (6 instances)
-  L1i:                       192 KiB (6 instances)
-  L2:                        1.5 MiB (6 instances)
-  L3:                        12 MiB (1 instance)
+    BogoMIPS:                4200.00
 
-> cat /etc/os-release
-NAME="CachyOS Linux"
-PRETTY_NAME="CachyOS"
-ID=cachyos
-BUILD_ID=rolling // live life dangerously
+Caches (sum of all):         
+  L1d:                       4.9 MiB (104 instances)
+  L1i:                       3.3 MiB (104 instances)
+  L2:                        208 MiB (104 instances)
+  L3:                        210 MiB (2 instances)
+
+> cat /etc/os-release 
+  NAME="Microsoft Azure Linux"
+  VERSION="3.0.20260304"
+  ID=azurelinux
+  VERSION_ID="3.0"
+  PRETTY_NAME="Microsoft Azure Linux 3.0"
+  ANSI_COLOR="1;34"
+  HOME_URL="https://aka.ms/azurelinux"
+  BUG_REPORT_URL="https://aka.ms/azurelinux"
+  SUPPORT_URL="https://aka.ms/azurelinux"
 
 > uname -r
 6.18.6-2-cachyos
 
-❯ clang --version
-clang version 21.1.6
-Target: x86_64-pc-linux-gnu
-Thread model: posix
-InstalledDir: /usr/bin
+> gcc --version
+gcc (GCC) 13.2.0
 
-❯ llvm-config --version
-21.1.6
+# LLVM version used for experiments - 22.1.2 (`llvmorg-22.1.2`)
 ```

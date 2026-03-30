@@ -1,6 +1,6 @@
 # PGO, LTO & PLTO Experiments: Compiling Clang with Clang
 
-**Machine:** Azure Linux 3.0, kernel 6.18.5 ([config](https://github.com/sidchintamaneni/azurelinux/blob/siddharthc/kernel-hwe/6.18-v2/SPECS/kernel-hwe/config)), Intel Xeon Platinum 8473C (Sapphire Rapids)
+**Machine:** Azure Linux 3.0, kernel 6.18.5 ([config](https://github.com/sidchintamaneni/azurelinux/blob/siddharthc/kernel-hwe/6.18-v2/SPECS/kernel-hwe/config)), Intel Xeon Platinum 8473C
 
 **LLVM Version:** 22.1.2 (`llvmorg-22.1.2`)
 
@@ -653,7 +653,17 @@ cp ${LLVM_SRC}/builds/install-O3-ThinLTO-AutoFDO-bolt/bin/clang-22.bolted ${AUTO
 
 ## Step 9: O3 + ThinLTO + AutoFDO + Propeller
 
-It requires `-fbasic-block-address-map` to emit BB metadata, and `create_llvm_prof --format=propeller`
+It requires `-fbasic-blVendor ID:                   GenuineIntel
+  Model name:                Intel(R) Core(TM) i7-8700T CPU @ 2.40GHz
+    CPU family:              6
+    Model:                   158
+    Thread(s) per core:      1
+    Core(s) per socket:      6
+    Socket(s):               1
+    Stepping:                10
+    CPU(s) scaling MHz:      33%
+    CPU max MHz:             2400.0000
+    CPU min MHz:             800.0000ock-address-map` to emit BB metadata, and `create_llvm_prof --format=propeller`
 (from Google's [autofdo](https://github.com/google/autofdo) repo) to convert perf profiles into layout files.
 
 ### Step 9a: Build Clang with BB address map (for Propeller profiling)
