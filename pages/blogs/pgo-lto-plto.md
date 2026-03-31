@@ -238,7 +238,10 @@ I have to rebuild the O3+ThinLTO build to add `-gmlt` and
 `-fdebug-info-for-profiling` flags, which are critical in mapping back the
 profiling data collected during the build. I find building the binary a bit
 painful because I had a hard time finding out the documentation, I found someone
-else has a similar opinion as me [13].
+else has a similar opinion as me [13]. I later tried `-j48` with the same `-c 50009`
+period and it finished in 4m 40s, and the benchmarking results were the same as
+what I collected with `-j1`. I also tried lowering the `-c` period to increase
+sampling rate, but the perf.data kept filling up my disk so I gave up.
 
 Second step nearly took 2 hours because I ran the entire compiler build on
 a single cpu to collect traces. I tried doing it on multiple CPUs but the

@@ -445,11 +445,10 @@ cmake -G Ninja \
   -DLLVM_TARGETS_TO_BUILD="X86" \
   $LLVM_SRC/llvm
 
-# Record full build with LBR, -c 10009 = sample every 10009 branch events (prime to avoid aliasing)
 mkdir -p ${LLVM_SRC}/builds/autofdo-profiles
-time perf record -e br_inst_retired.near_taken:upp -j any,u -c 10009 \
+time perf record -e br_inst_retired.near_taken:upp -j any,u -c 50009 \
   -o ${LLVM_SRC}/builds/autofdo-profiles/perf.data \
-  -- ninja -j192
+  -- ninja -j1
 
 # Check profile size
 ls -lh ${LLVM_SRC}/builds/autofdo-profiles/perf.data
