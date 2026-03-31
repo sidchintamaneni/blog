@@ -133,7 +133,7 @@ exceed the 128GB of available memory on the system. So for all the experiments I
 reduced the cpu count to 192. For all the builds I've used -O2 optimized clang
 compiler unless otherwise stated.
 
-**Results of -O2, -O3, -O3-LTO and -O3-ThinLTO**
+### Results of -O2, -O3, -O3-LTO and -O3-ThinLTO
 
 I've started to build the clang and lld with different variations of compiler
 optimizations. Build results are pretty straight forward no surprises there.
@@ -201,7 +201,7 @@ This 3% is what PGO/ PLTO is trying to solve from the compilers perspective. But
 how does the compiler know during build time about the critical areas in the programs?
 that is where profiling/ sampling comes in.
 
-**Results of iFDO and AutoFDO**
+### Results of iFDO and AutoFDO
 
 Both iFDO and AutoFDO include additional build steps.
 
@@ -209,7 +209,7 @@ First for iFDO, we have to do an instrumented build of -O2 compiler with compile
 support. Then the instrumented build is used to build -O3+ThinLTO compiler to collect
 profiles. In the final stage these profiles are used to build a -O3-ThinLTO-iFDO compiler.
 
-### iFDO Intermediate Stats
+**iFDO Intermediate Stats**
 
 | Step | Wall time | Details |
 |------|-----------|---------|
@@ -225,7 +225,7 @@ For AutoFDO, we have similar stages. Instead of building an instrumented binary
 we rely on LBR (last branch records) [6] a h/w level feature to collect runtime
 profiles. AMD CPUs also support a similar feature.
 
-### AutoFDO Intermediate Stats
+**AutoFDO Intermediate Stats**
 
 | Step | Wall time | Details |
 |------|-----------|---------|
@@ -246,7 +246,7 @@ collected traces are sparse and results of the final output were not good. I
 think it is just me who couldn't figure out a way to collect traces during
 a multi-CPU build.
 
-**Build Results for iFDO and AutoFDO**
+### Build Results for iFDO and AutoFDO
 
 | Metric               | -O3, ThinLTO (base) | -O3, ThinLTO, iFDO | -O3, ThinLTO, AutoFDO |
 |----------------------|---------------------|--------------------|-----------------------|
@@ -307,7 +307,7 @@ you can see, for iFDO and AutoFDO text instructions are arranged closer in the
 binary, resulting in fewer icache misses compared to ThinLTO where the accesses are
 spread all over.
 
-**Results of BOLT and Propeller**
+### Results of BOLT and Propeller
 
 Both BOLT and Propeller are usually applied on top of -O{2,3}, {Thin}LTO & PGO
 (iFDO/ AutoFDO).
