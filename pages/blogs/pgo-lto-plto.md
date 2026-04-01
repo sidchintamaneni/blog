@@ -449,28 +449,23 @@ performance of a binary. In the next part we will see how these optimizations
 are applied to the Linux kernel (also a binary) and try to answer the question
 we started with.
 
-# References
-[1] https://github.com/sched-ext/scx/tree/main  
-[2] https://cachyos.org/blog/2025-christmas-new-year/  
-[3] https://lore.kernel.org/all/20241102175115.1769468-1-xur@google.com/  
-[4] https://discourse.llvm.org/t/optimizing-the-linux-kernel-with-autofdo-including-thinlto-and-propeller/79108  
-[5] https://lpc.events/event/18/contributions/1922/attachments/1450/3084/AutoFDO%20&%20Propeller%20in%20LPC%202024.pdf  
-<!--Reference to LBR (last branch records) -->  
-[6] https://lwn.net/Articles/680985/  
-[7] https://blog.llvm.org/2016/06/thinlto-scalable-and-incremental-lto.html  
-[8] https://github.com/rosalab/callgraph_generatorV2  
-[9] https://github.com/google/autofdo  
-[10] https://github.com/llvm/llvm-test-suite/tree/main  
-[11] https://github.com/CachyOS/cachyos-benchmarker/blob/master/kernel-autofdo.sh
-
-[12] https://dl.acm.org/doi/epdf/10.1145/356635.356640
-[13] https://eklitzke.org/fdebug-info-for-profiling
-
-<!-- Propeller paper -->  
-[14] https://dl.acm.org/doi/epdf/10.1145/3575693.3575727
-<!-- BOLT paper -->  
-[15] https://research.facebook.com/file/534990324471927/BOLT-A-Practical-Binary-Optimizer-for-Data-Centers-and-Beyond.pdf
-[16] https://en.wikipedia.org/wiki/Basic_block
+## References
+- [1] <https://github.com/sched-ext/scx/tree/main>
+- [2] <https://cachyos.org/blog/2025-christmas-new-year/>
+- [3] <https://lore.kernel.org/all/20241102175115.1769468-1-xur@google.com/>
+- [4] <https://discourse.llvm.org/t/optimizing-the-linux-kernel-with-autofdo-including-thinlto-and-propeller/79108>
+- [5] <https://lpc.events/event/18/contributions/1922/attachments/1450/3084/AutoFDO%20&%20Propeller%20in%20LPC%202024.pdf>
+- [6] <https://lwn.net/Articles/680985/>
+- [7] <https://blog.llvm.org/2016/06/thinlto-scalable-and-incremental-lto.html>
+- [8] <https://github.com/rosalab/callgraph_generatorV2>
+- [9] <https://github.com/google/autofdo>
+- [10] <https://github.com/llvm/llvm-test-suite/tree/main>
+- [11] <https://github.com/CachyOS/cachyos-benchmarker/blob/master/kernel-autofdo.sh>
+- [12] <https://dl.acm.org/doi/epdf/10.1145/356635.356640>
+- [13] <https://eklitzke.org/fdebug-info-for-profiling>
+- [14] <https://dl.acm.org/doi/epdf/10.1145/3575693.3575727>
+- [15] <https://research.facebook.com/file/534990324471927/BOLT-A-Practical-Binary-Optimizer-for-Data-Centers-and-Beyond.pdf>
+- [16] <https://en.wikipedia.org/wiki/Basic_block>
 
 ## Experimental Setup
 ```
