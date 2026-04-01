@@ -652,18 +652,9 @@ cp ${LLVM_SRC}/builds/install-O3-ThinLTO-AutoFDO-bolt/bin/clang-22.bolted ${AUTO
 
 ## Step 9: O3 + ThinLTO + AutoFDO + Propeller
 
-It requires `-fbasic-blVendor ID:                   GenuineIntel
-  Model name:                Intel(R) Core(TM) i7-8700T CPU @ 2.40GHz
-    CPU family:              6
-    Model:                   158
-    Thread(s) per core:      1
-    Core(s) per socket:      6
-    Socket(s):               1
-    Stepping:                10
-    CPU(s) scaling MHz:      33%
-    CPU max MHz:             2400.0000
-    CPU min MHz:             800.0000ock-address-map` to emit BB metadata, and `create_llvm_prof --format=propeller`
+It requires `-fbasic-block-address-map` to emit BB metadata, and `create_llvm_prof --format=propeller`
 (from Google's [autofdo](https://github.com/google/autofdo) repo) to convert perf profiles into layout files.
+Building AutoFDO tools is kinda painful as well and I forgot ot document it so good luck.
 
 ### Step 9a: Build Clang with BB address map (for Propeller profiling)
 

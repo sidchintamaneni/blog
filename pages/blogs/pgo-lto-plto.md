@@ -1,9 +1,9 @@
 # *Draft:* Exploring & experimenting with PGO-LTO-PLTO
 
 The idea of this blog is not to go super deep into each compiler optimization
-technique, but to build intuition and experiment with them. If you feel
-like I am skipping detailed explanations, that is on purpose, so please check
-out the cited references.
+technique, but to build intuition and experiment with them. If you feel like I
+am skipping detailed explanations, that is on purpose, so please check out the
+cited references.
 
 The details regarding the experimental setup are towards the end of the blog.
 
@@ -11,8 +11,8 @@ The details regarding the experimental setup are towards the end of the blog.
 
 It all started when I was downloading CachyOS to run some `sched_ext`[1]
 experiments. While the OS was downloading, I looked into one of their published
-blogs—"CachyOS Recap 2026 and Merry Christmas"[2]. One thing that caught my
-eye was a feature they had recently introduced:
+blogs—"CachyOS Recap 2026 and Merry Christmas"[2]. One thing that caught my eye
+was a feature they had recently introduced:
 
 ```
 Optimization: The default kernel (linux-cachyos) is now optimized using
@@ -20,25 +20,25 @@ Propeller in conjunction with AutoFDO. This combination results is approximately
 a 10% throughput improvement and reduced latency, depending on the workload.
 ```
 
-The performance improvements look insane. So now the questions become - what are
-AutoFDO and Propeller, when did the Linux kernel start to support them, and which
-workloads did CachyOS people optimize? To answer the second question, I found
-with a quick search that this was added to the Linux kernel build system in 6.13[3]
-and is currently supported only by the Clang/LLVM compiler[4]. For the third question,
-later in the process of writing this blog, I found that CachyOS used their
-benchmarks to collect the profiling traces[11], but the performance improvements
-are still a mystery.
+The performance improvements look insane. So now the questions become - what
+are AutoFDO and Propeller, when did the Linux kernel start to support them, and
+which workloads did CachyOS people optimize? To answer the second question, I
+found with a quick search that this was added to the Linux kernel build system
+in 6.13[3] and is currently supported only by the Clang/LLVM compiler[4]. For
+the third question, later in the process of writing this blog, I found that
+CachyOS used their benchmarks to collect the profiling traces[11], but the
+performance improvements are still a mystery.
 
 Now, coming back to our first question what are AutoFDO & Propeller? I found a
 self-explanatory presentation about Optimizing the Linux Kernel using AutoFDO &
 Propeller[5]. I got introduced to new terms - FDO, iFDO, AutoFDO, BOLT &
-Propeller. I was barely familiar with FDO/PGO (Feedback directed
-optimization/ Profile Guided optimization). We will explore what each of these
-terms means and experiment with them.
+Propeller. I was barely familiar with FDO/PGO (Feedback directed optimization/
+Profile Guided optimization) earlier. We will explore what each of these terms
+means and experiment with them.
 
-This blog is a two-part series. In the first part, we will experiment with
-these optimizations using Clang. Later, we will discuss them in the context of
-the Linux kernel.
+This blog is a two-part series. In the first part, we will experiment and
+benchmark these optimizations using Clang. Later, we will discuss them in the
+context of the Linux kernel.
 
 ## Short Intro to Compiler, Linker & their Optimizations
 
@@ -47,8 +47,8 @@ how I think about it. There are three layers - frontend, intermediate
 representation, and backend. The frontend parses the source code (things like
 lexer, parser, AST generation, semantic analysis, etc.) and generates an
 intermediate representation. The IR stage is where a lot of compiler
-optimizations are applied when you add flags like -O2/-O3. The backend generates
-object files for the target architecture. 
+optimizations are applied when you add flags like -O2/-O3. The backend
+generates object files for the target architecture. 
 
 After the compiler generates the object files, linker is responsible for
 generating the binary. LLVM's linker (lld) offers LTO (Link Time Optimization)
@@ -58,9 +58,9 @@ the linker merges into one monolithic module. The optimizer then runs on this
 combined IR — enabling cross-module inlining, dead code elimination, etc. —
 before the backend generates the final object code and links it. As one can
 imagine this is a memory intensive process. Fun fact I've done this in the past
-to generate a callgraph for a subset of kernel functions[8] using
-`make allyesconfig` and it exhausted 256 GB and a little bit of swap that we had
-on those lab servers. To avoid this memory intensive approach people came up with
+to generate a callgraph for a subset of kernel functions[8] using `make
+allyesconfig` and it exhausted 256 GB and a little bit of swap that we had on
+those lab servers. To avoid this memory intensive approach people came up with
 ThinLTO.
 
 In ThinLTO[7], the compiler generates module summaries along with IR. The
@@ -81,7 +81,7 @@ optimizations, etc.).
 
 There are currently two ways to do FDO: iFDO and AutoFDO[9]. The difference is
 how they profile/sample data. iFDO instruments the code to collect data, which
-is why it is usually not used in production; the data is typically collected
+is why it is usually not used in production. The data is typically collected
 using a simulated test workload. AutoFDO, on the other hand, utilizes Intel
 LBR (Last Branch Records), which has lower overhead because CPUs log branch
 data directly to model-specific registers (MSRs). In practice, this makes it
@@ -94,28 +94,34 @@ binary. That's the problem PLTO solve.
 
 ## Post Link Time Optimization - BOLT and Propeller
 
-There are two ways to optimizing binaries after linking - dynamic and static.
-Dynamic rewrite code at runtime in memory. They can handle dynamically generated
-and self-modifying code, but they carry runtime overhead. Static binary
-optimizers take a different approach, they rewrite the static binary, ahead of
-execution. No runtime overhead, simpler deployment. BOLT[15] is a static binary
-optimizer. 
+There are two ways to optimizing binaries after linking - dynamic and static
+optimizers. Dynamic optimizer rewrite code at runtime in memory. They can
+handle dynamically generated and self-modifying code, but they carry runtime
+overhead. Dynamic optimizers/ code injection is interesting if you are curious
+read more about JIT. Static binary optimizers take a different approach, they
+rewrite the static binary, ahead of execution. No runtime overhead, simpler
+deployment. BOLT[15] is a static binary optimizer. 
 
 BOLT reads the final linked binary, disassembles it, and reconstructs the control
 flow graph for each function. Using sample-based profiles, it runs an
 optimization pipeline that includes basic block reordering, function
 reordering, hot/cold code splitting, and peephole optimizations — then rewrites
-the binary with the new layout.
+the binary with the new layout. BOLT does all of this in a single monolithic
+pass - memory and time overhead grows quickly with binary size. 
 
-But BOLT does all of this in a single monolithic pass - memory and time overhead
-grows quickly with binary size. Propeller[18] takes a different approach -
-instead of disassembling and rewriting the binary, it relinks it. The compiler
-emits basic block metadata alongside the object files, so hardware samples can
-be mapped to individual basic blocks without disassembly. A profiling tool then
-maps the hardware samples to basic blocks and computes an optimal ordering.
-This ordering is fed back as layout hints — the compiler uses them to reorder
-blocks within each function, and the linker uses them to place functions
-globally.
+Propeller[18] takes a different approach - instead of disassembling and
+rewriting the binary, it relinks it. The compiler emits basic block metadata
+alongside the object files, so hardware samples can be mapped to individual
+basic blocks without disassembly. A profiling tool then maps the hardware
+samples to basic blocks and computes an optimal ordering. This ordering is fed
+back as layout hints — the compiler uses them to reorder blocks within each
+function, and the linker uses them to place functions globally.
+
+I tried to describe both BOLT and Propeller on a high-level. I probably skipped
+some important that could help you to understand them better. So I would highly
+recommend you to check the papers cited. I found optimizations like
+fall-through and function splitting interesting in propeller paper so you might
+enjoy it as well. 
 
 ## Discussion of Experiment results
 
@@ -135,16 +141,18 @@ compiler unless otherwise stated.
 
 ### Results of -O2, -O3, -O3-LTO and -O3-ThinLTO
 
-I've started to build the clang and lld with different variations of compiler
+I've started to build clang and lld with different variations of compiler
 optimizations. Build results are pretty straight forward no surprises there.
 Both iFDO and AutoFDO have some challenges as they include some intermediate
 steps.
 
 In the below table, the 'built with' row specifies which compiler was used for
-each build and yes I've compiled -O2 compiler again
-with -O2 to maintain consistency and compare the results with other builds. Btw 
-these are just the compiler builds with different optimization. Benchmarking them
-comes a bit later.
+each build and yes I've compiled -O2 compiler again with -O2 to maintain
+consistency and compare the results with other builds. Btw these are just 
+compiler builds with different optimizations. Benchmarking them comes a bit
+later.
+
+**Build results:**
 
 | Metric               | -O2 (GCC) | -O2 (Clang) | -O3 (Clang) | -O3, LTO | -O3, ThinLTO |
 |----------------------|-----------|-------------|-------------|----------|-------------|
@@ -157,9 +165,9 @@ comes a bit later.
 | .bss                 | 646,472    | 506,714    | 506,714    | 506,608 | 506,778    |
 | Function count (T+t) | 165,177    | 137,339    | 136,581    | 132,828 | 134,836    |
 
-From -O2 to -O3, the binary size increased, which could be the result
-of function inlining as you can see the function count decreased. The rest
-of the data seems consistent with slight increase in .rodata.
+From -O2 to -O3, the binary size increased, which could be the result of
+function inlining as you can see the function count decreased. The rest of the
+data seems consistent with slight increase in .rodata.
 
 With LTO, as we discussed earlier the build time increased from ~127
 secs to 1289 secs (I didn't measure the memory consumption but I would expect
@@ -172,7 +180,10 @@ function inlining and some more "unknown" optimizations resulting the binary
 size to increase. 
 
 Let's see how the benchmarking numbers look like - for all the benchmarks I've
-built an -O2 clang compiler.
+built an -O2 clang compiler 5 times with different optimized binaries and
+collected the wall time with an additional warmup step.
+
+**Benchmarks:**
 
 | Compiler | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Avg | vs O2-clang |
 |----------|-------|-------|-------|-------|-------|-----|-------------|
@@ -186,7 +197,7 @@ performance — it could be because the extra optimizations target code paths
 that are never touched during execution. In most codebases only 10% of the
 code is executed most of the time.
 
-Donald E Knuth, "Structured Programming with go to Statements"[12] quoted that
+Donald E Knuth in "Structured Programming with go to Statements"[12] quoted that
 ```
 Programmers waste enormous amounts of time thinking about, or worrying about,
 the speed of noncritical parts of their programs, and these attempts at
@@ -197,17 +208,18 @@ about 97% of the time: pre-mature optimization is the root of all evil.
 Yet we should not pass up our opportunities in that critical 3%.
 ```
 
-This 3% is what PGO/ PLTO is trying to solve from the compilers perspective. But
-how does the compiler know during build time about the critical areas in the programs?
-that is where profiling/ sampling comes in.
+This 3% is what PGO/ PLTO is trying to solve from the compilers perspective.
+But how does the compiler know during build time about the critical areas in
+the programs? that is where profiling/ sampling comes in.
 
 ### Results of iFDO and AutoFDO
 
 Both iFDO and AutoFDO include additional build steps.
 
-First for iFDO, we have to do an instrumented build of -O2 compiler with compiler-rt
-support. Then the instrumented build is used to build -O3+ThinLTO compiler to collect
-profiles. In the final stage these profiles are used to build a -O3-ThinLTO-iFDO compiler.
+First for iFDO, we have to do an instrumented build of -O2 compiler with
+compiler-rt support. Then the instrumented build is used to build -O3+ThinLTO
+compiler to collect profiles. In the final stage these profiles are used to
+build a -O3-ThinLTO-iFDO compiler.
 
 **iFDO Intermediate Stats**
 
@@ -222,7 +234,7 @@ finish the build. That is why iFDO is not used in production to collect the
 profiles.
 
 For AutoFDO, we have similar stages. Instead of building an instrumented binary
-we rely on LBR (last branch records) [6] a h/w level feature to collect runtime
+we rely on LBR (last branch records)[6] a h/w level feature to collect runtime
 profiles. AMD CPUs also support a similar feature.
 
 **AutoFDO Intermediate Stats**
@@ -237,19 +249,21 @@ profiles. AMD CPUs also support a similar feature.
 I have to rebuild the O3+ThinLTO build to add `-gmlt` and
 `-fdebug-info-for-profiling` flags, which are critical in mapping back the
 profiling data collected during the build. I find building the binary a bit
-painful because I had a hard time finding out the documentation, I found someone
-else has a similar opinion as me [13]. I later tried `-j48` with the same `-c 50009`
-period and it finished in 4m 40s, and the benchmarking results were the same as
-what I collected with `-j1`. I also tried lowering the `-c` period to increase
-sampling rate, but the perf.data kept filling up my disk so I gave up.
+painful because I had a hard time finding out the documentation, I found
+someone else has a similar opinion as me [13]. 
 
-Second step nearly took 2 hours because I ran the entire compiler build on
-a single cpu to collect traces. I tried doing it on multiple CPUs but the
+Second step nearly took 2 hours because I ran the entire compiler build on a
+single cpu to collect traces. I tried doing it on multiple CPUs but the
 collected traces are sparse and results of the final output were not good. I
-think it is just me who couldn't figure out a way to collect traces during
-a multi-CPU build.
+later tried `-j48` with the same `-c 50009` period and it finished in 4m 40s,
+and the benchmarking results were same as what I collected with `-j1`. I also
+tried lowering the `-c` period to increase sampling rate, but the perf.data
+kept filling up my disk so I gave up.
 
-### Build Results for iFDO and AutoFDO
+For specific commands that are used during these intermediate stages, refer to
+the document cited at the start of this section.
+
+**Build Results of iFDO and AutoFDO:**
 
 | Metric               | -O3, ThinLTO (base) | -O3, ThinLTO, iFDO | -O3, ThinLTO, AutoFDO |
 |----------------------|---------------------|--------------------|-----------------------|
@@ -271,6 +285,8 @@ decrease in function count and increase in binary size.
 Let's see how benchmarking numbers look. This time along with wall clock time let's take
 a closer look at perf stats and heatmap of instruction offset access.
 
+**Benchmarks:**
+
 | Compiler | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Avg | vs O2-clang |
 |----------|-------|-------|-------|-------|-------|-----|-------------|
 | O2-clang (baseline) | 124 | 124 | 123 | 123 | 123 | 123.4s | - |
@@ -281,6 +297,8 @@ a closer look at perf stats and heatmap of instruction offset access.
 should have performed similar to iFDO. Better profiling metric and iterative
 profiling approach provided in AutoFDO paper[9] could've yielded some better
 results*
+
+**Perf stats results:**
 
 | Metric | O2-clang | O3-clang | O3-LTO | O3-ThinLTO | O3-ThinLTO-iFDO | O3-ThinLTO-AutoFDO |
 |--------|----------|----------|--------|------------|-----------------|-------------------|
@@ -297,6 +315,8 @@ the rest. IPC stays roughly the same across all builds (~0.76–0.81), so
 performance is driven by instruction count - fewer instructions means fewer
 cycles.
 
+**Heat Map:**
+
 <table><tr>
 <td><img src="./data/pgo-lto-plto/heatmaps/temporal-O3-ThinLTO.png" width="320"></td>
 <td><img src="./data/pgo-lto-plto/heatmaps/temporal-O3-ThinLTO-iFDO.png" width="320"></td>
@@ -307,8 +327,8 @@ cycles.
 
 These figures show the instruction offset access in each of these binaries. As
 you can see, for iFDO and AutoFDO text instructions are arranged closer in the
-binary, resulting in fewer icache misses compared to ThinLTO where the accesses are
-spread all over.
+binary, resulting in fewer icache misses compared to ThinLTO where the accesses
+are spread all over.
 
 ### Results of BOLT and Propeller
 
@@ -362,11 +382,11 @@ fewer pages.
 | Function count (T+t) | 129,421 |
 
 Propeller requires an extra build step — first build with
--fbasic-block-address-map (20m 27s) to emit BB metadata (27.6M
+-fbasic-block-address-map (20m 27s) to emit Basic Block[16] metadata (27.6M
 .llvm_bb_addr_map section), then profile with perf (173K samples from 100
-sequential compilations - much light weight than what we have done at AutoFDO
-stage), convert to layout files via create_llvm_prof (3.4s), and finally
-rebuild with the layout (18m 31s). Out of ~129K functions, only 12,285 (9.5%)
+sequential compilations - much light weight than what we have done in AutoFDO),
+convert to layout files via create_llvm_prof (3.4s), and finally rebuild with
+the layout (18m 31s). Out of ~129K functions, only 12,285 (9.5%)
 were hot, containing 268K hot basic blocks. create_llvm_prof uses the ext-tsp
 algorithm to optimize layout — inter-function score improved +201.8% (hot
 callers/callees placed adjacent) and intra-function +37.0% (hot BBs fall
@@ -379,6 +399,8 @@ Since AutoFDO is much preferred approach, I've ignored it.
 
 Let's see how benchmarks, perf stats and heatmaps look like
 
+**Benchmark results:**
+
 | Compiler | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Avg | vs O2-clang |
 |----------|-------|-------|-------|-------|-------|-----|-------------|
 | O2-clang (baseline) | 124 | 124 | 123 | 123 | 123 | 123.4s | - |
@@ -389,6 +411,8 @@ Let's see how benchmarks, perf stats and heatmaps look like
 iFDO+BOLT is the fastest at 95.0s (-23.0%). But AutoFDO went from -8.4% to
 -20.9% with BOLT and -21.1% with Propeller. Code layout optimization basically
 recovered what AutoFDO lost from poor profiling quality.
+
+**Perf stats:**
 
 | Metric | O3-ThinLTO-iFDO | O3-ThinLTO-AutoFDO | iFDO+BOLT | AutoFDO+BOLT | AutoFDO+Propeller |
 |--------|-----------------|-------------------|-----------|--------------|-------------------|
@@ -406,6 +430,8 @@ cycles dropped — the CPU is just executing the same work more efficiently.
 There is a significant improvement in iTLB and icache misses as well.
 Hot code fits in fewer pages now.
 
+**Heat map:**
+
 <table><tr>
 <td><img src="./data/pgo-lto-plto/heatmaps/temporal-iFDO+BOLT.png" width="320"></td>
 <td><img src="./data/pgo-lto-plto/heatmaps/temporal-AutoFDO+BOLT.png" width="320"></td>
@@ -418,9 +444,10 @@ into a much tighter region of the binary.
 
 ## See you next time
 
-In this blog, we've explored how LTO, PGO and PLTO improved the performance of a
-binary. In the next part we will see how these optimizations are applied to the
-Linux kernel and try to answer the question we started with.
+In this blog, we've explored how LTO, PGO and PLTO optimizations improved the
+performance of a binary. In the next part we will see how these optimizations
+are applied to the Linux kernel (also a binary) and try to answer the question
+we started with.
 
 # References
 [1] https://github.com/sched-ext/scx/tree/main  
@@ -435,12 +462,15 @@ Linux kernel and try to answer the question we started with.
 [9] https://github.com/google/autofdo  
 [10] https://github.com/llvm/llvm-test-suite/tree/main  
 [11] https://github.com/CachyOS/cachyos-benchmarker/blob/master/kernel-autofdo.sh
+
 [12] https://dl.acm.org/doi/epdf/10.1145/356635.356640
 [13] https://eklitzke.org/fdebug-info-for-profiling
+
 <!-- Propeller paper -->  
 [14] https://dl.acm.org/doi/epdf/10.1145/3575693.3575727
 <!-- BOLT paper -->  
 [15] https://research.facebook.com/file/534990324471927/BOLT-A-Practical-Binary-Optimizer-for-Data-Centers-and-Beyond.pdf
+[16] https://en.wikipedia.org/wiki/Basic_block
 
 ## Experimental Setup
 ```
