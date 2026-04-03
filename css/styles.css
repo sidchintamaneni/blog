@@ -280,6 +280,29 @@ footer {
     text-align: right;
   }
 
+/* Table styling */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    font-size: 1rem;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f0ece4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f7f2;
+}
+
 /* code block styling */
 code {
     background-color: #f5f5f5; /* Light gray background */

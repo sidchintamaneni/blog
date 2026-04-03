@@ -1,4 +1,4 @@
-# Exploring & experimenting with PGO-LTO-PLTO
+# Exploring & experimenting with PGO-LTO-PLTO 
 
 The idea of this blog is not to go super deep into each compiler optimization
 technique, but to build intuition and experiment with them. If you feel like I
