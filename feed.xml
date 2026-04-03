@@ -3,8 +3,27 @@
   <channel>
     <title>Siddharth Chintamaneni</title>
     <link>https://sidchintamaneni.com</link>
-    <description>Blogs and Posts by Siddharth Chintamaneni</description>
+    <description>Blog posts and projects by Siddharth Chintamaneni</description>
     <atom:link href="https://sidchintamaneni.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Exploring &amp; experimenting with PGO-LTO-PLTO</title>
+      <link>https://sidchintamaneni.com/pages/blog.html?id=pgo-lto-plto&amp;type=blogs</link>
+      <pubDate>Thu, 02 Apr 2026 07:00:00 GMT</pubDate>
+      <category>Compilers</category>
+      <category>Performance</category>
+      <description></description>
+      <guid>https://sidchintamaneni.com/pages/blog.html?id=pgo-lto-plto&amp;type=blogs</guid>
+    </item>
+    <item>
+      <title>Timeline: AI, AI and AI</title>
+      <link>https://sidchintamaneni.com/pages/blog.html?id=aiaiandai&amp;type=posts</link>
+      <pubDate>Mon, 16 Feb 2026 08:00:00 GMT</pubDate>
+      <category>projects</category>
+      <category>AI</category>
+      <category>tracking</category>
+      <description>Starting a timeline to capture the ambitious statements made by researchers and leaders about AI predictions like &quot;AI will take over your jobs&quot; or &quot;We&apos;ll reach AGI/ASI&quot;. The idea isn&apos;t to make fun of these predictions, but to document how the conversation has evolved overtime. From cautious optimism to urgent warns the narrative keeps shifting and I think it&apos;s worth preserving that timeline.</description>
+      <guid>https://sidchintamaneni.com/pages/blog.html?id=aiaiandai&amp;type=posts</guid>
+    </item>
     <item>
       <title>Project Pile: Spending Time with 100 Virtual Characters</title>
       <link>https://sidchintamaneni.com/pages/blog.html?id=100characters&amp;type=posts</link>

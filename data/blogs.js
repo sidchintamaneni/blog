@@ -1,5 +1,18 @@
 export const blogs = [
     {
+        year: 2026,
+        month: "April",
+        blog_meta_data: [
+          {
+            id: 1,
+            title: "Exploring & experimenting with PGO-LTO-PLTO",
+            date: "2nd",
+            tags: ["Compilers", "Performance"],
+            file_name: "pgo-lto-plto",
+          },
+        ]
+    },
+    {
         year: 2025,
         month: "August",
         blog_meta_data: [

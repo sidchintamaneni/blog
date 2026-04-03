@@ -85,6 +85,7 @@ const items = [];
 function collectItems(groups, type, mdDir) {
   for (const group of groups) {
     for (const meta of group.blog_meta_data) {
+      if (isNaN(parseDay(meta.date))) continue; // skip WIP entries
       const date = toDate(group.year, group.month, meta.date);
       const link = `${SITE_URL}/pages/blog.html?id=${meta.file_name}&amp;type=${type}`;
       const mdPath = join(ROOT, "pages", mdDir, `${meta.file_name}.md`);
