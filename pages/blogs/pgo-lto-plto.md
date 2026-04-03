@@ -1,4 +1,4 @@
-# *Draft:* Exploring & experimenting with PGO-LTO-PLTO
+# Exploring & experimenting with PGO-LTO-PLTO
 
 The idea of this blog is not to go super deep into each compiler optimization
 technique, but to build intuition and experiment with them. If you feel like I
@@ -117,11 +117,11 @@ samples to basic blocks and computes an optimal ordering. This ordering is fed
 back as layout hints — the compiler uses them to reorder blocks within each
 function, and the linker uses them to place functions globally.
 
-I tried to describe both BOLT and Propeller on a high-level. I probably skipped
-some important that could help you to understand them better. So I would highly
-recommend you to check the papers cited. I found optimizations like
-fall-through and function splitting interesting in propeller paper so you might
-enjoy it as well. 
+I tried to describe both BOLT and Propeller on a high-level. I might've
+probably skipped some important details that could've helped you to understand
+them better. So I would highly recommend you to check the papers cited. I found
+optimizations like fall-through and function splitting interesting in propeller
+paper so you might enjoy it as well. 
 
 ## Discussion of Experiment results
 
