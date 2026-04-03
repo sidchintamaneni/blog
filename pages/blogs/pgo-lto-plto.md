@@ -317,11 +317,13 @@ cycles.
 
 **Heat Map:**
 
-<table><tr>
-<td><img src="./data/pgo-lto-plto/heatmaps/temporal-O3-ThinLTO.png" width="320"></td>
-<td><img src="./data/pgo-lto-plto/heatmaps/temporal-O3-ThinLTO-iFDO.png" width="320"></td>
-<td><img src="./data/pgo-lto-plto/heatmaps/temporal-O3-ThinLTO-AutoFDO.png" width="320"></td>
+<div style="display: flex; justify-content: center;">
+<table style="margin: 0 auto;"><tr>
+<td><img src="/pages/blogs/data/pgo-lto-plto/heatmaps/temporal-O3-ThinLTO.png" width="320"></td>
+<td><img src="/pages/blogs/data/pgo-lto-plto/heatmaps/temporal-O3-ThinLTO-iFDO.png" width="320"></td>
+<td><img src="/pages/blogs/data/pgo-lto-plto/heatmaps/temporal-O3-ThinLTO-AutoFDO.png" width="320"></td>
 </tr></table>
+</div>
 
 *To refer the heatmap of all the builds checkout this [link](https://github.com/sidchintamaneni/blog/tree/blog/pgo-lto-plto/pages/blogs/data/pgo-lto-plto/heatmaps)*
 
@@ -432,11 +434,13 @@ Hot code fits in fewer pages now.
 
 **Heat map:**
 
-<table><tr>
-<td><img src="./data/pgo-lto-plto/heatmaps/temporal-iFDO+BOLT.png" width="320"></td>
-<td><img src="./data/pgo-lto-plto/heatmaps/temporal-AutoFDO+BOLT.png" width="320"></td>
-<td><img src="./data/pgo-lto-plto/heatmaps/temporal-AutoFDO+Propeller.png" width="320"></td>
+<div style="display: flex; justify-content: center;">
+<table style="margin: 0 auto;"><tr>
+<td><img src="/pages/blogs/data/pgo-lto-plto/heatmaps/temporal-iFDO+BOLT.png" width="320"></td>
+<td><img src="/pages/blogs/data/pgo-lto-plto/heatmaps/temporal-AutoFDO+BOLT.png" width="320"></td>
+<td><img src="/pages/blogs/data/pgo-lto-plto/heatmaps/temporal-AutoFDO+Propeller.png" width="320"></td>
 </tr></table>
+</div>
 
 The heatmaps confirm what the perf stats show. Compare these to the earlier
 ThinLTO/iFDO/AutoFDO heatmaps - BOLT and Propeller pack the hot instructions
