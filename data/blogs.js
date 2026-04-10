@@ -5,7 +5,7 @@ export const blogs = [
         blog_meta_data: [
           {
             id: 1,
-            title: "Exploring & experimenting with PGO-LTO-PLTO",
+            title: "PGO to Post-Link time Optimization: Exploring and Benchmarking Clang & Kernel binaries (Part 1)",
             date: "2nd",
             tags: ["Compilers", "Performance"],
             file_name: "pgo-lto-plto",
