@@ -1,4 +1,4 @@
-# Exploring & experimenting with PGO-LTO-PLTO 
+# PGO to Post-Link time Optimization: Exploring and Benchmarking Clang & Kernel binaries (Part 1)
 
 The idea of this blog is not to go super deep into each compiler optimization
 technique, but to build intuition and experiment with them. If you feel like I
@@ -37,7 +37,7 @@ Profile Guided optimization) earlier. We will explore what each of these terms
 means and experiment with them.
 
 This blog is a two-part series. In the first part, we will experiment and
-benchmark these optimizations using Clang. Later, we will discuss them in the
+benchmark these optimizations on Clang. Later, we will discuss them in the
 context of the Linux kernel.
 
 ## Short Intro to Compiler, Linker & their Optimizations
@@ -446,7 +446,7 @@ The heatmaps confirm what the perf stats show. Compare these to the earlier
 ThinLTO/iFDO/AutoFDO heatmaps - BOLT and Propeller pack the hot instructions
 into a much tighter region of the binary. 
 
-## See you next time
+## See you next time!
 
 In this blog, we've explored how LTO, PGO and PLTO optimizations improved the
 performance of a binary. In the next part we will see how these optimizations
