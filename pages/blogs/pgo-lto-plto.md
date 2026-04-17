@@ -511,7 +511,7 @@ Caches (sum of all):
   SUPPORT_URL="https://aka.ms/azurelinux"
 
 > uname -r
-6.18.6-2-cachyos
+6.18.5.1 (https://github.com/microsoft/CBL-Mariner-Linux-Kernel/tags)
 
 > gcc --version
 gcc (GCC) 13.2.0
