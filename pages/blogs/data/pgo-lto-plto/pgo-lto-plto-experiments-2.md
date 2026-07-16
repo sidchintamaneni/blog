@@ -28,11 +28,11 @@
 
 | Metric               | ThinLTO + AutoFDO (no profile) | ThinLTO + AutoFDO (profile) | ThinLTO + AutoFDO + Propeller |
 |----------------------|--------------------------------|-----------------------------|-------------------------------|
-| Build time (wall)    | 4m 4s                          | 5m 4s                       |                               |
-| vmlinux size         | 531M                           | 544M                        |                               |
-| .text                | 21,385,432                     | 21,636,632                  |                               |
-| .rodata              | 8,063,189                      | 8,052,981                   |                               |
-| Function count (T+t) | 232,497                        | 230,140                     |                               |
+| Build time (wall)    | 4m 4s                          | 5m 4s                       | 5m 2s                         |
+| vmlinux size         | 531M                           | 544M                        | 544M                          |
+| .text                | 21,385,432                     | 21,636,632                  | 21,661,720                    |
+| .rodata              | 8,063,189                      | 8,052,981                   | 8,106,197                     |
+| Function count (T+t) | 232,497                        | 230,140                     | 231,739                       |
 
 
 ---
@@ -63,7 +63,7 @@ Measured on the kernel-under-test (no `perf` running). UnixBench, sysbench, and 
 | Clang (no LTO)                | 1,709.4 ± 4.8 (3 runs) | 64,053.8 ± 143.8 (3 runs) | (Redo this at the end)
 | Clang ThinLTO                 | 1,672.2 ± 5.1 (3 runs) | 64,137.2 ± 151.4 (3 runs) |
 | ThinLTO + AutoFDO (profile)   | 1,840.7 ± 7.3 (3 runs) | 68,133.4 ± 268.4 (3 runs) |
-| ThinLTO + AutoFDO + Propeller |            |               |
+| ThinLTO + AutoFDO + Propeller | 1,848.4 ± 2.5 (3 runs) | 68,309.6 ± 133.2 (3 runs) |
 
 ### UnixBench 112-instance — raw 3 runs (Clang no LTO, pinned)
 
@@ -185,6 +185,70 @@ Index values per run.
 | System Call Overhead                  | 1,118.1   | 1,118.3   | 1,118.6   |
 | **System Benchmarks Index Score**     | **1,845.6** | **1,844.1** | **1,832.3** |
 
+### UnixBench 112-instance — raw 3 runs (ThinLTO + AutoFDO + Propeller, pinned)
+
+Index values per run.
+
+| Test                                  | Run 1     | Run 2     | Run 3     |
+|---------------------------------------|-----------|-----------|-----------|
+| Dhrystone 2 using register variables  | 366,896.4 | 367,355.4 | 367,957.8 |
+| Double-Precision Whetstone            | 132,791.9 | 132,821.4 | 132,802.7 |
+| Execl Throughput                      | 5,671.1   | 5,686.6   | 5,662.5   |
+| File Copy 1024 bufsize 2000 maxblocks | 232,537.6 | 220,318.2 | 227,424.8 |
+| File Copy 256 bufsize 500 maxblocks   | 250,948.5 | 251,148.0 | 251,300.2 |
+| File Copy 4096 bufsize 8000 maxblocks | 75,978.2  | 75,667.2  | 76,056.7  |
+| Pipe Throughput                       | 208,750.7 | 208,509.7 | 208,736.1 |
+| Pipe-based Context Switching          | 41,583.3  | 41,680.9  | 41,608.1  |
+| Process Creation                      | 9,724.2   | 9,743.6   | 9,961.9   |
+| Shell Scripts (1 concurrent)          | 30,090.8  | 30,437.0  | 30,250.5  |
+| Shell Scripts (8 concurrent)          | 27,111.1  | 27,239.7  | 27,107.2  |
+| System Call Overhead                  | 123,271.1 | 123,283.3 | 123,263.3 |
+| **System Benchmarks Index Score**     | **68,351.7** | **68,160.4** | **68,416.7** |
+
+### UnixBench 1-instance — raw 3 runs (ThinLTO + AutoFDO + Propeller, pinned)
+
+Index values per run.
+
+| Test                                  | Run 1     | Run 2     | Run 3     |
+|---------------------------------------|-----------|-----------|-----------|
+| Dhrystone 2 using register variables  | 3,364.2   | 3,363.4   | 3,349.2   |
+| Double-Precision Whetstone            | 1,192.8   | 1,189.3   | 1,193.2   |
+| Execl Throughput                      | 833.5     | 834.6     | 834.2     |
+| File Copy 1024 bufsize 2000 maxblocks | 3,579.7   | 3,596.3   | 3,589.7   |
+| File Copy 256 bufsize 500 maxblocks   | 2,440.4   | 2,436.5   | 2,440.6   |
+| File Copy 4096 bufsize 8000 maxblocks | 6,853.7   | 6,789.7   | 6,883.8   |
+| Pipe Throughput                       | 1,915.3   | 1,928.8   | 1,926.5   |
+| Pipe-based Context Switching          | 510.0     | 521.7     | 520.2     |
+| Process Creation                      | 500.9     | 503.9     | 501.7     |
+| Shell Scripts (1 concurrent)          | 1,597.7   | 1,598.2   | 1,595.7   |
+| Shell Scripts (8 concurrent)          | 8,846.4   | 8,843.2   | 8,846.0   |
+| System Call Overhead                  | 1,127.3   | 1,126.3   | 1,126.5   |
+| **System Benchmarks Index Score**     | **1,845.5** | **1,849.6** | **1,850.0** |
+
+### perf stat — front-end counters (UnixBench 112-instance, system-wide)
+
+Collected with [`scripts/perfstat_heatmap_112.sh`](scripts/perfstat_heatmap_112.sh) (`perf stat -a`, 3-run means over `./Run -c 112`). Same metrics as Part 1. Propeller is a layout-only optimisation (basic-block reorder + function placement), so its payoff is in the **front end** (instruction fetch — i-cache and iTLB), which the icache/iTLB miss rows surface directly.
+
+> Caveat: these are **system-wide** counts with deep C-states disabled (`idle-set -D 0`). Both kernels are measured identically, so the **deltas** are what count — lower L1-icache / iTLB misses on the Propeller kernel = the layout win.
+
+| Metric               | Clang (no LTO) 112-inst | AutoFDO 112-inst | Propeller 112-inst |
+|----------------------|-------------------------|------------------|--------------------|
+| Instructions (T)     | TBD                     | TBD              | TBD                |
+| Cycles (T)           | TBD                     | TBD              | TBD                |
+| IPC                  | TBD                     | TBD              | TBD                |
+| L1-icache misses (T) | TBD                     | TBD              | TBD                |
+| iTLB misses (B)      | TBD                     | TBD              | TBD                |
+
+**Instruction-access heatmap** (temporal IP-offset density during `./Run -c 112`, same idea as Part 1 — tighter bright band = hot code packed closer):
+
+<div style="display: flex; justify-content: center;">
+<table style="margin: 0 auto;"><tr>
+<td><img src="/pages/blogs/data/pgo-lto-plto/heatmaps/temporal-kernel-Clang-112.png" width="320"></td>
+<td><img src="/pages/blogs/data/pgo-lto-plto/heatmaps/temporal-kernel-AutoFDO-112.png" width="320"></td>
+<td><img src="/pages/blogs/data/pgo-lto-plto/heatmaps/temporal-kernel-Propeller-112.png" width="320"></td>
+</tr></table>
+</div>
+
 ### sysbench — summary (208 threads, 60s)
 
 | Kernel variant                 | CPU (eps) | Memory (MiB/s) | Threads (eps) | Mutex (eps) |
@@ -192,7 +256,7 @@ Index values per run.
 | Clang (no LTO)                 | 98,107.3 ± 2,504.3 | 29,194.3 ± 2,231.0 | 5,999.9 ± 229.5 | 146.5 ± 17.7 |
 | Clang ThinLTO                  | 97,829.7 ± 3,122.6 | 30,767.8 ± 2,726.1 | 6,303.6 ± 177.5 | 153.8 ± 15.6 |
 | ThinLTO + AutoFDO (profile)    | 98,168.3 ± 3,394.5 | 29,450.8 ± 1,274.4 | 6,583.1 ± 49.9 | 145.1 ± 16.1 |
-| ThinLTO + AutoFDO + Propeller  |           |                |               |             |
+| ThinLTO + AutoFDO + Propeller  | 97,450.9 ± 4,374.3 | 30,618.7 ± 1,775.7 | 6,746.6 ± 136.6 | 141.8 ± 7.0 |
 
 ### sysbench — raw (Clang no LTO, pinned) — Run 1
 
@@ -275,6 +339,33 @@ Index values per run.
 | threads| 6,620.13   | 397,897    | 60.10    | 0.24         | 31.40        | 310.25       | 248.83        | 12,493,899.67 | 1,912.9663 / 102.36          | 60.0668 / 0.03                   |
 | mutex  | 155.77     | 208        | 1.34     | 880.92       | 1,090.24     | 1,331.06     | 1,280.93      | 226,769.28    | 1.0000 / 0.00                | 1.0902 / 0.14                    |
 
+### sysbench — raw (ThinLTO + AutoFDO + Propeller, pinned) — Run 1
+
+| Test   | events/s | total events | time (s) | lat min (ms) | lat avg (ms) | lat max (ms) | lat 95th (ms) | lat sum (ms) | fairness events (avg/stddev) | fairness exec time (avg/stddev) |
+|--------|----------|--------------|----------|--------------|--------------|--------------|---------------|--------------|------------------------------|----------------------------------|
+| cpu    | 98,741.27  | 5,924,739  | 60.00    | 1.06         | 2.10         | 26.00        | 2.03          | 12,467,274.87 | 28,484.3221 / 2,416.50       | 59.9388 / 0.06                   |
+| memory | 29,096.66  | 102,336    | 3.52     | 0.03         | 5.68         | 378.91       | 12.98         | 581,403.95    | 492.0000 / 0.00              | 2.7952 / 0.44                    |
+| threads| 6,874.01   | 413,112    | 60.10    | 0.23         | 30.24        | 322.30       | 240.02        | 12,493,086.85 | 1,986.1154 / 106.26          | 60.0629 / 0.03                   |
+| mutex  | 149.82     | 208        | 1.39     | 1,087.66     | 1,255.90     | 1,355.80     | 1,327.91      | 261,227.16    | 1.0000 / 0.00                | 1.2559 / 0.05                    |
+
+### sysbench — raw (ThinLTO + AutoFDO + Propeller, pinned) — Run 2
+
+| Test   | events/s | total events | time (s) | lat min (ms) | lat avg (ms) | lat max (ms) | lat 95th (ms) | lat sum (ms) | fairness events (avg/stddev) | fairness exec time (avg/stddev) |
+|--------|----------|--------------|----------|--------------|--------------|--------------|---------------|--------------|------------------------------|----------------------------------|
+| cpu    | 101,034.84 | 6,062,316  | 60.00    | 1.07         | 2.06         | 29.02        | 2.03          | 12,472,719.49 | 29,145.7500 / 3,010.12       | 59.9650 / 0.03                   |
+| memory | 32,569.51  | 102,336    | 3.14     | 0.03         | 5.27         | 234.49       | 11.45         | 539,793.31    | 492.0000 / 0.00              | 2.5952 / 0.35                    |
+| threads| 6,763.35   | 406,422    | 60.09    | 0.23         | 30.74        | 326.43       | 240.02        | 12,492,205.83 | 1,953.9519 / 109.93          | 60.0587 / 0.03                   |
+| mutex  | 138.70     | 208        | 1.50     | 1,187.13     | 1,371.95     | 1,499.10     | 1,453.01      | 285,365.98    | 1.0000 / 0.00                | 1.3720 / 0.05                    |
+
+### sysbench — raw (ThinLTO + AutoFDO + Propeller, pinned) — Run 3
+
+| Test   | events/s | total events | time (s) | lat min (ms) | lat avg (ms) | lat max (ms) | lat 95th (ms) | lat sum (ms) | fairness events (avg/stddev) | fairness exec time (avg/stddev) |
+|--------|----------|--------------|----------|--------------|--------------|--------------|---------------|--------------|------------------------------|----------------------------------|
+| cpu    | 92,576.62  | 5,554,824  | 60.00    | 1.06         | 2.24         | 19.04        | 5.00          | 12,468,330.99 | 26,705.8846 / 4,159.60       | 59.9439 / 0.06                   |
+| memory | 30,190.02  | 102,336    | 3.39     | 0.03         | 5.47         | 332.10       | 12.08         | 559,655.08    | 492.0000 / 0.00              | 2.6906 / 0.42                    |
+| threads| 6,602.39   | 396,813    | 60.10    | 0.23         | 31.48        | 336.94       | 248.83        | 12,492,995.81 | 1,907.7548 / 111.16          | 60.0625 / 0.03                   |
+| mutex  | 136.93     | 208        | 1.52     | 1,230.48     | 1,374.48     | 1,518.47     | 1,479.41      | 285,892.42    | 1.0000 / 0.00                | 1.3745 / 0.05                    |
+
 ### neper — tcp_rr (1F/1T, 60s)
 
 > Setup — **loopback**: server + client are the same kernel-under-test over `127.0.0.1`. **two-machine**: server `10.199.8.118` = kernel-under-test (the variant named in the row); client `10.199.8.189` = fixed stock `6.18.26.1-1.npi`.
@@ -289,6 +380,8 @@ Index values per run.
 | Clang ThinLTO | two-machine (3 runs) | 2,163,165 ± 35,554 | 36,638.5 ± 568.0 | 27.206 ± 0.453 | 21.917 ± 1.162 | 133.380 ± 32.350 | 2.357 ± 0.294 | 60 |
 | ThinLTO + AutoFDO (profile) | loopback (3 runs) | 3,993,251 ± 43,547 | 67,299.4 ± 428.8 | 14.784 ± 0.094 | 12.955 ± 0.471 | 58.705 ± 4.772 | 0.519 ± 0.008 | 60-61 |
 | ThinLTO + AutoFDO (profile) | two-machine (3 runs) | 2,298,898 ± 102,235 | 38,976.4 ± 1,740.6 | 25.625 ± 1.173 | 20.024 ± 0.906 | 116.769 ± 28.880 | 1.872 ± 0.397 | 60 |
+| ThinLTO + AutoFDO + Propeller | loopback (3 runs) | 4,002,505 ± 22,475 | 67,453.8 ± 427.6 | 14.749 ± 0.096 | 13.294 ± 0.738 | 62.980 ± 13.344 | 0.539 ± 0.004 | 60-61 |
+| ThinLTO + AutoFDO + Propeller | two-machine (3 runs) | 2,359,105 ± 72,738 | 39,998.3 ± 1,231.0 | 24.952 ± 0.779 | 19.323 ± 0.369 | 116.670 ± 22.797 | 1.990 ± 0.460 | 60 |
 
 ### neper — tcp_stream (1F/1T, 60s)
 
@@ -302,6 +395,8 @@ Index values per run.
 | Clang ThinLTO | two-machine (3 runs) | 29,312.7 ± 591.6 | 61 |
 | ThinLTO + AutoFDO (profile) | loopback (3 runs) | 29,377.2 ± 84.8 | 3 |
 | ThinLTO + AutoFDO (profile) | two-machine (5 runs) | 26,522.9 ± 1,613.9 | 61 |
+| ThinLTO + AutoFDO + Propeller | loopback (3 runs) | 28,568.0 ± 308.1 | 3 |
+| ThinLTO + AutoFDO + Propeller | two-machine (3 runs) | 28,353.8 ± 1,691.7 | 61 |
 
 ---
 
@@ -441,6 +536,20 @@ ls -lh ${BUILD}/kernel*.afdo
 
 Propeller layers on top of AutoFDO, so this rebuilds the AutoFDO-optimised kernel (`CLANG_AUTOFDO_PROFILE=kernel.afdo`) with `CONFIG_PROPELLER_CLANG=y` but **no** Propeller profile yet — Clang then emits the basic-block address map needed for Propeller profiling. Keep a copy of `vmlinux` for `create_llvm_prof`, and reboot into the new kernel before collecting the profile.
 
+> **EFI stub prerequisite (required for any Propeller build).** Propeller's `-fbasic-block-address-map`
+> emits a `.llvm_bb_addr_map` section full of **absolute** relocations, which the EFI boot stub
+> rejects (`absolute symbol references not allowed in the EFI stub`). These flags are applied
+> per-object in `scripts/Makefile.lib` (not `KBUILD_CFLAGS`), so the fix is the per-dir disable
+> knobs in `drivers/firmware/efi/libstub/Makefile` — add **both** (only `AUTOFDO_PROFILE := n`
+> actually disables it, because the Propeller gate reads that variable first):
+>
+> ```make
+> AUTOFDO_PROFILE := n
+> PROPELLER_PROFILE := n
+> ```
+>
+> This survives `make distclean` (tracked source) but is wiped by a re-clone.
+
 ```bash
 export KERNEL_SRC=/home/azure/sid/CBL-Mariner-Linux-Kernel
 export PLTO_CLANG=/home/azure/sid/experiments/os-dev-env/llvm-project/builds/install-O3-ThinLTO-AutoFDO-propeller/bin
@@ -490,7 +599,7 @@ export VMLINUX=${KERNEL_SRC}/builds/clang-propeller-profiling/vmlinux
 export BUILD=${KERNEL_SRC}/builds
 export BENCH=${KERNEL_SRC}/bench
 # create_llvm_prof must be built separately from github.com/google/autofdo
-export CREATE_LLVM_PROF=${CREATE_LLVM_PROF:-/home/azure/sid/experiments/autofdo/build/create_llvm_prof}
+export CREATE_LLVM_PROF=${CREATE_LLVM_PROF:-/home/azure/sid/experiments/os-dev-env/llvm-project/builds/autofdo/build/create_llvm_prof}
 export PERIOD=500009
 
 # verify we are on the Propeller profiling kernel and the matching vmlinux exists
@@ -506,31 +615,50 @@ sudo cpupower frequency-set -g performance
 sudo cpupower idle-set -D 0
 ```
 
-### Capture all three workloads under one perf record
+### Capture under load (fixed-window, all workloads in parallel)
+
+> **Sizing gotcha (important).** `create_llvm_prof` is single-threaded and loads the
+> *entire* `perf.data` into RAM. A long full-load capture (UnixBench `-c 112` ~28 min +
+> sysbench + neper at `-c 500009`) produced ~89M events and got **OOM-killed** (~127 GB
+> RSS on a 128 GB box; confirm with `dmesg | grep -i 'killed process'`). Neither a bigger
+> period nor dropping `-c` fixed it — the size is `events ≈ (rate/period) × CPUs × duration`,
+> and **duration dominates**. The robust fix is to bound the capture **by time**: launch all
+> workloads in the background (in parallel = realistic high load), then `perf record -- sleep 60`
+> to record a fixed 60s window regardless of how long the workloads run. ~60s ≈ ~30M events
+> (~9 GB `perf.data`, ~40 GB RSS to convert) with broad hot-path coverage.
 
 ```bash
 SB=${BENCH}/sysbench/src/sysbench
 NEPER=${BENCH}/neper
 
-# start neper load in the background so all three workloads overlap under high load
-${NEPER}/tcp_rr     -F 100 -T 10 -l 600 >/dev/null 2>&1 &
-${NEPER}/tcp_stream -F 100 -T 10 -l 600 >/dev/null 2>&1 &
+sudo pkill -f 'byte-unixbench|sysbench|tcp_rr|tcp_stream' 2>/dev/null || true
+
+# fire up mixed kernel-heavy load in the background (all workloads in parallel).
+# UnixBench uses -i 1 + a kernel-heavy subset (not the full ~28 min -c 112 index).
+( cd ${BENCH}/byte-unixbench/UnixBench && \
+  ./Run -i 1 -c 112 syscall pipe context1 spawn execl fstime shell1 shell8 ) >/dev/null 2>&1 &
+${SB} cpu     --threads=104 --cpu-max-prime=20000 --time=120 run >/dev/null 2>&1 &
+${SB} threads --threads=104 --thread-yields=1001 --thread-locks=8 --time=120 run >/dev/null 2>&1 &
+${NEPER}/tcp_rr     -F 100 -T 10 -l 120 >/dev/null 2>&1 &
+${NEPER}/tcp_stream -F 100 -T 10 -l 120 >/dev/null 2>&1 &
 sleep 2
-${NEPER}/tcp_rr     -F 100 -T 10 -l 600 -c -H 127.0.0.1 >/dev/null 2>&1 &
-${NEPER}/tcp_stream -F 100 -T 10 -l 600 -c -H 127.0.0.1 >/dev/null 2>&1 &
+${NEPER}/tcp_rr     -F 100 -T 10 -l 120 -c -H 127.0.0.1 >/dev/null 2>&1 &
+${NEPER}/tcp_stream -F 100 -T 10 -l 120 -c -H 127.0.0.1 >/dev/null 2>&1 &
 
+# record a FIXED 60s window while everything runs concurrently (bounds perf.data size)
+sleep 5    # let load ramp up
 sudo perf record -e BR_INST_RETIRED.NEAR_TAKEN:k -a -N -b -c ${PERIOD} \
-  -o ${BUILD}/perf-propeller.data -- bash -c "
-    cd ${BENCH}/byte-unixbench/UnixBench && ./Run -c 112
-    ${SB} cpu     --threads=208 --cpu-max-prime=20000 --time=60 run
-    ${SB} memory  --threads=208 --memory-total-size=100G --memory-block-size=1M --time=60 run
-    ${SB} threads --threads=208 --thread-yields=1001 --thread-locks=8 --time=60 run
-    ${SB} mutex   --threads=208 --mutex-num=4097 --mutex-locks=50000 --mutex-loops=10000 run
-  "
+  -o ${BUILD}/perf-propeller.data -- sleep 60
 
-# stop the background neper load
-sudo pkill -f 'tcp_rr|tcp_stream' || true
+# tear down the load, then make the capture readable (perf record runs as root)
+sudo pkill -f 'byte-unixbench|sysbench|tcp_rr|tcp_stream' || true
+sudo chown "$(id -un):$(id -gn)" ${BUILD}/perf-propeller.data   # group 'azure' doesn't exist; use id -gn
+ls -lh ${BUILD}/perf-propeller.data   # expect a few GB, not tens of GB
 ```
+
+> Tip: run the capture inside `tmux`/`screen` so an SSH disconnect can't kill it, and
+> watch `create_llvm_prof` RSS during conversion:
+> `watch -n3 'ps -o rss= -p $(pgrep -f create_llvm_prof) | awk "{printf \"%.1f GB\\n\", \$1/1048576}"'`
 
 ### Generate the Propeller profiles
 
@@ -543,8 +671,18 @@ ${CREATE_LLVM_PROF} \
   --out=${BUILD}/propeller_cc_profile.txt \
   --propeller_symorder=${BUILD}/propeller_ld_profile.txt
 
+# sanity-check the profile (want thousands of functions covering real hot paths)
+grep -c '^f ' ${BUILD}/propeller_cc_profile.txt   # functions with basic-block layout (e.g. ~2440)
+wc -l < ${BUILD}/propeller_ld_profile.txt          # functions in the symbol order (e.g. ~4376)
 ls -lh ${BUILD}/propeller_*_profile.txt
 ```
+
+Profile-file format: `propeller_cc_profile.txt` is `v1`, then per function `m <source file>`,
+`f <function>`, `c0 <bb numbers…>` (the new basic-block order — hot blocks first, cold split
+out; multiple `c<n>` lines = separate hot/cold clusters). `propeller_ld_profile.txt` is the
+function placement order for `.text`. Expect genuinely hot kernel paths (`vfs_read`/`vfs_write`,
+scheduler `update_curr`/`dequeue_task`, `maple_tree`, timers, memcg) — that's the signal the
+capture hit the right code.
 
 The prefix `${BUILD}/propeller` (→ `propeller_cc_profile.txt` + `propeller_ld_profile.txt`) is what the final build consumes via `CLANG_PROPELLER_PROFILE_PREFIX`.
 
@@ -577,6 +715,11 @@ make olddefconfig ARCH=x86_64 LLVM="${PLTO_CLANG}/"
 time make -j "$(nproc)" ARCH=x86_64 LLVM="${PLTO_CLANG}/" \
   CLANG_AUTOFDO_PROFILE="${AUTOFDO_PROFILE}" \
   CLANG_PROPELLER_PROFILE_PREFIX="${PROPELLER_PREFIX}"
+
+# binary stats -> fill the "ThinLTO + AutoFDO + Propeller" results column
+ls -lh vmlinux                                    # vmlinux size
+readelf -SW vmlinux | grep -E ' \.text | \.rodata '   # .text / .rodata (Size column is hex)
+nm vmlinux | grep -c -E '^[0-9a-f]+ [Tt] '        # function count (T+t)
 
 # install (Azure Linux 3.0), then reboot into ${KVER} and benchmark
 KVER="$(make -s kernelrelease)"
