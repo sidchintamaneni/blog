@@ -19,18 +19,18 @@ export const posts = [
           },
           {
             id: 3,
-            title: "Timeline: AI, AI and AI",
+            title: " [not freq updated] Timeline: AI, AI and AI",
             date: "16th",
             tags: ["projects", "AI", "tracking"],
             file_name: "aiaiandai"
           },
-          {
-            id: 4,
-            title: "Insights from AI timeline",
-            date: "WIP",
-            tags: ["AI", "analysis"],
-            file_name: "ai_timeline_insights"
-          },
+          //{
+          //  id: 4,
+          //  title: "Insights from AI timeline",
+          //  date: "WIP",
+          //  tags: ["AI", "analysis"],
+          //  file_name: "ai_timeline_insights"
+          //},
         ]
     }
   ];

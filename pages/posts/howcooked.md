@@ -1,8 +1,9 @@
 # howcooked.me
 
-I recently vibe coded a project and published it at *[howcooked.me](https://howcooked.me)*.
+Started as joke but it went too far. Site is not in use anymore but I am still
+paying for the domain because it is funny.
 
-Check out the *[about page](https://howcooked.me/about)* for more details.
+https://howcooked.me/about.html
 
 ---
 
