@@ -1,4 +1,5 @@
 import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+import { initEtaCalculator } from "./posts/eta_calculator.js";
         // Function to fetch query parameters from the URL
 const getQueryParam = (param) => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -29,6 +30,7 @@ export const renderMarkdownBlog = async () => {
 
         // Insert the converted content into the page
         document.getElementById('blog-content').innerHTML = html;
+        initEtaCalculator(document.getElementById('blog-content'));
 
     } catch (error) {
         console.error('Error rendering blog:', error);
