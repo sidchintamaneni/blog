@@ -4,7 +4,7 @@ I've been on a couple of super long road trips in the last couple of years.
 While driving, I wondered quite a few times, what is my ETA compared
 to the one Google Maps suggested when I started the trip?
 
-In the post, I assume that Google Maps' suggested routes and ETA are
+In the post, I assume that Google Maps suggested routes and ETA are
 accurate if you are driving with the flow of traffic.
 
 I am considering the average flow of traffic since Google Maps estimates the ETA by
@@ -52,8 +52,9 @@ since some cities are cursed.
 <div class="eta-time-field">
 <span id="eta-time-label">Google Maps trip time</span>
 <div class="eta-time-box" role="group" aria-labelledby="eta-time-label">
-<label for="eta-estimated-hours"><input id="eta-estimated-hours" name="estimatedHours" type="number" min="0" step="1" value="6" required>hours</label>
-<label for="eta-estimated-minutes"><input id="eta-estimated-minutes" name="estimatedMinutes" type="number" min="0" max="59" step="1" value="0" required>min</label>
+<label for="eta-estimated-hours"><input id="eta-estimated-hours" name="estimatedHours" type="number" aria-label="Hours" min="0" step="1" value="6" required></label>
+<span aria-hidden="true">:</span>
+<label for="eta-estimated-minutes"><input id="eta-estimated-minutes" name="estimatedMinutes" type="number" aria-label="Minutes" min="0" max="59" step="1" value="00" required></label>
 </div>
 </div>
 <label for="eta-implied-speed">Google Maps' implied average speed
