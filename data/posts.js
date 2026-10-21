@@ -5,7 +5,7 @@ export const posts = [
         blog_meta_data: [
           {
             id: 4,
-            title: "[draft] Try calculating your ETA",
+            title: "Try calculating your ETA",
             date: "13th",
             tags: ["travel", "calculator"],
             file_name: "estyoureta"
